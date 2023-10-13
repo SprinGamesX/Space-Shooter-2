@@ -1,0 +1,1 @@
+draw_fragments(FRAG_AMOUNT.BIG);

@@ -1,0 +1,2 @@
+///@desc Immunities
+explosive = false;

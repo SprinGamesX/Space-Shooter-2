@@ -1,0 +1,28 @@
+28/9/23 - Note 1
+- Added S-Grade fire ship
+- Reworked seeking projectiles
+- Reworked AOE
+- Reworked Projectiles
+- Made ship code easier to work with
+- Added movement restrictions for the ship
+
+30/9/23 - Note 2
+- Added main menu
+- Added character upgrade screen
+- Added external saves for ship levels
+- Redrew sprites for all ships
+- Optimizition of ship stats
+- Added reset lvl feature
+- Added lvl failure
+
+1/10/23 - Note 3
+- Added currency
+- Added Red blade
+- Adedd Red blades:
+	basic-attack
+	skill
+	ultimate
+	entrance-animation
+- Added Bladies
+
+	

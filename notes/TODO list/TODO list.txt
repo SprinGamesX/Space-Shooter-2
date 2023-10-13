@@ -1,0 +1,12 @@
+- TO DO:
+add ying & yang boss
+add upgrade screen
+add character obtaining screen
+add external saves
+add different difficulties for levels
+add defense domain
+add time domain
+add rewards for completing domains
+add Red blade's death animation
+increase Red blade's difficulty
+add Red blade's "sealing" skill (creates a circle of swords around the player for a set amount of time)

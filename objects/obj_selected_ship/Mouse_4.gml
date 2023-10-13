@@ -1,0 +1,1 @@
+transition_start(rm_character_selection, seq_slide_out, seq_slide_in);
