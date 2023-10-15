@@ -1,3 +1,4 @@
+global.enemylist = ds_list_create();
 win_condition = self;
 win_condition2 = noone;
 lose_condition = instance_create_layer(48, 176, "Player", ds_map_find_value(global.ships, global.selected_ship));

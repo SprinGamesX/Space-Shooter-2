@@ -37,47 +37,34 @@ function preform_skills(_key_attack, _key_skill, _key_ult){
 		atk_cd = max_atk_cd;
 		basic_attack();
 	}
-	if(atk_cd != 0){ atk_cd-- }
+	if(atk_cd > 0){ atk_cd-- }
 
 	// Skill
 	if (_key_skill) and (skill_cd == 0){
 		skill_cd = max_skill_cd;
 		skill();
 	}
-	if(skill_cd != 0) {skill_cd --}
+	if(skill_cd > 0) {skill_cd --}
 
 	// Ult
 	if (_key_ult) and (ult_cd == 0){
 		ult_cd = max_ult_cd;
 		ultimate();
 	}
-	if(ult_cd != 0) {ult_cd --}
+	if(ult_cd > 0) {ult_cd --}
 }
 
-function create_projectile(_obj, _scaling, _dir, _parent, _speed, _x = x, _y = y, _maxhp = 0, _hpscale = 0, _venom_amp = 0, _aoe = -1){
+function create_projectile(_obj, _scaling, _dir, _parent, _speed, _x = x, _y = y, _aoe = -1, _base_chance = 0.2){
 	 with(instance_create_layer(_x, _y, "Projectiles", _obj)){
-		dmg = calculate_dmg(_parent.atk, _parent.critrate, _parent.critdmg, _scaling, _maxhp, _hpscale);
-		if (_hpscale > 0){
-			if (dmg = _parent.atk * _scaling + (_maxhp * _hpscale)) is_crit = false;
-			else is_crit = true;
-		
-		}
-		else {
-			if (dmg = _parent.atk * _scaling) is_crit = false;
-			else is_crit = true;
-		}
+		dmg = calculate_dmg(_parent.atk, _parent.critrate, _parent.critdmg, _scaling);
+		if (dmg = _parent.atk * _scaling) is_crit = false;
+		else is_crit = true;
 		source = _parent;
 		direction = _dir;
 		speed = _speed;
-		venom_amp = _venom_amp;
 		aoe = _aoe;
+		effect_chance = _base_chance;
 	 }
-}
-
-function create_hp_scaling(_basic_scale,_skill_scale,_ult_scale,_obj = self){
-	_obj.atk_hp_scale = _basic_scale;
-	_obj.skill_hp_scale = _skill_scale;
-	_obj.ult_hp_scale = _ult_scale;
 }
 
 function create_deployable(_type, _hp, _parent = self){
@@ -85,6 +72,13 @@ function create_deployable(_type, _hp, _parent = self){
 		hp = _hp;
 		maxhp = hp;
 		parent = _parent;
+	}
+}
+
+function create_healing_orb(_x, _y, _heal, _spd){
+	with(instance_create_layer(_x, _y, "Projectiles", obj_healing_orb)){
+		heal = _heal;
+		speed = _spd;
 	}
 }
 

@@ -7,6 +7,7 @@ ds_map_add(global.ships, 2, obj_lifeship1);
 ds_map_add(global.ships, 3, obj_iceship2);
 ds_map_add(global.ships, 4, obj_venomship1);
 ds_map_add(global.ships, 5, obj_fireship2);
+ds_map_add(global.ships, 6, obj_lifeship2);
 
 
 function generate_arrow_buttons(_offset, _parent = self){

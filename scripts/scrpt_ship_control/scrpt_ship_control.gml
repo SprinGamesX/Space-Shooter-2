@@ -49,6 +49,14 @@ function ini_ship_stats(_id){
 				element = ELEMENTS.FIRE;
 			}
 			break;
+		case 6:
+			with(obj_ship){
+				ship_name = "L2";
+				cds = [seconds(0.3), seconds(20), seconds(40)];
+				scales = [0.2, 0.5, 0];
+				element = ELEMENTS.LIFE;
+			}
+			break;
 	}
 	with(obj_ship){
 		lvl = 1;

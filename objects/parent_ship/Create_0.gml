@@ -1,11 +1,11 @@
 skill_bar_color = c_white;
 ult_bar_color = c_white;
 
-function set_max_cds(){
+function set_max_cds(_aspd, _cd){
 	
-	max_skill_cd = skill_cd;
-	max_ult_cd = ult_cd;
-	max_atk_cd = atk_cd;
+	max_skill_cd = round(skill_cd - (skill_cd * _cd));
+	max_ult_cd = round(ult_cd - (ult_cd * _cd));
+	max_atk_cd = round(atk_cd - (atk_cd * _aspd));
 }
 
 function set_bar_colors(){
@@ -44,9 +44,15 @@ function set_base_stats(){
 	skill_scale = obj_ship.scales[1];
 	ult_scale = obj_ship.scales[2];
 	element = obj_ship.element;
+	aspd = (obj_ship.bonus_aspd * 0.02); //every stack of ASPD will give 2% cooldown reduction to basic attack
+	cd_reduction = (obj_ship.bonus_cd * 0.01); // every stack of CD will give 1% cooldown reduction to skill and ultimate
+	ex = (obj_ship.bonus_ex * 0.02); // every stack of EX will give 2% chance of causing an enhanced effect
+	elemental_bonus = (obj_ship.bonus_elmt_dmg * 0.04); // every stack of E-DMG will give 4% DMG increase
+	effect_hit_rate = (obj_ship.bonus_ehr * 0.04); // every stack of EHR will give 4% effect hit rate
 	max_hp = hp;
-	set_max_cds();
+	set_max_cds(aspd, cd_reduction);
 	set_bar_colors();
+	if (element == ELEMENTS.VENOM) dot_scale = obj_ship.dot_scale;
 }
 
 set_base_stats();

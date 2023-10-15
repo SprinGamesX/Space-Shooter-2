@@ -4,27 +4,8 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 	var _inst = instance_place(x, y, parent_enemy);
 	if (_hitlist != -1) and (exists_in_hitlist(_hitlist, _inst)) exit;
 	if (_inst != noone) and (!_inst.immune){
-		if (self.element == ELEMENTS.ICE){
-				if (_inst.freeze < 20) _inst.freeze++;
-				_inst.alarm[11] = seconds(5);
-			}
-		if (self.element == ELEMENTS.FIRE){
-				randomize();
-				if (_inst.explosive = false) and (random(1) < 0.5){
-					_inst.explosive = true;
-					_inst.alarm[10] = seconds(10);
-				}
-			}
-		if (self.element == ELEMENTS.LIFE){
-				if (_inst.life_ripe < 10) _inst.life_ripe++;
-				_inst.alarm[8] = seconds(10);
-			}
-		if (self.element == ELEMENTS.VENOM){
-				if (_inst.poison + self.venom_amp <= 15) _inst.poison += self.venom_amp;
-				else _inst.poison = 15;
-				
-			}
-		var _ship = instance_nearest(x, y, parent_ship);		
+		var _ship = instance_nearest(x, y, parent_ship);
+		apply_ex(_inst, _ship.ex,self.effect_chance + _ship.effect_hit_rate);	
 		var _dmg = _object.dmg + (_ship.max_hp / 100) * _inst.life_ripe;
 		// AOE
 		if (_aoe_size != -1){
@@ -56,8 +37,32 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 	
 }
 
+function apply_ex(_inst, _ex, _chance){
+	if (chance(_chance - _inst.resist)){
+		if (self.element == ELEMENTS.ICE){
+				if (_inst.freeze < 20) _inst.freeze++;
+				_inst.alarm[11] = seconds(5);
+			}
+		if (self.element == ELEMENTS.FIRE){
+				randomize();
+				if (_inst.explosive = false) and (random(1) < 0.5){
+					_inst.explosive = true;
+					_inst.alarm[10] = seconds(10);
+				}
+			}
+		if (self.element == ELEMENTS.LIFE){
+				if (_inst.life_ripe < 10) _inst.life_ripe++;
+				_inst.alarm[8] = seconds(10);
+			}
+		if (self.element == ELEMENTS.VENOM){
+				if (_inst.poison + 1 <= 15) _inst.poison += 1;
+				else _inst.poison = 15;	
+			}
+	}
+}
+
 function exists_in_hitlist(_hit_list, _enemy){
-	if (_hit_list != -1)
+	if (ds_exists(_hit_list, ds_type_list))
 		return ds_list_find_index(_hit_list, _enemy) != -1;
 	else return true;
 }
@@ -116,6 +121,19 @@ function seek_closest_elite(_s = 30){
 		if (_d > 180) _d -= 360;
 		var _r = _dir;
 		if (_r > 180) _r -= 360;
+		var _error = abs((_r - _d) / 180);
+		if ((_r - _d) > 0) direction += _s * _error;
+		if ((_r - _d) < 0) direction -= _s * _error;
+	}
+	else seek_closest_enemy();
+}
+
+function seek_closest_player(_s = 30){
+	if (instance_exists(parent_ship)){
+		var _enemy = instance_nearest(x,y, parent_ship);
+		var _dir = point_direction(x,y, _enemy.x, _enemy.y);
+		var _d = direction;
+		var _r = _dir;
 		var _error = abs((_r - _d) / 180);
 		if ((_r - _d) > 0) direction += _s * _error;
 		if ((_r - _d) < 0) direction -= _s * _error;

@@ -1,6 +1,6 @@
 var _color = c_white;
 var _color2 = c_white;
-var _texts = ["ATK", "HP", "SPD","CR","CRD","EX","EM","ASPD","CD","UCD"];
+var _texts = ["ATK", "HP", "SPD","CR","CRD","EX","EM","ASPD","CD","EHR"];
 var _n = 0;
 
 switch(obj_ship.element){

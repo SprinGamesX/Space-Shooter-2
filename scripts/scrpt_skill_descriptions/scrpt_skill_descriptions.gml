@@ -60,10 +60,10 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "Deals VENOM damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and applys 1 POISON. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.SKILL:
-					_str = "Shoots 3 VENOM needles, each dealing VENOM damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and each applys 2 POISON. \nCD: " + _skill_cd;
+					_str = "Shoots 3 VENOM needles, each dealing VENOM damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and each has 100% base chance to apply POISON. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.ULT:
-					_str = "Shoots 15 VENOM needles in a snake formation, each deals VENOM damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and each applys 1 POISON. \nCD: " + _skill_cd;
+					_str = "Shoots 15 VENOM needles in a snake formation, each deals VENOM damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and each has a 50% base chance to apply POISON. \nCD: " + _skill_cd;
 			}
 			break;
 		case 5:
@@ -76,6 +76,18 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Applys a buff to itself: increasing ATK by 10%. This skill activates automatically. \nCD: " + _skill_cd;
+			}
+			break;
+		case 6:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Deals LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd + "\nCharged attack deals LIFE damage equal to [c_orange]" + string(obj_ship.scales[1] * 100) + "%[c_white] of ATK";
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Enters CHARGED state for 20s, CHARGED state will consume 20% of ship's HP and increase ship's ATK by [c_orange]" + _str_scale + "%[c_white] of max HP and will change the basic attack to a charged attack. \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "Causes all enemys(except bosses) to immidiatly drop to 50% HP, if the enemys are already below 50% HP they will be destroyed. Additionally for each existing enemy ship will generate a healing orb that heals for 5% of ship's max HP \nCD: " + _skill_cd;
 			}
 			break;
 			
@@ -108,8 +120,8 @@ function stringify_bonuses(){
 	_str += "+" + string(obj_ship.bonus_ex) + "/25 \n";
 	_str += "+" + string(obj_ship.bonus_elmt_dmg) + "/25 \n";
 	_str += "+" + string(obj_ship.bonus_aspd) + "/25 \n";
-	_str += "+" + string(obj_ship.bonus_cd_skill) + "/25 \n";
-	_str += "+" + string(obj_ship.bonus_cd_ult) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_cd) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_ehr) + "/25 \n";
 	return _str;
 }
 
@@ -124,8 +136,8 @@ function stringify_bonuses2(){
 	_str += "EX: \n";
 	_str += "EM DMG: \n";
 	_str += "ASPD: \n";
-	_str += "SKILL CD: \n";
-	_str += "ULT CD: \n";
+	_str += "CDS: \n";
+	_str += "EHR: \n";
 	return _str;
 }
 

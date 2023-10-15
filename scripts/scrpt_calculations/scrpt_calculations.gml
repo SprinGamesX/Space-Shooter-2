@@ -1,12 +1,15 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function calculate_dmg(_atk, _critrate, _critdmg, _dmgscale, _maxhp = 0, _hp_scale = 0){
+function calculate_dmg(_atk, _critrate, _critdmg, _dmgscale){
+	var _ship = instance_nearest(x, y, parent_ship);
+	// Is crit
 	var _crit = chance(_critrate);
+	// base damage
 	var _dmg = (_atk * _dmgscale)
-	if (_hp_scale != 0) _dmg += (_maxhp * _hp_scale)
-	if (_crit){
-		return _dmg + _dmg * _critdmg;
-	}
+	// if crit add crit dmg
+	if (_crit) _dmg += _dmg * _critdmg;
+	// add elemental dmg bonus
+	_dmg += _dmg * _ship.elemental_bonus;
 	return _dmg;
 }
 

@@ -17,12 +17,10 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"element","path":"objects/parent_ship/parent_ship.yy",},"value":"ELEMENTS.VENOM",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"atk_cd","path":"objects/parent_ship/parent_ship.yy",},"value":"seconds(0.5)",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"atk_scale","path":"objects/parent_ship/parent_ship.yy",},"value":"0.1",},
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"dot_scale","path":"objects/parent_ship/parent_ship.yy",},"value":"0.05",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"skill_scale","path":"objects/parent_ship/parent_ship.yy",},"value":"0.2",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"skill_cd","path":"objects/parent_ship/parent_ship.yy",},"value":"seconds(5)",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"ult_scale","path":"objects/parent_ship/parent_ship.yy",},"value":"0.2",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"ult_cd","path":"objects/parent_ship/parent_ship.yy",},"value":"seconds(20)",},
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"lvl","path":"objects/parent_ship/parent_ship.yy",},"value":"5",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"ship_id","path":"objects/parent_ship/parent_ship.yy",},"value":"4",},
   ],
   "parent": {

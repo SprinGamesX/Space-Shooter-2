@@ -18,11 +18,28 @@
 1/10/23 - Note 3
 - Added currency
 - Added Red blade
-- Adedd Red blades:
+- Adedd Red blade's:
 	basic-attack
 	skill
 	ultimate
 	entrance-animation
 - Added Bladies
+
+14/10/23 - Note 4
+- Reworked system for ship datas
+- Added skill tree to hangar
+- Added bonus stats(do not work in game)
+
+15/10/23 - Note 5
+- Improved the way additional(elemental) effects work
+- Added enhanced explosion(fire) effect
+- Added S-Grade life ship
+- Removed HP scaling from the game (to be replaced with HP increases ATK)
+- Added Healing orbs
+- Added the EX, EHR stats into the actual game
+- Explosion will now scale on 20% of ship's atk instead of their basic attack scales
+- Added description for new S-Grade ship's abilities
+
+
 
 	

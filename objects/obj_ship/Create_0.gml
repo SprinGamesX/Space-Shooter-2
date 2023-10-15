@@ -11,6 +11,7 @@ critdmg = 0;
 cds = [0,0,0];
 scales = [0,0,0];
 ex_scale = 0;
+dot_scale = 0;
 
 // Bonuses
 bonus_atk = 0;
@@ -21,8 +22,8 @@ bonus_crd = 0;
 bonus_ex = 0;
 bonus_elmt_dmg = 0;
 bonus_aspd = 0;
-bonus_cd_skill = 0;
-bonus_cd_ult = 0;
+bonus_cd = 0;
+bonus_ehr = 0;
 
 // final
 f_atk = 0;
@@ -64,8 +65,8 @@ set_bonus = function(_map){
 	bonus_ex = ds_map_find_value(_map, "ex");
 	bonus_elmt_dmg = ds_map_find_value(_map, "elmt");
 	bonus_aspd = ds_map_find_value(_map, "aspd");
-	bonus_cd_skill = ds_map_find_value(_map, "cd1");
-	bonus_cd_ult = ds_map_find_value(_map, "cd2");
+	bonus_cd = ds_map_find_value(_map, "cds");
+	bonus_ehr = ds_map_find_value(_map, "ehr");
 }
 
 set_adds = function(_map){
@@ -129,8 +130,8 @@ save_bonus = function(_id){
 	ds_map_set(_temp, "ex", bonus_ex);
 	ds_map_set(_temp, "elmt", bonus_elmt_dmg);
 	ds_map_set(_temp, "aspd", bonus_aspd);
-	ds_map_set(_temp, "cd1", bonus_cd_skill);
-	ds_map_set(_temp, "cd2", bonus_cd_ult);
+	ds_map_set(_temp, "cds", bonus_cd);
+	ds_map_set(_temp, "ehr", bonus_ehr);
 	ini_write_string(_id, "bonus", ds_map_write(_temp));
 	ds_map_destroy(_temp);
 	ini_close();
@@ -167,22 +168,22 @@ update_index = function(_index){
 	
 update_bonus = function(_id){
 	switch(_id){
-		case 0: bonus_atk++; show_debug_message(bonus_atk); break;
-		case 1: bonus_hp++; show_debug_message(bonus_hp); break;
-		case 2: bonus_spd++; show_debug_message(bonus_spd); break;
-		case 3: bonus_cr++; show_debug_message(bonus_cr); break;
-		case 4: bonus_crd++; show_debug_message(bonus_crd); break;
-		case 5: bonus_ex++; show_debug_message(bonus_ex); break;
-		case 6: bonus_elmt_dmg++; show_debug_message(bonus_elmt_dmg); break;
-		case 7: bonus_aspd++; show_debug_message(bonus_aspd); break;
-		case 8: bonus_cd_skill++; show_debug_message(bonus_cd_skill); break;
-		case 9: bonus_cd_ult++; show_debug_message(bonus_cd_ult); break;
+		case 0: bonus_atk++;      break;
+		case 1: bonus_hp++;       break;
+		case 2: bonus_spd++;      break;
+		case 3: bonus_cr++;       break;
+		case 4: bonus_crd++;      break;
+		case 5: bonus_ex++;       break;
+		case 6: bonus_elmt_dmg++; break;
+		case 7: bonus_aspd++;     break;
+		case 8: bonus_cd++;       break;
+		case 9: bonus_ehr++;      break;
 	}
 	save_bonus(ship_index);
 }
 
 get_bonus_list = function(){
-	return [bonus_atk,bonus_hp,bonus_spd,bonus_cr,bonus_crd,bonus_ex,bonus_elmt_dmg,bonus_aspd,bonus_cd_skill,bonus_cd_ult];
+	return [bonus_atk,bonus_hp,bonus_spd,bonus_cr,bonus_crd,bonus_ex,bonus_elmt_dmg,bonus_aspd,bonus_cd,bonus_ehr];
 }
 	
 base = function(){
@@ -197,7 +198,7 @@ base = function(){
 }
 	
 // set base stats
-var _num = 6;
+var _num = 7;
 if (!file_exists("characters.ini")){
 	
 	for(var _i = 0; _i < _num; _i++){
