@@ -130,3 +130,18 @@ function generate_skill_buttons(_x, _y){
 	_buttons[2] = instance_create_layer(_x + 64 * 2, _y, "Skills", obj_button_ult);
 	return _buttons;
 }
+
+function generate_plus_buttons(_x,_y,_amount, _len){
+	var _buttons;
+	var _index = 0;
+	for(var _i = 0; _i < 360; _i += (360 / _amount)){
+		var _b = instance_create_layer(_x + lengthdir_x(_len, _i), _y + lengthdir_y(_len, _i), "Skills", obj_button_plus)
+			_b.index = _index;
+			_b.parent = self;
+			_b.direction = _i;
+			_b.image_angle = _i;
+		_buttons[_i] = _b;
+		_index++;
+	}
+	return _buttons;
+}

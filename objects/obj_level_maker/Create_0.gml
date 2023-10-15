@@ -1,5 +1,5 @@
 // Level properties
-num_of_floors = 2;
+num_of_floors = 5;
 floor_distance = 64;
 domain_per_floor = 3;
 border = 70;

@@ -1,18 +1,19 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_controller",
+  "name": "obj_skill_tree",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Menus",
+    "path": "folders/Objects/Menus.yy",
   },
   "parentObjectId": null,
-  "persistent": true,
+  "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
@@ -28,9 +29,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_button_home",
-    "path": "sprites/spr_button_home/spr_button_home.yy",
+    "name": "spr_st_base",
+    "path": "sprites/spr_st_base/spr_st_base.yy",
   },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

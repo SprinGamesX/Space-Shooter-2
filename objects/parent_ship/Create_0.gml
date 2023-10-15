@@ -1,11 +1,5 @@
-
-show_debug_message("Ship Created")
-
 skill_bar_color = c_white;
 ult_bar_color = c_white;
-
-lvl = ds_map_find_value(global.ship_datas[|global.selected_ship], "level");
-show_debug_message(lvl);
 
 function set_max_cds(){
 	
@@ -37,20 +31,25 @@ function set_bar_colors(){
 }
 
 function set_base_stats(){
-	hp += (hp * 0.2) * (lvl - 1);
-	atk += (atk * 0.15) * (lvl - 1);
-	switch(element){
-		case ELEMENTS.ICE: critrate += ((lvl) / 200) break;
-		case ELEMENTS.FIRE: critdmg += ((lvl) / 100) break;
-		case ELEMENTS.LIFE: hp += ((lvl) * 20); break;
-		case ELEMENTS.VENOM: atk += ((lvl) * 7); break;
-	}
+	obj_ship.update_index(ship_id);
+	atk = obj_ship.f_atk;
+	hp = obj_ship.f_hp;
+	spd = obj_ship.f_spd;
+	critrate = obj_ship.f_cr;
+	critdmg = obj_ship.f_crd;
+	atk_cd = obj_ship.cds[0];
+	skill_cd = obj_ship.cds[1];
+	ult_cd = obj_ship.cds[2];
+	atk_scale = obj_ship.scales[0];
+	skill_scale = obj_ship.scales[1];
+	ult_scale = obj_ship.scales[2];
+	element = obj_ship.element;
+	max_hp = hp;
+	set_max_cds();
+	set_bar_colors();
 }
 
 set_base_stats();
-max_hp = hp;
-set_max_cds();
-set_bar_colors();
 echo = make_echo();
 atk = round(atk);
 hp = round(hp);

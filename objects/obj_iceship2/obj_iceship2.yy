@@ -22,6 +22,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"element","path":"objects/parent_ship/parent_ship.yy",},"value":"ELEMENTS.ICE",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"spd","path":"objects/parent_ship/parent_ship.yy",},"value":"3",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"lvl","path":"objects/parent_ship/parent_ship.yy",},"value":"20",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"ship_id","path":"objects/parent_ship/parent_ship.yy",},"value":"3",},
   ],
   "parent": {
     "name": "Ships",

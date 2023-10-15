@@ -6,7 +6,6 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 	_hpscale = string(_hpscale * 100);
 	_skill_cd = string(seconds_to_time(_skill_cd)) + "s";
 	switch(_id){
-		// Ice ship 1
 		case 0: 
 			switch(_skill){
 				case DESC_DISPLAY.BASIC_ATTACK:
@@ -85,17 +84,51 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 	
 }
 
-function stringify_stats(_stats_map){
+
+function stringify_stats(){
+	var _ship = instance_nearest(x,y, obj_ship);
 	var _str = "";
 	
-	_str += "ATK: " + string(ds_map_find_value(_stats_map, "atk")) + "\n";
-	_str += "HP: " + string(ds_map_find_value(_stats_map, "hp")) + "\n";
-	_str += "SPD: " + string(ds_map_find_value(_stats_map, "spd")) + "\n";
-	_str += "CRIT RATE: " + string(round_to_1_decimal(ds_map_find_value(_stats_map, "crit rate") * 100)) + "% \n";
-	_str += "CRIT DAMAGE: " + string(round_to_1_decimal(ds_map_find_value(_stats_map, "crit dmg") * 100)) + "% \n";
+	_str += "ATK: " + string(_ship.f_atk) + "\n";
+	_str += "HP: " + string(_ship.f_hp) + "\n";
+	_str += "SPD: " + string(_ship.f_spd) + "\n";
+	_str += "CRIT RATE: " + string(_ship.f_cr * 100) + "% \n";
+	_str += "CRIT DAMAGE: " + string(_ship.f_crd * 100) + "% \n";
 	return _str;
 }
 
-function draw_bg_box(_x,_y,_width, _height, _color){
-	draw_sprite_stretched_ext(spr_bg_box, 0, _x, _y, _width, _height, _color, 1);
+function stringify_bonuses(){
+	var _str = "";
+	
+	_str += "+" + string(obj_ship.bonus_atk) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_hp) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_spd) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_cr) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_crd) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_ex) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_elmt_dmg) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_aspd) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_cd_skill) + "/25 \n";
+	_str += "+" + string(obj_ship.bonus_cd_ult) + "/25 \n";
+	return _str;
+}
+
+function stringify_bonuses2(){
+	var _str = "";
+	
+	_str += "ATK: \n";
+	_str += "HP: \n";
+	_str += "SPD: \n";
+	_str += "CRIT: \n";
+	_str += "CRIT DMG: \n";
+	_str += "EX: \n";
+	_str += "EM DMG: \n";
+	_str += "ASPD: \n";
+	_str += "SKILL CD: \n";
+	_str += "ULT CD: \n";
+	return _str;
+}
+
+function draw_bg_box(_x,_y,_width, _height, _color, _alpha = 1){
+	draw_sprite_stretched_ext(spr_bg_box, 0, _x, _y, _width, _height, _color, _alpha);
 }
