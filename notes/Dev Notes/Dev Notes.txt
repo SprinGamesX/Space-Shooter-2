@@ -40,6 +40,10 @@
 - Explosion will now scale on 20% of ship's atk instead of their basic attack scales
 - Added description for new S-Grade ship's abilities
 
-
+16/10/23 - Note 6
+- Added currency: Upgrade points
+- Added option to buy Upgrade points with "U" key
+- Added pop ups
+- Added level up system for ships
 
 	

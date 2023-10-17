@@ -68,3 +68,9 @@ function screen_flash(){
 	if (!layer_exists("effects")) layer_create(-9999, "effects");
 	layer_sequence_create("effects", 0, 0, seq_flash);
 }
+
+function c_rainbow(divider){
+	randomize();
+	var rainbow = make_color_hsv ((current_time / divider) mod 255,255,255);
+	return rainbow;
+}

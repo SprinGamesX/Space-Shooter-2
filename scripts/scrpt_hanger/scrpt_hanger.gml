@@ -145,3 +145,10 @@ function generate_plus_buttons(_x,_y,_amount, _len){
 	}
 	return _buttons;
 }
+
+function generate_pop_up(_obj, _lenx = 900, _leny = 200){
+	with(instance_create_depth(1920 / 2, 1080 / 2, 0, _obj)){
+		lenx = _lenx;
+		leny = _leny;
+	}
+}

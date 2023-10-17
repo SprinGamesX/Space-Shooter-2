@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Menus",
-    "path": "folders/Objects/Menus.yy",
+    "name": "Hangar",
+    "path": "folders/Objects/Menus/Hangar.yy",
   },
   "parentObjectId": null,
   "persistent": false,

@@ -101,11 +101,11 @@ function stringify_stats(){
 	var _ship = instance_nearest(x,y, obj_ship);
 	var _str = "";
 	
-	_str += "ATK: " + string(_ship.f_atk) + "\n";
-	_str += "HP: " + string(_ship.f_hp) + "\n";
+	_str += "ATK: " + string(round(_ship.f_atk)) + "\n";
+	_str += "HP: " + string(round(_ship.f_hp)) + "\n";
 	_str += "SPD: " + string(_ship.f_spd) + "\n";
-	_str += "CRIT RATE: " + string(_ship.f_cr * 100) + "% \n";
-	_str += "CRIT DAMAGE: " + string(_ship.f_crd * 100) + "% \n";
+	_str += "CRIT RATE: " + string(round(_ship.f_cr * 100)) + "% \n";
+	_str += "CRIT DAMAGE: " + string(round(_ship.f_crd * 100)) + "% \n";
 	return _str;
 }
 

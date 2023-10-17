@@ -182,8 +182,22 @@ update_bonus = function(_id){
 	save_bonus(ship_index);
 }
 
+
+
 get_bonus_list = function(){
 	return [bonus_atk,bonus_hp,bonus_spd,bonus_cr,bonus_crd,bonus_ex,bonus_elmt_dmg,bonus_aspd,bonus_cd,bonus_ehr];
+}
+
+is_bonus_updateable = function(_index){
+	var _list = get_bonus_list();
+	return _list[_index] < 25;
+}
+
+update_level = function(){
+	if (lvl < 100){
+		lvl++;
+		save_base(ship_index);
+	}
 }
 	
 base = function(){

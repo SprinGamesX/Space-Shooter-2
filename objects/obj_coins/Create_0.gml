@@ -17,8 +17,9 @@ load_coins = function(){
 
 load_coins();
 
-image_xscale = 3;
-image_yscale = 3;
+prev_coins = global.coins;
+image_xscale = 2.5;
+image_yscale = 2.5;
 
 x = 1920 - 240;
 y = 56;

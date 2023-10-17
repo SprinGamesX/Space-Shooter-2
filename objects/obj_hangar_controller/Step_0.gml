@@ -8,6 +8,11 @@ if (index == options - 1){
 }
 else buttons[0].activate();
 
+if (instance_exists(parent_pop_up)){
+	buttons[0].deactivate();
+	buttons[1].deactivate();
+}
+
 obj_ship.update_index(index);
 
 

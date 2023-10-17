@@ -7,10 +7,10 @@
   "inheritCreationOrder": false,
   "inheritLayers": false,
   "instanceCreationOrder": [
-    {"name":"inst_FC14050","path":"rooms/rm_main_menu/rm_main_menu.yy",},
-    {"name":"inst_2F0A6E4D","path":"rooms/rm_main_menu/rm_main_menu.yy",},
     {"name":"inst_7A984248","path":"rooms/rm_main_menu/rm_main_menu.yy",},
     {"name":"inst_31056B45","path":"rooms/rm_main_menu/rm_main_menu.yy",},
+    {"name":"inst_FC14050","path":"rooms/rm_main_menu/rm_main_menu.yy",},
+    {"name":"inst_2F0A6E4D","path":"rooms/rm_main_menu/rm_main_menu.yy",},
     {"name":"inst_7F23BA80","path":"rooms/rm_main_menu/rm_main_menu.yy",},
   ],
   "isDnd": false,

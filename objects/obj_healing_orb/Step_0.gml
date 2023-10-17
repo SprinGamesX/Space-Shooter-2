@@ -6,6 +6,6 @@ var _s = instance_place(x, y, parent_ship);
 if (_s != noone){
 	if (_s.hp + heal > _s.max_hp) _s.hp = _s.max_hp;
 	else _s.hp += heal;
-	create_dmg_indicator(x,y,heal,false, ELEMENTS.HEALING);
+	create_dmg_indicator(x,y,"+" + string(heal),false, ELEMENTS.HEALING);
 	instance_destroy();
 }
