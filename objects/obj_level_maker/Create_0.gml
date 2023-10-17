@@ -69,7 +69,8 @@ enum DOMAIN_TYPE{
 	ELITE,
 	TIME,
 	DEFENSE,
-	BOSS
+	BOSS,
+	TEST
 }
 if (global.game_lost) {
 	reset();

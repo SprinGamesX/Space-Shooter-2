@@ -57,6 +57,14 @@ function ini_ship_stats(_id){
 				element = ELEMENTS.LIFE;
 			}
 			break;
+		case 7:
+			with(obj_ship){
+				ship_name = "Li1";
+				cds = [seconds(0.3), seconds(30), seconds(60)];
+				scales = [0.2, 0, 1];
+				element = ELEMENTS.LIGHTNING;
+			}
+			break;
 	}
 	with(obj_ship){
 		lvl = 1;
@@ -79,7 +87,7 @@ function base_stats_on_element(_element){
 			with(obj_ship){
 				atk = 50;
 				hp = 90;
-				spd = 3;
+				spd = 2.5;
 				critrate = 0.1;
 				critdmg = 0.6;
 			}
@@ -101,6 +109,15 @@ function base_stats_on_element(_element){
 				critrate = 0.1;
 				critdmg = 0.5;
 				dot_scale = 0.05;
+			}
+			break;
+		case ELEMENTS.LIGHTNING:
+			with(obj_ship){
+				atk = 50;
+				hp = 80;
+				spd = 3;
+				critrate = 0.1;
+				critdmg = 0.5;
 			}
 			break;
 	}

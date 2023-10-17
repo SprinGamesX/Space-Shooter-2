@@ -20,6 +20,10 @@ switch(obj_ship.element){
 		_color = c_purple;
 		_color2 = c_fuchsia;
 		break;
+	case ELEMENTS.LIGHTNING:
+		_color = c_grey;
+		_color2 = c_yellow;
+		break;
 }
 
 for(var _i = 0; _i < 360; _i += (360 / 10)){

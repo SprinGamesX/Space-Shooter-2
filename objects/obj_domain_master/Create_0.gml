@@ -6,7 +6,7 @@ switch(global.current_domain_type){
 	case DOMAIN_TYPE.COMBAT: alarm[0] = seconds(2); break;
 	case DOMAIN_TYPE.ELITE: alarm[1] = seconds(2); break;
 	case DOMAIN_TYPE.BOSS: alarm[2] = seconds(2); break;
-
+	case DOMAIN_TYPE.TEST: alarm[8] = seconds(2); break;
 }
 star = make_star();
 alarm[11] = seconds(0.05);

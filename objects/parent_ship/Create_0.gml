@@ -26,6 +26,10 @@ function set_bar_colors(){
 			skill_bar_color = c_purple;
 			ult_bar_color = c_fuchsia;
 			break;
+		case ELEMENTS.LIGHTNING:
+			skill_bar_color = c_yellow;
+			ult_bar_color = c_gray;
+			break;
 	}
 	frg = make_fragment();
 }

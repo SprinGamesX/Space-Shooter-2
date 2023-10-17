@@ -47,6 +47,10 @@ switch(_element){
 		_color = c_purple;
 		_icon = spr_icon_venom;
 		break;
+	case ELEMENTS.LIGHTNING:
+		_color = c_yellow;
+		_icon = spr_icon_lightning;
+		break;
 }
 
 var _skill_desc = "";

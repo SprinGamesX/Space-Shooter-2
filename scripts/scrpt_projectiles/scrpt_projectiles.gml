@@ -6,7 +6,7 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 	if (_inst != noone) and (!_inst.immune){
 		var _ship = instance_nearest(x, y, parent_ship);
 		apply_ex(_inst, _ship.ex,self.effect_chance + _ship.effect_hit_rate);	
-		var _dmg = _object.dmg + (_ship.max_hp / 100) * _inst.life_ripe;
+		var _dmg = add_extra_dmg(_object.dmg, _inst);
 		// AOE
 		if (_aoe_size != -1){
 			if (_hitlist != -1)
@@ -36,6 +36,26 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 	}
 	
 }
+function projectile_attach_collision(_hitlist, _lenx, _leny, _source, _centered = false, _aoe_size = -1){
+	var _y = y;
+	if (_centered) _y = y - _leny / 2;
+	draw_rectangle(x - _lenx / 2, _y, x + _lenx, y + _leny, false);
+	var _num = collision_rectangle_list(x - _lenx / 2, _y, x + _lenx, y + _leny, parent_enemy, false, true, _hitlist, false);
+	show_debug_message(_num);
+	for(var _i = 0; _i < _num; _i++){
+		var _inst = ds_list_find_value(_hitlist, _i);
+		if (!_inst.immune){
+			var _dmg = calculate_dmg(_source.atk, _source.critrate, _source.critdmg, self.dmg_scale);
+			_dmg = add_extra_dmg(_dmg, _inst);
+			//show_debug_message(string(_source.atk) + ", " + string(_source.critrate) + ", " + string(_source.critdmg) + ", " + string(self.dmg_scale))
+			create_dmg_indicator(_inst.x, _inst.y, _dmg, false ,element);
+			_inst.hp -= _dmg;
+			//show_debug_message(_dmg)
+			apply_ex(_inst, _source.ex, effect_chance);
+		}
+	}
+	ds_list_clear(_hitlist);
+}
 
 function apply_ex(_inst, _ex, _chance){
 	if (chance(_chance - _inst.resist)){
@@ -58,7 +78,46 @@ function apply_ex(_inst, _ex, _chance){
 				if (_inst.poison + 1 <= 15) _inst.poison += 1;
 				else _inst.poison = 15;	
 			}
+		if (self.element == ELEMENTS.LIGHTNING){
+			if(_inst.shocked = false) and (chance(0.5)){
+				_inst.shocked = true;
+				_inst.alarm[7] = seconds(20);
+			}
+		}
 	}
+}
+
+function add_extra_dmg(_dmg, _inst){
+	var f_dmg = _dmg;
+	var _ship = instance_nearest(x, y, parent_ship);
+	// Freeze dmg amp
+	var _amp = 1;
+	if (chance(_ship.ex)) _amp = 1.5;
+	f_dmg += (_dmg / 100) * _inst.freeze * _amp;
+	// Life ripe dmg amp
+	_amp = 1;
+	if (chance(_ship.ex)) _amp = 1.5;
+	f_dmg += (_ship.max_hp / 100) * _inst.life_ripe * _amp;
+	// Elemental dmg bonus amp
+	f_dmg += (f_dmg / 100) * (_ship.elemental_bonus);
+	// Shock
+	if(_inst.shocked) shock_nearby_enemys(_inst, f_dmg, _ship);
+	return f_dmg;
+	
+}
+
+function shock_nearby_enemys(_inst, _dmg, _ship){
+	var _list = ds_list_create();
+	var _r = 64;
+	if (chance(_ship.ex)) _r *= 2;
+	var _num = collision_circle_list(_inst.x, _inst.y, _r, parent_enemy, false, true, _list, true);
+	_dmg /= 2;
+	for(var i = 0; i < _num; i++){
+		var _e = _list[|i];
+		create_dmg_indicator(_e.x, _e.y, string(_dmg) + "\n Shocked",,ELEMENTS.LIGHTNING);
+		_e.hp -= _dmg;
+	}
+	ds_list_destroy(_list);
 }
 
 function exists_in_hitlist(_hit_list, _enemy){

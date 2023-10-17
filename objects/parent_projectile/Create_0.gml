@@ -4,6 +4,7 @@ enum ELEMENTS{
 	FIRE,
 	LIFE,
 	VENOM,
+	LIGHTNING,
 	HEALING
 	
 }

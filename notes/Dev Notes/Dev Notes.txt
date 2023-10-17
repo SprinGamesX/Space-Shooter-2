@@ -46,4 +46,14 @@
 - Added pop ups
 - Added level up system for ships
 
+17/10/23 - Note 7
+- Added S-Grade Lightning ship
+- Added lightning elememt
+- Ex now works with all elements
+- Added Shocked effect (damages nearby enemys)
+- Added followers
+- Added attach-projectiles
+- Buffed freeze and life-ripe
+
+
 	

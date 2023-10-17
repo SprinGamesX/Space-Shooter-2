@@ -6,6 +6,7 @@ function create_dmg_indicator(_x,_y,_dmg, _crit = false, _element = ELEMENTS.ICE
 		case ELEMENTS.FIRE: color = c_orange; break;
 		case ELEMENTS.LIFE: color = c_green; break;
 		case ELEMENTS.VENOM: color = c_purple; break;
+		case ELEMENTS.LIGHTNING: color = c_yellow; break;
 		case ELEMENTS.HEALING: color = c_lime; 
 	}
 	_inst.set(_dmg, color, _crit);

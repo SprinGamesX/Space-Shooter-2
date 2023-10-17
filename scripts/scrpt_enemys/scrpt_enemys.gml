@@ -70,3 +70,4 @@ function summon_enemy_orbiting_sword(_x,_y,_dmg , _amount, _distance, _spin_spee
 		_inst.lifetime = _lifetime;
 	}
 }
+

@@ -9,15 +9,9 @@ add SS-Grade fire ship that has a companion(Topaz refrence)
 add passives
 make EX compatible with: poison, freeze and life ripe
 implement elemental dmg bonus
-add thunder/lighting element:
-- stun effect
-- special stat: spd
-- good against multiple enemys
-add S-Grade thunder ship:
-- basic attack bounces between enemys (can charge basic attack)
-- skill makes charging faster for a few seconds;
-- ult summons two lighting rings that orbit around the ship firing direct lasers
-add toughness and weaknesses to bosses
 add elemental bosses
+
+Maybe list:
+add toughness and weaknesses to bosses
 
  

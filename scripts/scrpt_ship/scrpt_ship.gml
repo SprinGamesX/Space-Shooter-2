@@ -67,11 +67,44 @@ function create_projectile(_obj, _scaling, _dir, _parent, _speed, _x = x, _y = y
 	 }
 }
 
+function create_charge_projectile(_obj, _scaling, _dir, _parent, _speed, _charge, _x = x, _y = y, _aoe = -1, _base_chance = 0.2){
+	 with(instance_create_layer(_x, _y, "Projectiles", _obj)){
+		dmg = calculate_dmg(_parent.atk, _parent.critrate, _parent.critdmg, _scaling);
+		if (dmg = _parent.atk * _scaling) is_crit = false;
+		else is_crit = true;
+		charge = _charge;
+		source = _parent;
+		direction = _dir;
+		speed = _speed;
+		aoe = _aoe;
+		effect_chance = _base_chance;
+	 }
+}
+
+function create_projectile_attach(_obj, _scaling, _parent, _hits, _cd,_lenx,_leny, _x = x, _y = y, _aoe = -1, _base_chance = 0.2){
+	 with(instance_create_layer(_x, _y, "Projectiles", _obj)){
+		cd = _cd;
+		hits = _hits;
+		length = _lenx;
+		height = _leny;
+		source = _parent;
+		aoe = _aoe;
+		effect_chance = _base_chance;
+		dmg_scale = _scaling / _hits;
+		alarm[0] = cd;
+	 }
+}
+
 function create_deployable(_type, _hp, _parent = self){
 	with(instance_create_layer(x, y, "Deployables", _type)){
 		hp = _hp;
 		maxhp = hp;
 		parent = _parent;
+	}
+}
+function create_follower(_type,_dis_x,_dis_y, _scaling, _cd, _duration, _target = self){
+	with(instance_create_layer(x, y, "Deployables", _type)){
+		setup(_target,_dis_x,_dis_y, _scaling, _cd, _duration)
 	}
 }
 
