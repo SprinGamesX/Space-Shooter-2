@@ -1,0 +1,1 @@
+control_arrow_buttons(buttons, index, options)

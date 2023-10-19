@@ -4,7 +4,6 @@ floor_distance = 64;
 domain_per_floor = 3;
 border = 70;
 max_distance = room_height - (border * 2)
-global.lvl = 5;
 global.current_domain_type = DOMAIN_TYPE.COMBAT;
 
 domains = ds_list_create();

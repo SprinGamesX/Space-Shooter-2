@@ -1,1 +1,2 @@
 y -= spd;
+x += xspeed;

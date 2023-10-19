@@ -49,6 +49,7 @@ function projectile_attach_collision(_hitlist, _lenx, _leny, _source, _centered 
 			_dmg = add_extra_dmg(_dmg, _inst);
 			//show_debug_message(string(_source.atk) + ", " + string(_source.critrate) + ", " + string(_source.critdmg) + ", " + string(self.dmg_scale))
 			create_dmg_indicator(_inst.x, _inst.y, _dmg, false ,element);
+			create_hit_indicator(self, _inst.x, _inst.y);
 			_inst.hp -= _dmg;
 			//show_debug_message(_dmg)
 			apply_ex(_inst, _source.ex, effect_chance);
@@ -136,6 +137,7 @@ function create_aoe(_parent, _size, _x = x, _y = y){
 			case ELEMENTS.ICE: sprite_index = spr_ice_aoe; break;
 			case ELEMENTS.VENOM: sprite_index = spr_venom_aoe; break;
 			case ELEMENTS.LIFE: sprite_index = spr_life_aoe; break;
+			case ELEMENTS.LIGHTNING: sprite_index = spr_lightning_aoe; break;
 		}
 		element = _parent.element;
 		venom_amp = _parent.venom_amp;
@@ -159,6 +161,7 @@ function create_hit_indicator(_parent ,_x = x, _y = y){
 			case ELEMENTS.ICE: sprite_index = spr_ice_aoe; break;
 			case ELEMENTS.VENOM: sprite_index = spr_venom_aoe; break;
 			case ELEMENTS.LIFE: sprite_index = spr_life_aoe; break;
+			case ELEMENTS.LIGHTNING: sprite_index = spr_lightning_aoe; break;
 		}
 	}
 }

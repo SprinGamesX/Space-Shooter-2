@@ -75,3 +75,19 @@ function c_rainbow(divider){
 	var rainbow = make_color_hsv ((current_time / divider) mod 255,255,255);
 	return rainbow;
 }
+
+function make_trail(_spd, _element){
+	var _part = part_type_create();
+	part_type_sprite(_part, spr_pixel, 0, 0, 0);
+	part_type_alpha2(_part, 1, 0.1);
+	part_type_life(_part, seconds(1), seconds(1));
+	part_type_speed(_part, 0.5, 1, 0, 0);
+	part_type_size(_part, 1, 1.2, -0.02, 0);
+	part_type_color1(_part, color_for_element(_element));
+	return _part;
+}
+
+function draw_trail(_trail){
+	part_type_direction(_trail, direction + 160, direction + 200, 0, 0);
+	part_particles_create(global.part_system, x, y, _trail, 1);
+}

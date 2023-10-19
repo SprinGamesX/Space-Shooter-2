@@ -152,3 +152,15 @@ function generate_pop_up(_obj, _lenx = 900, _leny = 200){
 		leny = _leny;
 	}
 }
+
+function control_arrow_buttons(_buttons, _index, _options){
+	if (_index == 0){
+		_buttons[1].active = false;
+	}
+	else _buttons[1].active = true;
+
+	if (_index == _options - 1){
+		_buttons[0].active = false;
+	}
+	else _buttons[0].active = true;
+}

@@ -47,3 +47,13 @@ function round_to_1_decimal(_num){
 	_n = _n / 10;
 	return _n;
 }
+
+function color_for_element(_element){
+	var _color = c_white;
+	if (_element = ELEMENTS.ICE) _color = c_aqua;
+	if (_element = ELEMENTS.FIRE) _color = c_orange;
+	if (_element = ELEMENTS.LIFE) _color = c_lime;
+	if (_element = ELEMENTS.VENOM) _color = c_purple;
+	if (_element = ELEMENTS.LIGHTNING) _color = c_yellow;
+	return _color;
+}

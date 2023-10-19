@@ -65,6 +65,14 @@ function ini_ship_stats(_id){
 				element = ELEMENTS.LIGHTNING;
 			}
 			break;
+		case 8:
+			with(obj_ship){
+				ship_name = "Li2";
+				cds = [seconds(0.4), seconds(1), seconds(60)];
+				scales = [0.4, 0, 3];
+				element = ELEMENTS.LIGHTNING;
+			}
+			break;
 	}
 	with(obj_ship){
 		lvl = 1;

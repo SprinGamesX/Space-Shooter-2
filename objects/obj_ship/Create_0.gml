@@ -212,7 +212,7 @@ base = function(){
 }
 	
 // set base stats
-var _num = 8;
+var _num = 9;
 if (!file_exists("characters.ini")){
 	
 	for(var _i = 0; _i < _num; _i++){

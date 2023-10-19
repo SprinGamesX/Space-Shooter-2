@@ -2,13 +2,11 @@
 add ying & yang boss
 add character obtaining screen
 add different difficulties for levels
-add defense domain
+add survival domain
 add time domain
 add rewards for completing domains
 add SS-Grade fire ship that has a companion(Topaz refrence)
 add passives
-make EX compatible with: poison, freeze and life ripe
-implement elemental dmg bonus
 add elemental bosses
 
 Maybe list:

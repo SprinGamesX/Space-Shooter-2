@@ -1,3 +1,5 @@
+global.lvl = 0;
+
 function frozen(_amp){
 	if (freeze > 0){
 		return _amp * freeze;
