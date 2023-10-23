@@ -91,3 +91,15 @@ function draw_trail(_trail){
 	part_type_direction(_trail, direction + 160, direction + 200, 0, 0);
 	part_particles_create(global.part_system, x, y, _trail, 1);
 }
+function draw_trail_random(_trail){
+	part_type_direction(_trail, 0, 359, 0, 0);
+	part_particles_create(global.part_system, x, y, _trail, 1);
+}
+
+function draw_lightning_slash(_dir, _x, _y, _scale = 1){
+	var _s = instance_create_layer(_x, _y, "Projectiles", obj_lightning_slash);
+	_s.direction = _dir;
+	_s.image_angle = _dir;
+	_s.image_xscale = _scale;
+	_s.image_yscale = _scale;
+}

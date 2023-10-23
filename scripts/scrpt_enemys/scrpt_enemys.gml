@@ -35,6 +35,11 @@ function summon_enemy_double(_lv){
 	return summon_enemy(obj_enemy_double, _lv, room_width - 32, room_height / 2, 0);
 }
 
+function summon_enemy_magnet(_lv){
+	// 734.5
+	return summon_enemy(obj_enemy_magnet, _lv,  room_width - 32, room_height / 2, 0);
+}
+
 function summon_boss_reddiamond(_lv){
 	return summon_enemy(obj_boss_red_diamond, _lv, room_width + 100, room_height / 2);
 }
@@ -71,5 +76,51 @@ function summon_enemy_orbiting_sword(_x,_y,_dmg , _amount, _distance, _spin_spee
 		_inst.dmg = _dmg;
 		_inst.lifetime = _lifetime;
 	}
+}
+
+function summon_enemy_magnet_follower(_lvl, _x, _y){
+	var _inst = instance_create_layer(_x, _y, "Enemy", obj_enemy_magent_follower)
+	with(_inst){
+		base_x = x;
+		base_y = y;
+		lv = _lvl;
+		hp = base_hp * lv;
+		dmg = base_dmg * lv;
+		max_hp = hp;
+	}
+	return _inst;
+}
+
+function stoppable(){
+	if (stopped) {
+		speed = 0;
+		exit;
+	}
+}
+
+function pause_all_enemys(){
+	var _insts = ds_list_create();
+	var _num = collision_rectangle_list(0, 0, room_width, room_height, parent_enemy, false, false, _insts, false);
+	
+	for (var i = 0; i < _num; i++){
+		var _inst = ds_list_find_value(_insts, i);
+		_inst.stopped = true;
+	}
+	
+	
+	ds_list_destroy(_insts);
+}
+
+function resume_all_enemys(){
+	var _insts = ds_list_create();
+	var _num = collision_rectangle_list(0, 0, room_width, room_height, parent_enemy, false, false, _insts, false);
+	
+	for (var i = 0; i < _num; i++){
+		var _inst = ds_list_find_value(_insts, i);
+		_inst.stopped = false;
+	}
+	
+	
+	ds_list_destroy(_insts);
 }
 

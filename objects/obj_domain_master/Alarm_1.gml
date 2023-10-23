@@ -1,6 +1,6 @@
 /// @description Domain Elite
 randomize();
-var _chosen_enemy = choose(obj_enemy_orbiter, obj_enemy_double)
+var _chosen_enemy = choose(obj_enemy_orbiter, obj_enemy_double, obj_enemy_magnet)
 lose_condition = instance_nearest(x,y,parent_ship);
 switch(_chosen_enemy){
 	case obj_enemy_orbiter: 
@@ -9,5 +9,8 @@ switch(_chosen_enemy){
 		break;
 	case obj_enemy_double: 
 		win_condition = summon_enemy_double(global.lvl + 5);
+		break;
+	case obj_enemy_magnet: 
+		win_condition = summon_enemy_magnet(global.lvl + 5);
 		break;
 }

@@ -40,7 +40,7 @@ ult = function(){
 }
 
 special_movement = function(){
-	if (!is_dead){
+	if (!is_dead) and !stopped{
 		x = orbited_x + lengthdir_x(orbited_dis, angle);
 		y = orbited_y + lengthdir_y(orbited_dis, angle);
 		image_xscale = scale;

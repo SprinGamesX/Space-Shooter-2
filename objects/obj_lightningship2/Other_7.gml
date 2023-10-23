@@ -1,0 +1,1 @@
+sprite_index = spr_lightning_ship2_base;

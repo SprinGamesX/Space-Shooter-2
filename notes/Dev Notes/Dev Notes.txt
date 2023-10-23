@@ -55,5 +55,12 @@
 - Added attach-projectiles
 - Buffed freeze and life-ripe
 
+19/10/23 - Note 8 - The Visual Update
+- Added trial screen before entering the domains
+- Added a trail to fire, venom and life projectiles
+- Added SS-Grade lightning ship (no ult yet)
+- Changed damage indicators
+- Added Lightning AOE sprite
+- Added concept sprites for 2 new elites and one boss
 
 	

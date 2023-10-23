@@ -70,7 +70,7 @@ if (show_stats){
 	draw_text_scribble(text_x, 450, _selected_skill);
 
 	draw_set(fnt_ship_desc2, fa_left, fa_top,,alpha);
-	draw_bg_box(text_x - 10, 500, 620, 300, _color,alpha);
+	draw_bg_box(text_x - 10, 500, 620, 340, _color,alpha);
 	draw_text_scribble_ext(text_x, 520, _skill_desc, 600);
 
 	draw_bg_box(text_x - 10, 115, 620, 190, c_grey,alpha);

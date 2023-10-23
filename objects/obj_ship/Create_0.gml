@@ -201,7 +201,7 @@ update_level = function(){
 }
 	
 base = function(){
-	f_atk = (atk + ((atk / 4) * (lvl-1))); // lvls
+	f_atk = (atk + ((atk / 10) * (lvl-1))); // lvls
 	f_atk += f_atk + ((f_atk / 20) * bonus_atk);
 	f_hp = hp + ((hp / 10) * (lvl-1)); // lvls
 	f_hp += f_hp + ((f_hp / 20) * bonus_hp);

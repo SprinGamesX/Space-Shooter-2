@@ -3,7 +3,6 @@
 function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 	var _str = "";
 	var _str_scale = string(_skill_scale * 100);
-	_hpscale = string(_hpscale * 100);
 	_skill_cd = string(seconds_to_time(_skill_cd)) + "s";
 	switch(_id){
 		case 0: 
@@ -88,6 +87,30 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Causes all enemys(except bosses) to immidiatly drop to 50% HP, if the enemys are already below 50% HP they will be destroyed. Additionally for each existing enemy ship will generate a healing orb that heals for 5% of ship's max HP \nCD: " + _skill_cd;
+			}
+			break;
+		case 7:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Deals LIGHTNING damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. Ship's attack can be charged up to 3 stages, stage 1 and 2 increase its dmg by 200% and 300%. stage 3 unleashes a laser that can hit multiple enemys, said deals LIGHTNING dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100 * 20) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Decreases the amount of time it takes to charge for 3 shots, charge time decreases by 500%. \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "Summons two chargers that fire a laser when done charging dealing LIGHTNING dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
+			}
+			break;
+		case 8:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Deals LIGHTNING damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. Every 3rd attack deliverd by ship deals enhanced dmg equal to [c_orange]" + string(obj_ship.scales[0] * 150) + "%[c_white] of ATK \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Switches the target of ship between the closest enemy and the boss enemy. When basic attack is used, instead of firing a projectile the target will instantly take dmg. if the target is killed a new target will be selected.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "Deals LIGHTNING dmg equal to [c_orange]"+ _str_scale + "%[c_white] of ATK to the target. the first attack has 150% base chance to apply SHOCKED to the target.\nCD: " + _skill_cd;
 			}
 			break;
 			
