@@ -1,17 +1,20 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_icehit",
+  "name": "obj_button_passive",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":7,"eventType":7,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Particles",
-    "path": "folders/Objects/Game/Particles.yy",
+    "name": "Buttons",
+    "path": "folders/Objects/Menus/Buttons.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_menu_button",
+    "path": "objects/obj_menu_button/obj_menu_button.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -28,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_icehit1",
-    "path": "sprites/spr_icehit1/spr_icehit1.yy",
+    "name": "spr_skill_icon",
+    "path": "sprites/spr_skill_icon/spr_skill_icon.yy",
   },
   "spriteMaskId": null,
   "visible": true,

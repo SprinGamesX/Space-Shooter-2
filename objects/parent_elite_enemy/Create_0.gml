@@ -35,4 +35,8 @@ death_animation = function(){
 	// write death script
 }
 
+on_hit = function(_dmg){
+	hp -= _dmg;
+}
+
 alarm[9] = seconds(1);

@@ -14,3 +14,7 @@ if (pierce > 0){
 }
 echo = make_echo();
 trail = make_trail(speed, element);
+
+on_hit = function(_enemy){
+	// What happens when projectile hits enemy
+}

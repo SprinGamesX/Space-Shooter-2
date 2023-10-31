@@ -1,4 +1,4 @@
-global.selected_ship = 8;
+global.selected_ship = 11;
 global.ships = ds_map_create();
 
 ds_map_add(global.ships, 0, obj_iceship1);
@@ -10,6 +10,9 @@ ds_map_add(global.ships, 5, obj_fireship2);
 ds_map_add(global.ships, 6, obj_lifeship2);
 ds_map_add(global.ships, 7, obj_lightningship1);
 ds_map_add(global.ships, 8, obj_lightningship2);
+ds_map_add(global.ships, 9, obj_iceship3);
+ds_map_add(global.ships, 10, obj_fireship3);
+ds_map_add(global.ships, 11, obj_lifeship3);
 
 
 function generate_arrow_buttons(_offset, _parent = self){

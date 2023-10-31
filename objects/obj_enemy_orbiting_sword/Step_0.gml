@@ -25,7 +25,7 @@ else {
 
 var _collision = instance_place(x, y, parent_ship)
 if (_collision != noone) and (ready){
-	_collision.hp -= dmg;
+	_collision.on_hit(dmg);
 	instance_destroy(self);
 }
 

@@ -23,3 +23,5 @@ image_yscale = 2.5;
 
 x = 1920 - 240;
 y = 56;
+
+global.reward = 0;

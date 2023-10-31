@@ -3,8 +3,8 @@ skill_count = 10;
 ult_count = 40;
 
 basic_attack = function(){
-	create_projectile(obj_iceshard2, atk_scale, 0, self, 4,, y + 8);
-	create_projectile(obj_iceshard2, atk_scale, 0, self, 4,, y - 8);
+	create_projectile(obj_iceshard2, atk_scale, 0, self, 4,, y + 8,,,3);
+	create_projectile(obj_iceshard2, atk_scale, 0, self, 4,, y - 8,,,3);
 }
 
 skill = function(){

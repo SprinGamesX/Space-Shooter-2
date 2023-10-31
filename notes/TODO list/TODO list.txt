@@ -1,15 +1,30 @@
 - TO DO:
 add ying & yang boss
 add character obtaining screen
-add different difficulties for levels
 add survival domain
 add time domain
-add rewards for completing domains
-add SS-Grade fire ship that has a companion(Topaz refrence)
 add passives
 add elemental bosses
 
 Maybe list:
 add toughness and weaknesses to bosses
+
+Ship Ideas:
+SS-Grade Fire ship:
+- basic attack: plants a bomb on a single enemy
+- Skill: activates all bombs
+- Ult: enters Destruction state, while in this state every enemy is stopped and the ship can move a target via movement keys, when ult button is pressed again it will nuke at where the target is.
+
+SS-Grade Life ship:
+- basic attack: ??
+- Skill: summons a turret(follower) to fight with it (can summon up to ?? followers) (consumes HP)
+- Ult: turrets enter FRENZY state and shoot rapidly for ?? seconds
+- Passive: if the ship recieves a killing blow it will heal and destroy all turrets (heals HP per turret)
+
+SS-Grade Fire ship (Insperation from HSR-Topaz):
+- basic attack: ??
+- Skill: Summons friend, when friend is on the field he takes 75% of the dmg the ship takes, additionally for every ?? shots the ship fires friend will preform a follow-up attack
+- Ult: Enhances friend (Still no idea what enhance will do)
+
 
  

@@ -14,20 +14,22 @@ switch (display_description){
 	case DESC_DISPLAY.BASIC_ATTACK:
 		_current_skill_scale = obj_ship.scales[0];
 		_current_skill_cd = obj_ship.cds[0];
-		_current_skill_hp_scale = 0;
 		_selected_skill = "Basic attack"
 		break;
 	case DESC_DISPLAY.SKILL:
 		_current_skill_scale = obj_ship.scales[1];
 		_current_skill_cd = obj_ship.cds[1];
-		_current_skill_hp_scale = 0;
 		_selected_skill = "Skill"
 		break;
 	case DESC_DISPLAY.ULT:
 		_current_skill_scale = obj_ship.scales[2];
 		_current_skill_cd = obj_ship.cds[2];
-		_current_skill_hp_scale = 0;
 		_selected_skill = "Ultimate"
+		break;
+	case DESC_DISPLAY.PASSIVE:
+		_current_skill_scale = obj_ship.scales[0];
+		_current_skill_cd = obj_ship.cds[0];
+		_selected_skill = "Passive"
 		break;
 }
 switch(_element){

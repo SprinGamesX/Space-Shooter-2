@@ -1,2 +1,2 @@
 instance_destroy();
-other.hp -= dmg;
+other.on_hit(dmg);

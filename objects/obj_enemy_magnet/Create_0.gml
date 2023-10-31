@@ -16,7 +16,6 @@ followers[1] = summon_enemy_magnet_follower(lv, room_width/2, room_height/2);
 followers[2] = summon_enemy_magnet_follower(lv, room_width/2, room_height/2);
 followers[3] = summon_enemy_magnet_follower(lv, room_width/2, room_height/2);
 
-show_debug_message(followers);
 basic_atk = function(){
 	var _c = choose(followers[0], followers[1],followers[2],followers[3]);
 	if (instance_exists(_c))
@@ -41,19 +40,29 @@ ult = function(){
 }
 
 special_movement = function(){
+	var _def = 0;
 	if (!entrance_animation_ongoing) and !stopped{
 		y = start_y + (sin(time / 40) * wave_height);
 		time += 1 - (freeze * 0.025);
 		draw_echo(echo);
 	}
-	if (instance_exists(followers[0]))
+	if (instance_exists(followers[0])){
 		followers[0].set_base(x+f_dis, y+f_dis);
-	if (instance_exists(followers[1]))
+		_def += 0.1;
+	}
+	if (instance_exists(followers[1])){
 		followers[1].set_base(x-f_dis, y+f_dis);
-	if (instance_exists(followers[2]))
+		_def += 0.1;
+	}
+	if (instance_exists(followers[2])){
 		followers[2].set_base(x+f_dis, y-f_dis);
-	if (instance_exists(followers[3]))
+		_def += 0.1;
+	}
+	if (instance_exists(followers[3])){
 		followers[3].set_base(x-f_dis, y-f_dis);
+		_def += 0.1;
+	}
+	def = _def;
 }
 
 entrance_animation = function(){

@@ -47,7 +47,6 @@ skill = function(){
 
 
 ult = function(){
-	show_debug_message("ULTIMATE");
 	dir = start_ang;
 	image_angle = dir;
 	ulting = true;
@@ -78,7 +77,6 @@ ult_animation = function(){
 			if (x != start_x)
 				x += 0.5;
 			if (round(dir) != start_ang) {
-				show_debug_message(round(dir))
 				dir += 1.5;
 			}
 			else {

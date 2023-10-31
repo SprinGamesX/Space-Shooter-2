@@ -1,8 +1,18 @@
 max_cd = 0;
 
 follow = function(){
-	x = target.x + dis_x;
-	y = target.y + dis_y;
+	var _x = target.x + dis_x;
+	var _y = target.y + dis_y;
+	var correction = 2;
+	
+	var error_x = abs(x - _x) / 10;
+	if (x > _x) x -= correction * sqrt(error_x);
+	if (x < _x) x += correction * sqrt(error_x);
+	// y axis
+	var error_y = abs(y - _y) / 10;
+	if (y > _y) y -= correction * sqrt(error_y);
+	if (y < _y) y += correction * sqrt(error_y);
+	
 }
 
 setup = function(_target,_dis_x,_dis_y, _scaling, _cd, _duration){

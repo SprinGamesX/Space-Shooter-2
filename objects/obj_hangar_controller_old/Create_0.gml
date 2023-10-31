@@ -1,7 +1,8 @@
 enum DESC_DISPLAY{
 	BASIC_ATTACK,
 	SKILL,
-	ULT
+	ULT,
+	PASSIVE
 }
 
 
@@ -9,7 +10,6 @@ x = room_width / 4;
 y = room_height / 2;
 index = 0;
 buttons = generate_arrow_buttons(128);
-show_debug_message(buttons);
 options = ds_list_size(global.ship_datas) - 1;
 datalist = ds_list_create();
 display_description = DESC_DISPLAY.BASIC_ATTACK;

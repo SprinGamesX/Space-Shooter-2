@@ -8,7 +8,6 @@ basic_atk = function(){
 skill = function(){
 	randomize();
 	var _attack = irandom_range(1, 3);
-	show_debug_message("attack: " + string(_attack));
 	switch (_attack){
 		case 1: rd_attack_1(self); break;
 		case 2: rd_attack_2(self); break;

@@ -1,3 +1,7 @@
+if (stopped){
+	speed = 0;
+	exit;
+}
 if (!ready){
 	alpha += 0.05;
 	image_alpha = alpha;
@@ -18,7 +22,7 @@ image_angle = direction;
 
 var _collision = instance_place(x, y, parent_ship)
 if (_collision != noone){
-	_collision.hp -= dmg;
+	_collision.on_hit(dmg);
 	instance_destroy(self);
 	screenshake(seconds(0.5), 1, 0.25);
 }

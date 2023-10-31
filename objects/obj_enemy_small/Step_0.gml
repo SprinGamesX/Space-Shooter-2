@@ -1,7 +1,11 @@
-event_inherited();
 if (hp <= 0) {
 	instance_destroy();
 	parent_ship.kills++;	
+}
+event_inherited();
+if (stopped){
+	speed = 0;
+	exit;
 }
 speed = spd - frozen(spd / 30);
 image_angle += 0.5;

@@ -7,6 +7,7 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 		var _ship = instance_nearest(x, y, parent_ship);
 		apply_ex(_inst, _ship.ex,self.effect_chance + _ship.effect_hit_rate);	
 		var _dmg = add_extra_dmg(_object.dmg, _inst);
+		_object.on_hit(_inst);
 		// AOE
 		if (_aoe_size != -1){
 			if (_hitlist != -1)
@@ -16,9 +17,9 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 		}
 		else{
 			// pierce
-			if (_hitlist != -1){
+			if (_hitlist != -1) and ((pierce > 0) or (object_index == obj_aoe)){
 				ds_list_add(_hitlist, _inst);
-				_inst.hp -= _dmg;
+				_inst.on_hit(_dmg);
 				create_hit_indicator(_object);
 				create_dmg_indicator(_inst.x,_inst.y,_dmg, _object.is_crit, self.element);
 				if (_object.object_index != obj_aoe){
@@ -28,7 +29,7 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 			else {
 				instance_destroy();
 				create_hit_indicator(_object);
-				_inst.hp -= _dmg;
+				_inst.on_hit(_dmg);
 				create_dmg_indicator(_inst.x,_inst.y,_dmg, _object.is_crit, self.element);
 			}
 		}
@@ -41,17 +42,14 @@ function projectile_attach_collision(_hitlist, _lenx, _leny, _source, _centered 
 	if (_centered) _y = y - _leny / 2;
 	draw_rectangle(x - _lenx / 2, _y, x + _lenx, y + _leny, false);
 	var _num = collision_rectangle_list(x - _lenx / 2, _y, x + _lenx, y + _leny, parent_enemy, false, true, _hitlist, false);
-	show_debug_message(_num);
 	for(var _i = 0; _i < _num; _i++){
 		var _inst = ds_list_find_value(_hitlist, _i);
 		if (!_inst.immune){
 			var _dmg = calculate_dmg(_source.atk, _source.critrate, _source.critdmg, self.dmg_scale);
 			_dmg = add_extra_dmg(_dmg, _inst);
-			//show_debug_message(string(_source.atk) + ", " + string(_source.critrate) + ", " + string(_source.critdmg) + ", " + string(self.dmg_scale))
 			create_dmg_indicator(_inst.x, _inst.y, _dmg, false ,element);
 			create_hit_indicator(self, _inst.x, _inst.y);
-			_inst.hp -= _dmg;
-			//show_debug_message(_dmg)
+			_inst.on_hit(_dmg);
 			apply_ex(_inst, _source.ex, effect_chance);
 		}
 	}
@@ -116,7 +114,7 @@ function shock_nearby_enemys(_inst, _dmg, _ship){
 	for(var i = 0; i < _num; i++){
 		var _e = _list[|i];
 		create_dmg_indicator(_e.x, _e.y, string(_dmg) + "\n Shocked",,ELEMENTS.LIGHTNING);
-		_e.hp -= _dmg;
+		_inst.on_hit(_dmg);
 	}
 	ds_list_destroy(_list);
 }
@@ -201,4 +199,23 @@ function seek_closest_player(_s = 30){
 		if ((_r - _d) < 0) direction -= _s * _error;
 	}
 	else seek_closest_enemy();
+}
+
+function make_ice_sword(_target, _scale = 1, _dir = 0){
+	with(instance_create_layer(x, y, "Projectiles", obj_ice_sword)){
+		target = _target;
+		image_xscale = _scale;
+		image_yscale = _scale;
+		image_angle = _dir;
+	}
+}
+
+function detonate_all_mines(){
+	var list = ds_list_create();
+	var num = collision_rectangle_list(-50, -50, room_width + 50, room_height + 50, parent_mine, false, true, list, false);
+	for (var i = 0; i < num; i++){
+		list[|i].detonate();
+	}
+	screenshake(seconds(2), 1, 0.25);
+	ds_list_destroy(list);
 }

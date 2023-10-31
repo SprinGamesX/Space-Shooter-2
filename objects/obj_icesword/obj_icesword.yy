@@ -1,0 +1,43 @@
+{
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_icesword",
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+  ],
+  "managed": true,
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_projectile","path":"objects/parent_projectile/parent_projectile.yy",},"propertyId":{"name":"pierce","path":"objects/parent_projectile/parent_projectile.yy",},"value":"0",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_projectile","path":"objects/parent_projectile/parent_projectile.yy",},"propertyId":{"name":"element","path":"objects/parent_projectile/parent_projectile.yy",},"value":"ELEMENTS.ICE",},
+  ],
+  "parent": {
+    "name": "Projectiles",
+    "path": "folders/Objects/Game/Projectiles.yy",
+  },
+  "parentObjectId": {
+    "name": "parent_projectile",
+    "path": "objects/parent_projectile/parent_projectile.yy",
+  },
+  "persistent": false,
+  "physicsAngularDamping": 0.1,
+  "physicsDensity": 0.5,
+  "physicsFriction": 0.2,
+  "physicsGroup": 1,
+  "physicsKinematic": false,
+  "physicsLinearDamping": 0.1,
+  "physicsObject": false,
+  "physicsRestitution": 0.1,
+  "physicsSensor": false,
+  "physicsShape": 1,
+  "physicsShapePoints": [],
+  "physicsStartAwake": true,
+  "properties": [],
+  "solid": false,
+  "spriteId": {
+    "name": "spr_ice_sword",
+    "path": "sprites/spr_ice_sword/spr_ice_sword.yy",
+  },
+  "spriteMaskId": null,
+  "visible": true,
+}

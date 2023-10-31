@@ -73,6 +73,30 @@ function ini_ship_stats(_id){
 				element = ELEMENTS.LIGHTNING;
 			}
 			break;
+		case 9:
+			with(obj_ship){
+				ship_name = "I3";
+				cds = [seconds(0.2), seconds(5), seconds(30)];
+				scales = [0.4, 0, 5];
+				element = ELEMENTS.ICE;
+			}
+			break;
+		case 10:
+			with(obj_ship){
+				ship_name = "F3";
+				cds = [seconds(0.3), seconds(15), seconds(20)];
+				scales = [0.2, 0.5, 1];
+				element = ELEMENTS.FIRE;
+			}
+			break;
+		case 11:
+			with(obj_ship){
+				ship_name = "L3";
+				cds = [seconds(0.7), seconds(15), seconds(50)];
+				scales = [0.3, 0.3, 0.1];
+				element = ELEMENTS.LIFE;
+			}
+			break;
 	}
 	with(obj_ship){
 		lvl = 1;

@@ -15,6 +15,9 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Shoots 5 ICE bombs, each dealing ICE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. each bomb when exploded shoots ICE shards to all directions. \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability";
 			}
 			break;
 		case 1: 
@@ -27,6 +30,9 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Enters OVERDRIVE state, when OVERDRIVE is active ship shoots 2x faster and deals enhanced FIRE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. OVERDRIVE lasts 10s \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability";
 			}
 			break;
 		case 2: 
@@ -39,6 +45,9 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Deploys WINDMAKER, when deployed WINDMAKER's HP is set to 50% of this ships' HP, WINDMAKER shoots bullets that deal LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and [c_orange]" + _hpscale + "%[c_white] of HP. \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability";
 			}
 			break;
 		case 3:
@@ -51,6 +60,9 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Shoots 40 shards, each deals ICE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability";
 			}
 			break;
 		case 4:
@@ -63,6 +75,9 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Shoots 15 VENOM needles in a snake formation, each deals VENOM damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and each has a 50% base chance to apply POISON. \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability";
 			}
 			break;
 		case 5:
@@ -71,10 +86,13 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "Deals AOE FIRE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.SKILL:
-					_str = "Fires a barrage of missiles, each dealing AOE FIRE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. In addition when killing 20 ENEMYS skill cooldown is reset. \nCD: " + _skill_cd;
+					_str = "Fires a barrage of missiles, each dealing AOE FIRE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Applys a buff to itself: increasing ATK by 10%. This skill activates automatically. \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "For each 20 ENEMYS killed the skill cooldown is reset";
 			}
 			break;
 		case 6:
@@ -87,6 +105,9 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Causes all enemys(except bosses) to immidiatly drop to 50% HP, if the enemys are already below 50% HP they will be destroyed. Additionally for each existing enemy ship will generate a healing orb that heals for 5% of ship's max HP \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability";
 			}
 			break;
 		case 7:
@@ -99,6 +120,9 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Summons two chargers that fire a laser when done charging dealing LIGHTNING dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability";
 			}
 			break;
 		case 8:
@@ -111,8 +135,27 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Deals LIGHTNING dmg equal to [c_orange]"+ _str_scale + "%[c_white] of ATK to the target. the first attack has 150% base chance to apply SHOCKED to the target.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability";
 			}
 			break;
+		case 9:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Ship has 3 TYPES of basic attack, attack-1 fires 3 shards that deal dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100 / 4) + "%[c_white] of ATK. attack-2 fires a single ICE shard that deals dmg equal to [c_orange]" + string(obj_ship.scales[0] / 2) + "%[c_white] of ATK. attack-3 shoots an ICE sword dealing dmg equal to [c_orange]" + string(obj_ship.scales[0]) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Changes the ships basic attack type.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "Summons a ring of ICE swords around the ELITE enemy and deals dmg equal to [c_orange]" + string(1.5 * 30 * 100) + "%[c_white] of ATK to the target.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "When attack TYPE-2 hits an enemy it will unleash 3 shards dealing ICE dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100 / 5) + "%[c_white] of ATK. And when attack TYPE-3 hits an enemy, it will cause the it to be hit 2 additional times by the ICE SWORD.";
+			}
+			break;
+		
 			
 	}
 	return _str;

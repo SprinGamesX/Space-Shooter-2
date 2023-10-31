@@ -100,7 +100,7 @@ function stoppable(){
 
 function pause_all_enemys(){
 	var _insts = ds_list_create();
-	var _num = collision_rectangle_list(0, 0, room_width, room_height, parent_enemy, false, false, _insts, false);
+	var _num = collision_rectangle_list(-50, -50, room_width + 50, room_height + 50, parent_enemy, false, false, _insts, false);
 	
 	for (var i = 0; i < _num; i++){
 		var _inst = ds_list_find_value(_insts, i);
@@ -113,7 +113,7 @@ function pause_all_enemys(){
 
 function resume_all_enemys(){
 	var _insts = ds_list_create();
-	var _num = collision_rectangle_list(0, 0, room_width, room_height, parent_enemy, false, false, _insts, false);
+	var _num = collision_rectangle_list(-50, -50, room_width + 50, room_height + 50, parent_enemy, false, false, _insts, false);
 	
 	for (var i = 0; i < _num; i++){
 		var _inst = ds_list_find_value(_insts, i);

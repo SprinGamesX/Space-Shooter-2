@@ -5,7 +5,7 @@
   "eventList": [],
   "managed": true,
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_projectile","path":"objects/parent_projectile/parent_projectile.yy",},"propertyId":{"name":"pierce","path":"objects/parent_projectile/parent_projectile.yy",},"value":"3",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_projectile","path":"objects/parent_projectile/parent_projectile.yy",},"propertyId":{"name":"pierce","path":"objects/parent_projectile/parent_projectile.yy",},"value":"1",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_projectile","path":"objects/parent_projectile/parent_projectile.yy",},"propertyId":{"name":"element","path":"objects/parent_projectile/parent_projectile.yy",},"value":"ELEMENTS.ICE",},
   ],
   "parent": {

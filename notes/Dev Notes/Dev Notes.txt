@@ -63,4 +63,9 @@
 - Added Lightning AOE sprite
 - Added concept sprites for 2 new elites and one boss
 
-	
+26/10/23 - Note 9
+- Added SS-Grade Fire ship
+- Added on_hit function when ship/enemy is hit
+- Finished SS-Grade Lightning ship
+- Added new elite enemy: Magnet
+- Added rewards for finishing domains

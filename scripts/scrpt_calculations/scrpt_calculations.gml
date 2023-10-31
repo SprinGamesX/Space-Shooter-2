@@ -57,3 +57,7 @@ function color_for_element(_element){
 	if (_element = ELEMENTS.LIGHTNING) _color = c_yellow;
 	return _color;
 }
+
+function num_in_range(_num, _min, _max){
+	return _max >= _num and _num >= _min; 
+}

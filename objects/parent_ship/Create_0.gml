@@ -86,3 +86,7 @@ death = function(){
 	draw_fragments(frg, FRAG_AMOUNT.BIG);
 }
 
+on_hit = function(_dmg){
+	hp -= _dmg;
+}
+

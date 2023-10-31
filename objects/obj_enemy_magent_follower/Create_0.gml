@@ -30,8 +30,6 @@ follow = function(){
 set_base = function(_x, _y){
 	base_x = _x;
 	base_y = _y;
-	show_debug_message(string(base_x) + "," + string(base_y))
-	show_debug_message(string(x) + "," + string(y))
 }
 
 shoot = function(_speed, _direction){

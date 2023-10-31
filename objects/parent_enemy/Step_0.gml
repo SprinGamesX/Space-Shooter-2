@@ -1,2 +1,2 @@
 stoppable();
-kill_outside_bounds(-200);
+kill_outside_bounds(-50);

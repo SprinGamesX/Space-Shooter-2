@@ -1,5 +1,5 @@
 if (can_dmg){
-	other.hp -= dmg;
+	other.on_hit(dmg);
 	can_dmg = false;
 	alarm[1] = seconds(5);
 }

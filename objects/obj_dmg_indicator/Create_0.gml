@@ -8,7 +8,10 @@ xspeed = random_range(-(spd / 2), spd / 2);
 
 set = function(_dmg ,_color = c_white, _crit = false){
 	color = _color;
-	if (_crit)
-		text = string(_dmg) + "\n" + "Crit";
-	else text = string(_dmg);
+	if (is_string(_dmg)) text = _dmg;
+	else{
+		if (_crit)
+			text = string(round(_dmg)) + "\n" + "Crit";
+		else text = string(round(_dmg));
+	}
 }

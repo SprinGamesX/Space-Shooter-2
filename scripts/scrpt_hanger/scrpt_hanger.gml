@@ -79,7 +79,7 @@ function print_ds_map(_map){
 	var _count = 0;
 	while ( !is_undefined( _next ) ) {
 	  var _string = string( _next ) + " :" + string( _map[? _next ] );
-	  show_debug_message(_string);
+	  
  
 	  _next = ds_map_find_next( _map, _next );
 	  _count++;
@@ -126,8 +126,9 @@ function copy_data(_list){
 function generate_skill_buttons(_x, _y){
 	var _buttons;
 	_buttons[0] = instance_create_layer(_x, _y, "Skills", obj_button_basic_attack);
-	_buttons[1] = instance_create_layer(_x + 32 * 2, _y, "Skills", obj_button_skill);
-	_buttons[2] = instance_create_layer(_x + 64 * 2, _y, "Skills", obj_button_ult);
+	_buttons[1] = instance_create_layer(_x + 24 * 2, _y, "Skills", obj_button_skill);
+	_buttons[2] = instance_create_layer(_x + 48 * 2, _y, "Skills", obj_button_ult);
+	_buttons[3] = instance_create_layer(_x + 72 * 2, _y, "Skills", obj_button_passive);
 	return _buttons;
 }
 

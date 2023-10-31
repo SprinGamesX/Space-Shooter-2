@@ -54,8 +54,9 @@ function preform_skills(_key_attack, _key_skill, _key_ult){
 	if(ult_cd > 0) {ult_cd --}
 }
 
-function create_projectile(_obj, _scaling, _dir, _parent, _speed, _x = x, _y = y, _aoe = -1, _base_chance = 0.2){
-	 with(instance_create_layer(_x, _y, "Projectiles", _obj)){
+function create_projectile(_obj, _scaling, _dir, _parent, _speed, _x = x, _y = y, _aoe = -1, _base_chance = 0.2, _pierce = 0){
+	 var _inst = instance_create_layer(_x, _y, "Projectiles", _obj);
+	 with(_inst){
 		dmg = calculate_dmg(_parent.atk, _parent.critrate, _parent.critdmg, _scaling);
 		if (dmg = _parent.atk * _scaling) is_crit = false;
 		else is_crit = true;
@@ -63,8 +64,10 @@ function create_projectile(_obj, _scaling, _dir, _parent, _speed, _x = x, _y = y
 		direction = _dir;
 		speed = _speed;
 		aoe = _aoe;
+		pierce = _pierce;
 		effect_chance = _base_chance;
 	 }
+	 return _inst;
 }
 
 function create_charge_projectile(_obj, _scaling, _dir, _parent, _speed, _charge, _x = x, _y = y, _aoe = -1, _base_chance = 0.2){
@@ -95,6 +98,14 @@ function create_projectile_attach(_obj, _scaling, _parent, _hits, _cd,_lenx,_len
 	 }
 }
 
+function create_mine(_obj, _scale, _parent, _target, _aoe_size, _base_chance = 0.2){
+	var _inst = create_projectile(_obj, _scale, random(360), _parent, 0, _target.x, _target.y, _aoe_size, _base_chance);
+	with(_inst){
+		target = _target;
+	}
+	return _inst;
+}
+
 function create_deployable(_type, _hp, _parent = self){
 	with(instance_create_layer(x, y, "Deployables", _type)){
 		hp = _hp;
@@ -103,15 +114,29 @@ function create_deployable(_type, _hp, _parent = self){
 	}
 }
 function create_follower(_type,_dis_x,_dis_y, _scaling, _cd, _duration, _target = self){
-	with(instance_create_layer(x, y, "Deployables", _type)){
+	var _inst = instance_create_layer(x, y, "Deployables", _type);
+	with(_inst){
 		setup(_target,_dis_x,_dis_y, _scaling, _cd, _duration)
 	}
+	return _inst;
 }
 
 function create_healing_orb(_x, _y, _heal, _spd){
 	with(instance_create_layer(_x, _y, "Projectiles", obj_healing_orb)){
 		heal = _heal;
 		speed = _spd;
+	}
+}
+
+function consume_hp(_amount){
+	if (hp == 1) return false;
+	if (hp - _amount > 0){
+		hp -= _amount;
+		return true
+	}
+	else {
+		hp = 1;
+		return true;	
 	}
 }
 
