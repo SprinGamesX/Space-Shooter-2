@@ -44,7 +44,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "Heals 10 HP and fires 3 bullets, each bullet dealing LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and [c_orange]" + _hpscale + "%[c_white] of HP. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.ULT:
-					_str = "Deploys WINDMAKER, when deployed WINDMAKER's HP is set to 50% of this ships' HP, WINDMAKER shoots bullets that deal LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and [c_orange]" + _hpscale + "%[c_white] of HP. \nCD: " + _skill_cd;
+					_str = "Deploys WINDMAKER, when deployed WINDMAKER's HP is set to 50% of this ships' HP, WINDMAKER shoots bullets that deal LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.PASSIVE:
 					_str = "This ship does not have a passive ability";
