@@ -15,16 +15,10 @@ SS-Grade Fire ship:
 - Skill: activates all bombs
 - Ult: enters Destruction state, while in this state every enemy is stopped and the ship can move a target via movement keys, when ult button is pressed again it will nuke at where the target is.
 
-SS-Grade Life ship:
-- basic attack: ??
-- Skill: summons a turret(follower) to fight with it (can summon up to ?? followers) (consumes HP)
-- Ult: turrets enter FRENZY state and shoot rapidly for ?? seconds
-- Passive: if the ship recieves a killing blow it will heal and destroy all turrets (heals HP per turret)
-
-SS-Grade Fire ship (Insperation from HSR-Topaz):
-- basic attack: ??
-- Skill: Summons friend, when friend is on the field he takes 75% of the dmg the ship takes, additionally for every ?? shots the ship fires friend will preform a follow-up attack
-- Ult: Enhances friend (Still no idea what enhance will do)
-
+SS-Graade Venom ship
+- Basic attack: two normal attacks followed by enhanced 3rd attack
+- Skill: fires a single bullet, this bullet's dmg will increase by ?% for each enemy that has POISON
+- Ult: Summons black hole that deals venom aoe dmg to all enemys in it
+- Passive: for each enemy that currently has POISON applied, atk will increase by ?%
 
  

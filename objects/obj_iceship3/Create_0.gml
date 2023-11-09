@@ -32,7 +32,7 @@ skill = function(){
 ultimate = function(){
 	target = instance_nearest(x, y, parent_elite_enemy);
 	dir = 0;
-	ult_num = 20;
+	ult_num = 10;
 	pause_all_enemys();
 	alarm[0] = seconds(0.05);
 }
