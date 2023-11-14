@@ -12,6 +12,12 @@ function create_dmg_indicator(_x,_y,_dmg, _crit = false, _element = ELEMENTS.ICE
 	_inst.set(_dmg, color, _crit);
 }
 
+function create_status_indicator(_x,_y,_text, _magnitude, _color = c_white){
+	var _inst = instance_create_layer(_x, _y - 30,"SpecialEffects", obj_status_indicator);
+	var txt = _text + " +" + string(_magnitude * 100) + "%"; 
+	_inst.set(txt, _color);
+}
+
 function make_echo(_length = ECHO.SHORT, _scale = 1){
 	var _part = part_type_create();
 	part_type_sprite(_part, sprite_index, 0, 0, 0);

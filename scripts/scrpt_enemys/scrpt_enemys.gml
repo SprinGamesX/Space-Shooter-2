@@ -1,5 +1,16 @@
 global.lvl = 0;
 
+enum STATUS{
+	DMG_AMP,
+	SLOW,
+	POISON_AMP,
+	FREEZE,
+	EXPLOSIVE,
+	LIFE_RIPE,
+	POISON,
+	SHOCKED
+}
+
 function frozen(_amp){
 	if (freeze > 0){
 		return _amp * freeze;
@@ -122,5 +133,34 @@ function resume_all_enemys(){
 	
 	
 	ds_list_destroy(_insts);
+}
+
+function apply_status(_enemy, _type, _chance, _time, _magnitude, _display = true){
+	switch(_type){
+		case STATUS.DMG_AMP:
+			if(_enemy.dmg_amp <= _magnitude) and (chance(_chance - _enemy.resist)){
+				_enemy.dmg_amp = _magnitude;
+				alarm[6] = _time;
+				if (_display)
+					create_status_indicator(_enemy.x, _enemy.y, "DMG AMP", _magnitude, c_red);
+			}
+			break;
+		case STATUS.SLOW:
+			if(_enemy.slowed <= _magnitude) and (chance(_chance - _enemy.resist)){
+				_enemy.slowed = _magnitude;
+				alarm[5] = _time;
+				if (_display)
+					create_status_indicator(_enemy.x, _enemy.y, "SLOWED", _magnitude, c_ltgray);
+			}
+			break;
+		case STATUS.POISON_AMP:
+			if(_enemy.poison_amp <= _magnitude) and (chance(_chance - _enemy.resist)){
+				_enemy.poison_amp = _magnitude;
+				alarm[4] = _time;
+				if (_display)
+					create_status_indicator(_enemy.x, _enemy.y, "POISON AMP", _magnitude, c_purple);
+			}
+			break;
+	}
 }
 

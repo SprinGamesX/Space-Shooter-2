@@ -97,6 +97,14 @@ function ini_ship_stats(_id){
 				element = ELEMENTS.LIFE;
 			}
 			break;
+		case 12:
+			with(obj_ship){
+				ship_name = "V2";
+				cds = [seconds(0.4), seconds(7), seconds(30)];
+				scales = [0.05, 0.3, 0.1];
+				element = ELEMENTS.VENOM;
+			}
+			break;
 	}
 	with(obj_ship){
 		lvl = 1;

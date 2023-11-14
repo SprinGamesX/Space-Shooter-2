@@ -17,7 +17,7 @@ SS-Grade Fire ship:
 
 SS-Graade Venom ship
 - Basic attack: two normal attacks followed by enhanced 3rd attack
-- Skill: fires a single bullet, this bullet's dmg will increase by ?% for each enemy that has POISON
+- Skill: Fires bullets that apply POISON AMP for ? seconds
 - Ult: Summons black hole that deals venom aoe dmg to all enemys in it
 - Passive: for each enemy that currently has POISON applied, atk will increase by ?%
 

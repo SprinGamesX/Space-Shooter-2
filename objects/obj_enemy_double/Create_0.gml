@@ -28,7 +28,7 @@ special_movement = function(){
 	if (!entrance_animation_ongoing) and !stopped{
 		rot += 0.5;
 		y = start_y + (sin(time / 40) * wave_height);
-		time += 1 - (freeze * 0.025);
+		time += 1 - (slowed);
 		draw_echo(echo);
 	}
 	image_angle = rot;

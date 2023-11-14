@@ -92,7 +92,7 @@ special_movement = function(){
 	if (!entrance_animation_ongoing) and (!ulting) and (!skilling) and (!dying){
 		y = start_y + (sin(time / 40) * wave_height);
 		image_angle = start_ang + (sin(time / 40)* wave_ang);
-		time++;
+		time += 1 - (slowed);
 	}
 	if (skilling){
 		dir += 3;

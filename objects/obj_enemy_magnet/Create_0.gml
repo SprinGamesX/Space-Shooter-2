@@ -43,7 +43,7 @@ special_movement = function(){
 	var _def = 0;
 	if (!entrance_animation_ongoing) and !stopped{
 		y = start_y + (sin(time / 40) * wave_height);
-		time += 1 - (freeze * 0.025);
+		time += 1 - (slowed);
 		draw_echo(echo);
 	}
 	if (instance_exists(followers[0])){

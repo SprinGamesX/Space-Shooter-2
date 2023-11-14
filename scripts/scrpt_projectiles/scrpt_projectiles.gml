@@ -60,6 +60,10 @@ function apply_ex(_inst, _ex, _chance){
 	if (chance(_chance - _inst.resist)){
 		if (self.element == ELEMENTS.ICE){
 				if (_inst.freeze < 20) _inst.freeze++;
+				if (_inst.freeze > 0){
+					apply_status(_inst, STATUS.DMG_AMP, 1, seconds(5), 0.01 * _inst.freeze, false);
+					apply_status(_inst, STATUS.SLOW, 1, seconds(5), 0.01 * _inst.freeze, false);
+				}
 				_inst.alarm[11] = seconds(5);
 			}
 		if (self.element == ELEMENTS.FIRE){

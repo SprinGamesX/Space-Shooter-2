@@ -34,7 +34,7 @@ set_base = function(_x, _y){
 
 shoot = function(_speed, _direction){
 	follow_parent = false;
-	speed = _speed;
+	speed = (_speed - (_speed * slowed));
 	direction = _direction;
 	shooting = true;
 }

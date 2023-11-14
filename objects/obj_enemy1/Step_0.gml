@@ -7,7 +7,7 @@ if (stopped) {
 	exit;
 }
 event_inherited();
-speed = spd - frozen(spd / 30);
+speed = spd - (spd * slowed);
 image_angle += 0.5;
 if (scale < 1){
 	scale += 0.02;
