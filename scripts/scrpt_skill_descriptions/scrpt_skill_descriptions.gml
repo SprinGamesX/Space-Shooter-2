@@ -155,6 +155,51 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "When attack TYPE-2 hits an enemy it will unleash 3 shards dealing ICE dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100 / 5) + "%[c_white] of ATK. And when attack TYPE-3 hits an enemy, it will cause the it to be hit 2 additional times by the ICE SWORD.";
 			}
 			break;
+		case 10:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Ship shoots a fireball that deal dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Summons FRIEND, when an enemy is killed FRIEND will gain 1 stack for charge. if skill is used when FRIEND is on field it will fire a number of shoots equal to the number of charges it currently has. each charge deals dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "If FRIEND is on field it will tag every enemy on field and plant a bomb on it, when all enemys are tagged it will go back and detonate all bombs. each bomb deals dmg equal to [c_orange]"+ _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "When FRIEND is on the field it will decrease the dmg taken by the ship by 75% and every time the ship is hit it will gain 3 charge stacks.";
+			}
+			break;
+		case 11:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Ship shoots 3 lifeballs that deal dmg equal to [c_orange]3x" + (string(obj_ship.scales[0] * 100 / 3)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Consumes 15% HP to summon a turret to fight along with it, the turret will fire every 1s.its projectile deals dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK. Up to 5 turrets can be summoned.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "Sends all existing turrets to FRENZY state, when in FRENZY state turrets will fire rapidly.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "When the ship recieves a killing blow and there is at least 1 turret on field: all turrets will be destoryed and the ship will be healed 10% of its MAX HP per turret.";
+			}
+			break;
+		case 12:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Ship shoots 3 void balls that deal dmg equal to [c_orange]3x" + (string(obj_ship.scales[0] * 100 / 3)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Ships fires a void ball that applies 25% POISON AMP and deals dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "Creates a black hole that applies 4 debuffs to all enemys on field:[c_orange] 75% POISON AMP, 50% SLOWED, 25% DMG AMP, 5 stacks of POISON[c_white].\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "For every stack of POISON any enemy has: ATK is increased by 2% (up to 100%).";
+			}
+			break;
 		
 			
 	}

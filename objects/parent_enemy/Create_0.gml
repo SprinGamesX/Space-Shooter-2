@@ -1,3 +1,4 @@
+event_inherited();
 maxhp = hp;
 ds_list_add(global.enemylist, self);
 

@@ -1,3 +1,4 @@
+event_inherited();
 maxhp = hp;
 max_atk_cd = atk_cd;
 max_skill_cd = skill_cd;

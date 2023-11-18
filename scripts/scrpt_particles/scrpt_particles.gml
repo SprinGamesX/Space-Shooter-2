@@ -14,7 +14,10 @@ function create_dmg_indicator(_x,_y,_dmg, _crit = false, _element = ELEMENTS.ICE
 
 function create_status_indicator(_x,_y,_text, _magnitude, _color = c_white){
 	var _inst = instance_create_layer(_x, _y - 30,"SpecialEffects", obj_status_indicator);
-	var txt = _text + " +" + string(_magnitude * 100) + "%"; 
+	var txt = _text;
+	if (_magnitude > 0){
+		txt += " +" + string(_magnitude * 100) + "%";
+	}
 	_inst.set(txt, _color);
 }
 

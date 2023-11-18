@@ -140,7 +140,7 @@ function apply_status(_enemy, _type, _chance, _time, _magnitude, _display = true
 		case STATUS.DMG_AMP:
 			if(_enemy.dmg_amp <= _magnitude) and (chance(_chance - _enemy.resist)){
 				_enemy.dmg_amp = _magnitude;
-				alarm[6] = _time;
+				_enemy.debuff_cds[0] = _time;
 				if (_display)
 					create_status_indicator(_enemy.x, _enemy.y, "DMG AMP", _magnitude, c_red);
 			}
@@ -148,15 +148,15 @@ function apply_status(_enemy, _type, _chance, _time, _magnitude, _display = true
 		case STATUS.SLOW:
 			if(_enemy.slowed <= _magnitude) and (chance(_chance - _enemy.resist)){
 				_enemy.slowed = _magnitude;
-				alarm[5] = _time;
+				_enemy.debuff_cds[1] = _time;
 				if (_display)
-					create_status_indicator(_enemy.x, _enemy.y, "SLOWED", _magnitude, c_ltgray);
+					create_status_indicator(_enemy.x, _enemy.y, "SLOWED", _magnitude, c_gray);
 			}
 			break;
 		case STATUS.POISON_AMP:
 			if(_enemy.poison_amp <= _magnitude) and (chance(_chance - _enemy.resist)){
 				_enemy.poison_amp = _magnitude;
-				alarm[4] = _time;
+				_enemy.debuff_cds[2] = _time;
 				if (_display)
 					create_status_indicator(_enemy.x, _enemy.y, "POISON AMP", _magnitude, c_purple);
 			}
@@ -164,3 +164,16 @@ function apply_status(_enemy, _type, _chance, _time, _magnitude, _display = true
 	}
 }
 
+function apply_status_elemental(_enemy, _type, _chance, _amount, _display = false){
+	switch(_type){
+		case STATUS.POISON:
+			if (chance(_chance)){
+				if (_enemy.poison + _amount <= 15) _enemy.poison += _amount;
+					else _enemy.poison = 15;
+				if (_display){
+					create_status_indicator(_enemy.x, _enemy.y, "POISON +" + string(_amount), 0, c_purple);
+				}
+			}
+			break;
+	}
+}

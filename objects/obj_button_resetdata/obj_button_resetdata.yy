@@ -7,7 +7,7 @@
   ],
   "managed": true,
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_menu_button","path":"objects/obj_menu_button/obj_menu_button.yy",},"propertyId":{"name":"text","path":"objects/obj_menu_button/obj_menu_button.yy",},"value":"Dev",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_menu_button","path":"objects/obj_menu_button/obj_menu_button.yy",},"propertyId":{"name":"text","path":"objects/obj_menu_button/obj_menu_button.yy",},"value":"RESET",},
   ],
   "parent": {
     "name": "Buttons",

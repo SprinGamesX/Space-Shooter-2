@@ -14,12 +14,16 @@ for(var i = 0; i < n; i++){
 		case 2:
 			apply_status(_enemy, STATUS.POISON_AMP, 1, seconds(2), v_amp);
 			break;
+		case 3:
+			apply_status_elemental(_enemy, STATUS.POISON, 1, 5, true);
+			break;
 	}
 }
 switch(index){
 	case 0: alarm[0] = seconds(0.1); index++; break;
 	case 1: alarm[0] = seconds(0.1); index++; break;
-	case 2: alarm[0] = cd; index = 0; hits--;
+	case 2: alarm[0] = seconds(0.1); index++; break;
+	case 3: alarm[0] = cd; index = 0; hits--;
 }
 if (hits == 0) instance_destroy();
 

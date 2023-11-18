@@ -24,7 +24,6 @@ ultimate = function(){
 		for (var i = 0; i < ds_list_size(turret_list); i++){
 			turret_list[|i].enter_frenzy();
 		}
-		pause_all_enemys();
 	}
 }
 

@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_button_ult",
+  "name": "obj_button_switch",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -12,10 +12,7 @@
     "name": "Buttons",
     "path": "folders/Objects/Menus/Buttons.yy",
   },
-  "parentObjectId": {
-    "name": "obj_menu_button",
-    "path": "objects/obj_menu_button/obj_menu_button.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -32,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_skill_icon",
-    "path": "sprites/spr_skill_icon/spr_skill_icon.yy",
+    "name": "spr_button_switch",
+    "path": "sprites/spr_button_switch/spr_button_switch.yy",
   },
   "spriteMaskId": null,
   "visible": true,

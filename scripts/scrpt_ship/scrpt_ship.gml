@@ -140,3 +140,14 @@ function consume_hp(_amount){
 	}
 }
 
+function count_poisoned_enemys(){
+	var _enemys = ds_list_create();
+	var n = collision_rectangle_list(0, 0, room_width, room_height, parent_enemy, 0, 0, _enemys, 0);
+	var count = 0;
+	for (var i = 0; i < n; i++){
+		var _enemy = _enemys[|i];
+		count += _enemy.poison;
+	}
+	ds_list_destroy(_enemys);
+	return count;
+}

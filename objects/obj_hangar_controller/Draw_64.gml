@@ -1,4 +1,3 @@
-
 var _current_skill_scale = 0;
 var _current_skill_hp_scale = 0;
 var _current_skill_cd = 0;

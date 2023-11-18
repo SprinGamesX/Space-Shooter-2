@@ -41,3 +41,4 @@ if (entrance_animation_ongoing or is_dead){
 }
 else {immune = false}
 
+
