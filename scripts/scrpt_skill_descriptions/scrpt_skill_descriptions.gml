@@ -41,7 +41,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "Deals LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.SKILL:
-					_str = "Heals 10 HP and fires 3 bullets, each bullet dealing LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK and [c_orange]" + _hpscale + "%[c_white] of HP. \nCD: " + _skill_cd;
+					_str = "Heals 10 HP and fires 3 bullets, each bullet dealing LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Deploys WINDMAKER, when deployed WINDMAKER's HP is set to 50% of this ships' HP, WINDMAKER shoots bullets that deal LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
@@ -143,7 +143,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 		case 9:
 			switch(_skill){
 				case DESC_DISPLAY.BASIC_ATTACK:
-					_str = "Ship has 3 TYPES of basic attack, attack-1 fires 3 shards that deal dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100 / 4) + "%[c_white] of ATK. attack-2 fires a single ICE shard that deals dmg equal to [c_orange]" + string(obj_ship.scales[0] / 2) + "%[c_white] of ATK. attack-3 shoots an ICE sword dealing dmg equal to [c_orange]" + string(obj_ship.scales[0]) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					_str = "Ship has 3 TYPES of basic attack, attack-1 fires 3 shards that deal dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100 / 4) + "%[c_white] of ATK. attack-2 fires a single ICE shard that deals dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100 / 2) + "%[c_white] of ATK. attack-3 shoots an ICE sword dealing dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100) + "%[c_white] of ATK.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.SKILL:
 					_str = "Changes the ships basic attack type.\nCD: " + _skill_cd;

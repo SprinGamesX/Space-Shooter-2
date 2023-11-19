@@ -12,6 +12,7 @@ hp_bar_width = 64 * 3;
 
 entrance_animation_ongoing = true;
 recovered = true;
+recover_hp = 0;
 
 randomize();
 
@@ -85,6 +86,8 @@ death_animation = function(){
 	if (instance_exists(duo)) and (duo.hp > (maxhp / 100) * 30){
 		recovered = false;
 		is_dead = false;
+		recover_hp = duo.hp / 2;
+		
 	}
 	else {
 		speed += 0.1;
@@ -99,9 +102,11 @@ death_animation = function(){
 function recover(){
 	immune = true;
 	duo.immune = true;
-	if (hp < (maxhp / 100) * 30){
-		hp += (maxhp / 100);
-		duo.hp -= (maxhp / 100);
+	if (recover_hp > 0){
+		var heal = (maxhp / 100)
+		hp += heal;
+		duo.hp -= heal;
+		recover_hp -= heal;
 	}
 	else {
 		immune = false;

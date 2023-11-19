@@ -3,6 +3,7 @@ switch(obj_ship.element){
 	case ELEMENTS.FIRE: image_index = 1; break;
 	case ELEMENTS.LIFE: image_index = 2; break;
 	case ELEMENTS.VENOM: image_index = 3; break;
+	case ELEMENTS.LIGHTNING: image_index = 4; break;
 	default: image_index = 0;
 	
 }
