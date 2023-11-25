@@ -1,4 +1,12 @@
-function create_dmg_indicator(_x,_y,_dmg, _crit = false, _element = ELEMENTS.ICE){
+enum TRAIL_LENGTH{
+	SHORT,
+	MID,
+	LONG
+}
+
+
+
+function create_dmg_indicator(_x,_y,_dmg, _additional_text, _element = ELEMENTS.ICE){
 	var _inst = instance_create_layer(_x, _y - 30,"SpecialEffects", obj_dmg_indicator);
 	color = c_white;
 	switch(_element){
@@ -9,7 +17,7 @@ function create_dmg_indicator(_x,_y,_dmg, _crit = false, _element = ELEMENTS.ICE
 		case ELEMENTS.LIGHTNING: color = c_yellow; break;
 		case ELEMENTS.HEALING: color = c_lime; 
 	}
-	_inst.set(_dmg, color, _crit);
+	_inst.set(_dmg, color, _additional_text);
 }
 
 function create_status_indicator(_x,_y,_text, _magnitude, _color = c_white){
@@ -21,9 +29,9 @@ function create_status_indicator(_x,_y,_text, _magnitude, _color = c_white){
 	_inst.set(txt, _color);
 }
 
-function make_echo(_length = ECHO.SHORT, _scale = 1){
+function make_echo(_length = ECHO.SHORT, _scale = 1, _sprite = sprite_index){
 	var _part = part_type_create();
-	part_type_sprite(_part, sprite_index, 0, 0, 0);
+	part_type_sprite(_part, _sprite, 0, 0, 0);
 	part_type_alpha2(_part, 0.25, 0);
 	part_type_scale(_part, _scale, _scale);
 	switch(_length){
@@ -61,13 +69,13 @@ function make_star(){
 	part_type_direction(_part, 175, 185, 0, 0);
 	return _part;
 }
-function draw_echo(_echo){
+function draw_echo(_echo, _echo_system = global.echo_system){
 	part_type_orientation(_echo, self.image_angle, self.image_angle, 0, 0, false);
-	part_particles_create(global.echo_system, x,y,_echo, 1)
+	part_particles_create(_echo_system, x,y,_echo, 1)
 }
 
 function draw_fragments(_fragment, _intensity = FRAG_AMOUNT.SMALL){
-	part_particles_create(global.part_system, x, y, _fragment, _intensity);
+	part_particles_create(global.trail_system, x, y, _fragment, _intensity);
 }
 
 function draw_ice_hit(){
@@ -98,11 +106,11 @@ function make_trail(_spd, _element){
 
 function draw_trail(_trail){
 	part_type_direction(_trail, direction + 160, direction + 200, 0, 0);
-	part_particles_create(global.part_system, x, y, _trail, 1);
+	part_particles_create(global.trail_system, x, y, _trail, 1);
 }
 function draw_trail_random(_trail){
 	part_type_direction(_trail, 0, 359, 0, 0);
-	part_particles_create(global.part_system, x, y, _trail, 1);
+	part_particles_create(global.trail_system, x, y, _trail, 1);
 }
 
 function draw_lightning_slash(_dir, _x, _y, _scale = 1){
@@ -111,4 +119,28 @@ function draw_lightning_slash(_dir, _x, _y, _scale = 1){
 	_s.image_angle = _dir;
 	_s.image_xscale = _scale;
 	_s.image_yscale = _scale;
+}
+
+function make_trail_meteor(_length = TRAIL_LENGTH.SHORT, _scale = 1, _sprite = sprite_index){
+	var _part = part_type_create();
+	part_type_sprite(_part, _sprite, 0, 0, 0);
+	part_type_alpha2(_part, 0.1, 0);
+	part_type_size(_part, _scale, _scale, -0.05, 0);
+	switch(_length){
+		case TRAIL_LENGTH.SHORT:
+			part_type_life(_part, seconds(0.3), seconds(0.3));
+			break;
+		case TRAIL_LENGTH.MID:
+			part_type_life(_part, seconds(0.7), seconds(0.7));
+			break;
+		case TRAIL_LENGTH.LONG:
+			part_type_life(_part, seconds(1), seconds(1));
+			break;
+	}
+	return _part;
+}
+
+function draw_trail_meteor(_part, _echo_system = global.echo_system){
+	part_type_orientation(_part, self.image_angle, self.image_angle, 0, 0, false);
+	part_particles_create(_echo_system, x, y, _part, 1)
 }

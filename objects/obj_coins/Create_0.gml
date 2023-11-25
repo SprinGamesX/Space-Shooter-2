@@ -9,7 +9,7 @@ save_coins = function(){
 load_coins = function(){
 	ini_open("data.ini");
 	
-	global.coins = ini_read_real("global", "coins", 75823);
+	global.coins = ini_read_real("global", "coins", 1000);
 	
 	
 	ini_close();

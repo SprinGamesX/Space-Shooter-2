@@ -1,6 +1,19 @@
 skill_bar_color = c_white;
 ult_bar_color = c_white;
 
+bar_width = 64;
+bar_height = 8;
+bar_scale = 4;
+bar_width *= bar_scale;
+bar_height *= bar_scale;
+
+immune = 0;
+immune_time = seconds(0.1);
+immune_time_max = immune_time;
+immune_cd = seconds(2);
+immune_cd_max = immune_cd;
+immune_spd_multiplier = 3;
+
 function set_max_cds(_aspd, _cd){
 	
 	max_skill_cd = round(skill_cd - (skill_cd * _cd));
@@ -87,6 +100,7 @@ death = function(){
 }
 
 on_hit = function(_dmg){
-	hp -= _dmg;
+	if (!immune)
+		hp -= _dmg;
 }
 

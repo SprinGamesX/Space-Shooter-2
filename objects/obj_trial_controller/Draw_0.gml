@@ -1,4 +1,5 @@
 draw_bg_box(x - 125 , y - 14, 250, 40, c_maroon);
+draw_bg_box(16, 48, 32, 200, c_maroon, 1);
 
 draw_self();
 
@@ -9,9 +10,9 @@ switch(global.trialtype){
 		trial_name = "TRIAL OF THE BLADE";
 		subtext = "[scale,0.7]recommanded elements:\n[scale,0.75][spr_element_icons,0] [spr_element_icons,3]";
 					break;
-	case TRIAL.ABUNDANCE: 
-		trial_name = "TRIAL OF ABUNDANCE";
-		subtext = "[scale,0.7]recommanded elements:\n[scale,0.75][spr_element_icons,1] [spr_element_icons,4]"
+	case TRIAL.DECIMATION: 
+		trial_name = "TRIAL OF DECIMATION";
+		subtext = "[scale,0.7]recommanded elements:\n[scale,0.75][spr_element_icons,2] [spr_element_icons,4]"
 		break;
 	case TRIAL.BALANCE:
 		trial_name = "TRIAL OF BALANCE";

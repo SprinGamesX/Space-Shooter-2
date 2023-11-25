@@ -29,8 +29,7 @@ ultimate = function(){
 	{
 		var _e = global.enemylist[|_i];
 		create_healing_orb(_e.x, _e.y, (max_hp / 20), 5);
-		if (_e.hp > _e.maxhp / 2) _e.hp = _e.maxhp / 2;
-		else instance_destroy(_e);
+		apply_status(_e, STATUS.DMG_AMP, 2, seconds(10), 1);
 	}
 	
 	

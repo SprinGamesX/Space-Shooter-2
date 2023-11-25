@@ -2,9 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "spr_skill_bar",
-  "bbox_bottom": 4,
+  "bbox_bottom": 7,
   "bbox_left": 0,
-  "bbox_right": 29,
+  "bbox_right": 63,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"4a3e2326-26cb-4972-90bf-a4c2738d99d9",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c9ecb244-e4e2-4cd3-bba9-f203186d86c2",},
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 5,
+  "height": 8,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"1ede14ea-3100-454c-b937-08342c88299d","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"5be8cfb5-0ae0-4767-a0bf-942b2aac2e02","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"4a3e2326-26cb-4972-90bf-a4c2738d99d9","path":"sprites/spr_skill_bar/spr_skill_bar.yy",},},},"Disabled":false,"id":"0d27567a-d40b-4bfc-8800-67d3a258ad07","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c9ecb244-e4e2-4cd3-bba9-f203186d86c2","path":"sprites/spr_skill_bar/spr_skill_bar.yy",},},},"Disabled":false,"id":"21d2e69f-b1ed-4a13-8117-152d33f9c31e","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 30,
+  "width": 64,
 }

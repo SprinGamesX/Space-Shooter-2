@@ -23,7 +23,7 @@ basic_atk = function(){
 }
 
 skill = function(){
-	summon_enemy_orbit(x, room_height / 2, lv, 8, 128, 2);
+	summon_enemy_orbit(x, room_height / 2, lv, 8, 96, 2);
 	summon_enemy_orbit(x, room_height / 2, lv, 4, 136, -3);
 }
 

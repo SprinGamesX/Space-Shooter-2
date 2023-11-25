@@ -18,18 +18,20 @@ function frozen(_amp){
 	else return 0;
 }
 
-function summon_enemy(_type, _lv, _x , _y, _dir = 180){
+function summon_enemy(_type, _lv, _x , _y, _dir = 180, _spd = 2){
 	var _inst = instance_create_layer(_x, _y, "Enemy", _type);
-	set_enemy(_inst, _lv, _dir);
+	set_enemy(_inst, _lv, _dir, _spd);
 	return _inst;
 }
 
-function set_enemy(_enemy ,_lv, _dir){
+function set_enemy(_enemy ,_lv, _dir, _spd){
 	with(_enemy){
 		lv = _lv;
 		hp = hp * _lv;
 		maxhp = hp;
 		dmg += lv * 0.5 * dmg;
+		if (!object_is_ancestor(self.object_index, parent_elite_enemy))
+			spd = _spd;
 		direction = _dir;
 	}
 }
@@ -46,6 +48,13 @@ function summon_enemy_double(_lv){
 	return summon_enemy(obj_enemy_double, _lv, room_width - 32, room_height / 2, 0);
 }
 
+function summon_elite_cannon(_lv){
+	return summon_enemy(obj_elite_cannon, _lv, room_width - 32, room_height / 2, 0);
+}
+function summon_elite_meteor(_lv){
+	return summon_enemy(obj_elite_meteor, _lv,  room_width - 32, room_height / 2, 0);
+}
+
 function summon_enemy_magnet(_lv){
 	// 734.5
 	return summon_enemy(obj_enemy_magnet, _lv,  room_width - 32, room_height / 2, 0);
@@ -56,6 +65,9 @@ function summon_boss_reddiamond(_lv){
 }
 function summon_boss_sword(_lv){
 	return summon_enemy(obj_boss_sword, _lv, -200, room_height / 2);
+}
+function summon_boss_spears(_lv){
+	return summon_enemy(obj_boss_spears, _lv, room_width, room_height / 2);
 }
 
 function summon_enemy_orbiter(_lv){
@@ -75,6 +87,15 @@ function summon_enemy_bladie(_x ,_y ,_dmg, _acc, _auto_aim = false, _dir_acc = 0
 		acc = _acc;
 		auto_aim = _auto_aim;
 		dir_acc = _dir_acc;
+		direction = _dir;
+	}
+	return _inst;
+}
+function summon_enemy_fire(_x ,_y ,_dmg, _dir, _spd){
+	var _inst = instance_create_layer(_x, _y, "Enemy", obj_enemy_fire);
+	with(_inst){
+		dmg = _dmg;
+		speed = _spd;
 		direction = _dir;
 	}
 	return _inst;

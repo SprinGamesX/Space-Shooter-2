@@ -1,6 +1,6 @@
 event_inherited();
-// Ship gains atk equal to 20% of HP
-atk += ((max_hp / 100) * 20);
+// Ship gains atk equal to 40% of HP
+atk += ((max_hp / 100) * 40);
 
 basic_attack = function(){
 	create_projectile(obj_lifeball, atk_scale, 0, self, 3);

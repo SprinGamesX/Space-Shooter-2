@@ -3,7 +3,7 @@
 function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 	var _str = "";
 	var _str_scale = string(_skill_scale * 100);
-	_skill_cd = string(seconds_to_time(_skill_cd)) + "s";
+	_skill_cd = string(time_to_seconds(_skill_cd)) + "s";
 	switch(_id){
 		case 0: 
 			switch(_skill){
@@ -47,7 +47,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "Deploys WINDMAKER, when deployed WINDMAKER's HP is set to 50% of this ships' HP, WINDMAKER shoots bullets that deal LIFE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.PASSIVE:
-					_str = "This ship does not have a passive ability";
+					_str = "Ships ATK gains a bonus equal to 40% of HP";
 			}
 			break;
 		case 3:
@@ -83,7 +83,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 		case 5:
 			switch(_skill){
 				case DESC_DISPLAY.BASIC_ATTACK:
-					_str = "Deals AOE FIRE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
+					_str = "Deals AOE FIRE damage equal to [c_orange]3x" + string(obj_ship.scales[0] * 100 / 3) + "%[c_white] of ATK. \nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.SKILL:
 					_str = "Fires a barrage of missiles, each dealing AOE FIRE damage equal to [c_orange]" + _str_scale + "%[c_white] of ATK. \nCD: " + _skill_cd;
@@ -158,7 +158,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 		case 10:
 			switch(_skill){
 				case DESC_DISPLAY.BASIC_ATTACK:
-					_str = "Ship shoots a fireball that deal dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					_str = "Ship shoots a fireball/rocket that deal NORMAL/AOE dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.SKILL:
 					_str = "Summons FRIEND, when an enemy is killed FRIEND will gain 1 stack for charge. if skill is used when FRIEND is on field it will fire a number of shoots equal to the number of charges it currently has. each charge deals dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
@@ -167,7 +167,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "If FRIEND is on field it will tag every enemy on field and plant a bomb on it, when all enemys are tagged it will go back and detonate all bombs. each bomb deals dmg equal to [c_orange]"+ _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.PASSIVE:
-					_str = "When FRIEND is on the field it will decrease the dmg taken by the ship by 75% and every time the ship is hit it will gain 3 charge stacks.";
+					_str = "When FRIEND is on the field it will decrease the dmg taken by the ship by 50% and every time the ship is hit it will gain 3 charge stacks and lose 1 HP. FRIEND has 5 HP.";
 			}
 			break;
 		case 11:
@@ -191,7 +191,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "Ship shoots 3 void balls that deal dmg equal to [c_orange]3x" + (string(obj_ship.scales[0] * 100 / 3)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.SKILL:
-					_str = "Ships fires a void ball that applies 25% POISON AMP and deals dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					_str = "Ships fires 3 void balls that apply 25% POISON AMP and deals dmg equal to [c_orange]3x" + (string(obj_ship.scales[0] * 100 / 3)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Creates a black hole that applies 4 debuffs to all enemys on field:[c_orange] 75% POISON AMP, 50% SLOWED, 25% DMG AMP, 5 stacks of POISON[c_white].\nCD: " + _skill_cd;

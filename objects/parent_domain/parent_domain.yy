@@ -4,7 +4,6 @@
   "name": "parent_domain",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
@@ -13,7 +12,10 @@
     "name": "Menus",
     "path": "folders/Objects/Menus.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_drawn_button",
+    "path": "objects/obj_drawn_button/obj_drawn_button.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

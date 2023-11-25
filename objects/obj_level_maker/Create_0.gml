@@ -1,3 +1,14 @@
+// Constants
+enum DOMAIN_TYPE{
+	COMBAT = 0,
+	ELITE = 1,
+	TIME = 2,
+	DEFENSE = 3,
+	BOSS = 4,
+	TEST = 5
+}
+
+#region Level generation
 // Level properties
 num_of_floors = 5;
 floor_distance = 64;
@@ -22,6 +33,7 @@ initialize = function(){
 		var _boss_domain = create_domain(num_of_floors * floor_distance, max_distance / 2 + border, num_of_floors - 1, (domain_per_floor + 1) / 2, obj_domain_boss);
 		ds_list_add(domains, _boss_domain);
 	set_available(domains);
+	create_latest_run_file();
 }
 
 reset = function(){
@@ -38,10 +50,11 @@ reset = function(){
 if (global.currentpos == -10)
 	global.currentpos = (domain_per_floor + 1) / 2;
 randomize();
-if (ds_list_size(global.domains) == 0){
+if (!check_latest_run_file()){
 	self.initialize();
 }
 else {
+	override_latest_run_file();
 	player = instance_create_layer(global.currentfloor * floor_distance + floor_distance, global.currentpos * (max_distance / (domain_per_floor + 1)) + border, "Player", obj_menu_player);
 	var _index = 0;
 	for(var _i = 2; _i < num_of_floors; _i++){
@@ -58,21 +71,29 @@ else {
 set_available(domains);
 
 advance = function(_pos){
+	override_latest_run_file();
 	global.currentfloor += 1;
 	global.currentpos = _pos;
-	set_available(domains);
+	set_available(domains);	
 }
 
-enum DOMAIN_TYPE{
-	COMBAT,
-	ELITE,
-	TIME,
-	DEFENSE,
-	BOSS,
-	TEST
-}
-if (global.game_lost) {
+
+if (global.pending_reset) {
 	reset();
-	global.game_lost = false;	
+	global.pending_reset = false;	
 }
 
+#endregion
+
+
+// particles
+part_sys = part_system_create();
+if (!layer_exists("Particles")) layer_create(layer_get_depth(layer_get_id("Background")) - 1, "Particles");
+part_system_layer(part_sys, layer_get_id("Particles"));
+part = part_type_create();
+part_type_sprite(part, spr_pixel, 0, 0, 0);
+part_type_color2(part, c_black, c_maroon);
+part_type_life(part, seconds(4), seconds(4));
+part_type_speed(part, 2, 2.25, 0, 0);
+part_type_alpha3(part,1, 0.9, 0);
+part_type_size(part, 1.5, 2, 0, 0);

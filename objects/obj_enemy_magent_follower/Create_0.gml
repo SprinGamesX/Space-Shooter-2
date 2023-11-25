@@ -11,6 +11,8 @@ echo = make_echo(,scale);
 image_xscale = scale;
 image_yscale = scale;
 shooting = false;
+shooting_cd = 0;
+shooting_cd_max = seconds(1);
 
 follow = function(){
 	

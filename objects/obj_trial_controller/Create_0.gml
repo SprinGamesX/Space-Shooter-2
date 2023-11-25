@@ -4,6 +4,9 @@ index = 0;
 options = 3;
 trial_name = "";
 subtext = "";
+alarm[0] = seconds(1);
+echo_sys = part_system_create();
+part_system_layer(echo_sys, layer_get_id("Echos"));
 
 x = room_width / 2;
 y = 24;
@@ -12,10 +15,13 @@ enum TRIAL{
 
 	BLADE, // red blade boss
 	ABUNDANCE, // red diamond
-	BALANCE // yin & yang
-
+	BALANCE, // yin & yang
+	DECIMATION, // Spears
+	SINGULARITY, // black hole
+	SERPENT
+	
 }
-trials = [TRIAL.BLADE, TRIAL.ABUNDANCE, TRIAL.BALANCE];
+trials = [TRIAL.BLADE, TRIAL.DECIMATION, TRIAL.BALANCE];
 
 
 set_trial = function(){
@@ -35,6 +41,7 @@ generate_diff_buttons = function(){
 		_list[i-1] = _inst;
 	}
 	return _list;
+	
 }
 
 deselect = function(){
@@ -58,3 +65,13 @@ buttons = generate_arrow_buttons(128);
 instance_create_layer(room_width / 2, room_height - 64, "Instances", obj_character_selection);
 y = 16;
 update_level();
+
+// particle
+part = part_type_create();
+part_type_life(part, seconds(10), seconds(10));
+part_type_color1(part, c_red);
+part_type_speed(part, 1, 3, 0, 0);
+part_type_size(part, 1, 1.2, 0, 0);
+part_type_direction(part, 260, 280, 0, 1);
+part_type_sprite(part, spr_pixel, 0, 0, 0);
+part_type_alpha1(part, 0.5);

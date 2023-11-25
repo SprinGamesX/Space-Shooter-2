@@ -5,3 +5,7 @@ follow = function(){
 }
 fade = false;
 alpha = 0;
+
+on_hit = function(){
+	
+}

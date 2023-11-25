@@ -7,8 +7,8 @@ rot = 0;
 echo = make_echo(ECHO.LONG, 1.75);
 frg = make_fragment();
 
-hp_bar_height = 8 * 3;
-hp_bar_width = 64 * 3;
+hp_bar_width = (hp_bar_width / 4) * 3;
+hp_bar_offset = (hp_bar_offset / 4) * 3
 
 entrance_animation_ongoing = true;
 recovered = true;

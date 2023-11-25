@@ -1,4 +1,6 @@
-follow();
+if (target != noone) and (instance_exists(target)){
+	follow();
+}
 animation();
 
 if (cd <= 0){

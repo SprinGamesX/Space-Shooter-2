@@ -3,6 +3,8 @@ event_inherited();
 
 basic_attack = function(){
 	create_projectile(obj_fire_missile, atk_scale, 0, self, 5, ,,4);
+	create_projectile(obj_fire_wiggle_missile, atk_scale, 0, self, 5, ,,3);
+	create_projectile(obj_fire_wiggle_missile2, atk_scale, 0, self, 5, ,,3);
 }
 
 skill = function(){

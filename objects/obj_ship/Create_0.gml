@@ -1,3 +1,5 @@
+adjust_gui_alpha();
+
 // base stats
 ship_index = 0;
 ship_name = "";
@@ -97,6 +99,8 @@ setup = function(_id){
 	ds_map_destroy(_temp);
 	ini_close();
 }
+	
+	
 
 save_base = function(_id){
 	ini_open("characters.ini");
@@ -224,4 +228,11 @@ if (!file_exists("characters.ini")){
 		save_adds(ship_index);
 	}
 }
-else { setup(ship_index); }
+else { 
+	
+	setup(ship_index);
+	ini_ship_stats(ship_index);
+	save_base(ship_index);
+	setup(ship_index);
+	
+}
