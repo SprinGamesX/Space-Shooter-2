@@ -8,7 +8,9 @@ if (!kill_spree){
 	speed = 0;
 	direction = 0;
 	image_angle = direction;
+	if (hp <= 0) instance_destroy();
 }
+
 else {
 	if (current_target == noone) current_target = instance_nearest(x, y, parent_enemy);
 	else {

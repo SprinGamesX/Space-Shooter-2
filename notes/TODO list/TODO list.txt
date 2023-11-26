@@ -2,9 +2,11 @@
 add ying & yang boss
 add character obtaining screen
 add survival domain
-add time domain
 add passives
 add elemental bosses
+add victory/defeat screens
+make elite enemys harder and more interesting
+add more then one ship (switchable)
 
 Maybe list:
 add toughness and weaknesses to bosses
@@ -15,10 +17,5 @@ SS-Grade Fire ship:
 - Skill: activates all bombs
 - Ult: enters Destruction state, while in this state every enemy is stopped and the ship can move a target via movement keys, when ult button is pressed again it will nuke at where the target is.
 
-SS-Graade Venom ship
-- Basic attack: two normal attacks followed by enhanced 3rd attack
-- Skill: Fires bullets that apply POISON AMP for ? seconds
-- Ult: Summons black hole that deals venom aoe dmg to all enemys in it
-- Passive: for each enemy that currently has POISON applied, atk will increase by ?%
 
  

@@ -1,6 +1,6 @@
 event_inherited();
 domain_type = DOMAIN_TYPE.COMBAT;
-click = function(){
+on_click = function(){
 	
 	//show_debug_message("Clicked on Domain: Combat, " + string(floore) + "," + string(pos));
 	if (accessable) {

@@ -1,5 +1,6 @@
 global.mid_transition = false;
 global.room_target = -1;
+global.alpha = 1;
 
 function transition_place_sequence(_type)
 {
@@ -28,4 +29,13 @@ function transition_change_room(){
 function transition_finish(){
 	layer_sequence_destroy(self.elementID);
 	global.mid_transition = false;
+}
+
+function adjust_gui_alpha(){
+	if (global.mid_transition){
+		if (global.room_target != room){
+			if (global.alpha > 0) global.alpha -= 1 / gamespeed_fps;
+		}
+		else if (global.alpha < 1) global.alpha += 1 / gamespeed_fps;
+	}
 }

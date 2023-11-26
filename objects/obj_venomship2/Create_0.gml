@@ -23,7 +23,9 @@ basic_attack = function(){
 }
 
 skill = function(){
-	create_projectile(obj_venom_amplifier, skill_scale, 0, self, 3, x + 10, y,2, 1);
+	create_projectile(obj_venom_amplifier, skill_scale, 0, self, 7, x + 10, y,2, 1);
+	create_projectile(obj_venom_amplifier, skill_scale, 45, self, 7, x + 10, y,2, 1);
+	create_projectile(obj_venom_amplifier, skill_scale, -45, self, 7, x + 10, y,2, 1);
 }
 
 ultimate = function(){

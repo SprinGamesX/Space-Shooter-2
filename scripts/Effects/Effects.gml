@@ -11,3 +11,6 @@ function screenshake(_time, _magnitude, _fade){
 		shake_fade = _fade;
 	}
 }
+
+global.menu_part_system = part_system_create();
+part_system_depth(global.menu_part_system, 999);

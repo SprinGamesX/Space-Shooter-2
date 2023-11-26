@@ -1,9 +1,10 @@
 var enemylist = ds_list_create();
 var n = collision_rectangle_list(0, 0, room_width, room_height, parent_enemy, 0, 0, enemylist, false);
+var _ship = instance_nearest(x, y, parent_ship);
 
 for(var i = 0; i < n; i++){
 	var _enemy = enemylist[|i];
-	_enemy.on_hit(dmg / 3);
+	execute_dmg(_ship, _enemy, self);
 	switch(index){
 		case 0:
 			apply_status(_enemy, STATUS.DMG_AMP, 1, seconds(2), d_amp);
@@ -15,7 +16,7 @@ for(var i = 0; i < n; i++){
 			apply_status(_enemy, STATUS.POISON_AMP, 1, seconds(2), v_amp);
 			break;
 		case 3:
-			apply_status_elemental(_enemy, STATUS.POISON, 1, 5, true);
+			apply_status_elemental(_enemy, STATUS.POISON, 1, 2, true);
 			break;
 	}
 }

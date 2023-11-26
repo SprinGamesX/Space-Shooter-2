@@ -12,8 +12,8 @@
     "path": "folders/Objects/Menus/Buttons.yy",
   },
   "parentObjectId": {
-    "name": "obj_menu_button",
-    "path": "objects/obj_menu_button/obj_menu_button.yy",
+    "name": "obj_drawn_button",
+    "path": "objects/obj_drawn_button/obj_drawn_button.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

@@ -8,9 +8,16 @@ wave_height = room_height / 4;
 time = 0;
 death_time = seconds(3);
 frg = make_fragment();
+// ultimate
+ultimate_state = false;
+charge = 0;
+charge_max = 20;
+sped = 10;
 
 basic_atk = function(){
 	summon_enemy(obj_enemy1, lv, x, y);
+	summon_enemy(obj_enemy1, lv, x, y, 175);
+	summon_enemy(obj_enemy1, lv, x, y, 185);
 }
 
 skill = function(){
@@ -19,16 +26,36 @@ skill = function(){
 }
 
 ult = function(){
-	max_skill_cd -= max_skill_cd / 4;
-	max_atk_cd -= max_atk_cd / 4;
+	ultimate_state = true;
 }
 
 special_movement = function(){
-	// write special movement pattern if there is one
 	if (!entrance_animation_ongoing) and !stopped{
-		rot += 0.5;
-		y = start_y + (sin(time / 40) * wave_height);
-		time += 1 - (slowed);
+		if (!ultimate_state){
+			def = 0;
+			rot += 0.5;
+			y = start_y + (sin(time / 40) * wave_height);
+			time += 1 - (slowed);
+		}
+		else {
+			def = 0.5;
+			rot += charge;
+			charge += 0.1;
+			if (charge >= charge_max){
+				x -= sped;
+				if (x <= 0){
+					screenshake(seconds(1), 1, 0.05);
+					for (var _i = 0; _i < 360; _i += 20)
+						summon_enemy(obj_enemy1, lv, x, y, _i);
+					scale = 0;
+					x = start_x;
+					y = start_y;
+					entrance_animation_ongoing = true;
+					ultimate_state = false;
+					charge = 0;
+				}
+			}
+		}
 		draw_echo(echo);
 	}
 	image_angle = rot;

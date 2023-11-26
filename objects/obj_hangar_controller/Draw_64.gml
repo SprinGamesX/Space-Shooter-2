@@ -95,3 +95,5 @@ if(global.mid_transition) {
 	else enter = false;
 	if (alpha > 0) and (!enter) alpha -= (1/60);
 }
+
+color = _color;

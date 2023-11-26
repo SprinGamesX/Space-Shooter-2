@@ -11,5 +11,5 @@ uni_freeze = shader_get_uniform(sh_frozen, "freeze");
 alarm[9] = seconds(1);
 
 on_hit = function(_dmg){
-	hp -= (_dmg * (1 + dmg_amp)) - (_dmg * def);
+	hp -= (_dmg);
 }

@@ -27,6 +27,7 @@ if (!stopped){
 	}
 
 }
+else speed = 0;
 
 if (hp <= 0){
 	hp = 0;

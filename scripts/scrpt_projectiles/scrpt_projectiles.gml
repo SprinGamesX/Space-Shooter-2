@@ -3,11 +3,8 @@
 function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 	var _inst = instance_place(x, y, parent_enemy);
 	if (_hitlist != -1) and (exists_in_hitlist(_hitlist, _inst)) exit;
-	if (_inst != noone) and (!_inst.immune){
+	if (_inst != noone) {
 		var _ship = instance_nearest(x, y, parent_ship);
-		apply_ex(_inst, _ship.ex,self.effect_chance + _ship.effect_hit_rate);	
-		var _dmg = add_extra_dmg(_object.dmg, _inst);
-		_object.on_hit(_inst);
 		// AOE
 		if (_aoe_size != -1){
 			if (_hitlist != -1)
@@ -19,9 +16,8 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 			// pierce
 			if (_hitlist != -1) and ((pierce > 0) or (object_index == obj_aoe)){
 				ds_list_add(_hitlist, _inst);
-				_inst.on_hit(_dmg);
+				execute_dmg(_ship, _inst, _object);
 				create_hit_indicator(_object);
-				create_dmg_indicator(_inst.x,_inst.y,_dmg, _object.is_crit, self.element);
 				if (_object.object_index != obj_aoe){
 					if (object_is_ancestor(_inst.object_index, parent_elite_enemy)) instance_destroy();
 				}
@@ -29,8 +25,7 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 			else {
 				instance_destroy();
 				create_hit_indicator(_object);
-				_inst.on_hit(_dmg);
-				create_dmg_indicator(_inst.x,_inst.y,_dmg, _object.is_crit, self.element);
+				execute_dmg(_ship, _inst, _object);
 			}
 		}
 		
@@ -39,26 +34,23 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 }
 function projectile_attach_collision(_hitlist, _lenx, _leny, _source, _centered = false, _aoe_size = -1){
 	var _y = y;
+	var _ship = instance_nearest(x, y, parent_ship);
 	if (_centered) _y = y - _leny / 2;
 	draw_rectangle(x - _lenx / 2, _y, x + _lenx, y + _leny, false);
 	var _num = collision_rectangle_list(x - _lenx / 2, _y, x + _lenx, y + _leny, parent_enemy, false, true, _hitlist, false);
 	for(var _i = 0; _i < _num; _i++){
 		var _inst = ds_list_find_value(_hitlist, _i);
 		if (!_inst.immune){
-			var _dmg = calculate_dmg(_source.atk, _source.critrate, _source.critdmg, self.dmg_scale);
-			_dmg = add_extra_dmg(_dmg, _inst);
-			create_dmg_indicator(_inst.x, _inst.y, _dmg, false ,element);
 			create_hit_indicator(self, _inst.x, _inst.y);
-			_inst.on_hit(_dmg);
-			apply_ex(_inst, _source.ex, effect_chance);
+			execute_dmg(_ship, _inst, self);
 		}
 	}
 	ds_list_clear(_hitlist);
 }
 
-function apply_ex(_inst, _ex, _chance){
-	if (chance(_chance - _inst.resist)){
-		if (self.element == ELEMENTS.ICE){
+function apply_ex(_inst, _source){
+	if (chance(_source.effect_chance - _inst.resist)){
+		if (_source.element == ELEMENTS.ICE){
 				if (_inst.freeze < 20) _inst.freeze++;
 				if (_inst.freeze > 0){
 					apply_status(_inst, STATUS.DMG_AMP, 1, seconds(5), 0.01 * _inst.freeze, false);
@@ -66,22 +58,22 @@ function apply_ex(_inst, _ex, _chance){
 				}
 				_inst.alarm[11] = seconds(5);
 			}
-		if (self.element == ELEMENTS.FIRE){
+		if (_source.element == ELEMENTS.FIRE){
 				randomize();
 				if (_inst.explosive = false) and (random(1) < 0.5){
 					_inst.explosive = true;
 					_inst.alarm[10] = seconds(10);
 				}
 			}
-		if (self.element == ELEMENTS.LIFE){
+		if (_source.element == ELEMENTS.LIFE){
 				if (_inst.life_ripe < 10) _inst.life_ripe++;
 				_inst.alarm[8] = seconds(10);
 			}
-		if (self.element == ELEMENTS.VENOM){
+		if (_source.element == ELEMENTS.VENOM){
 				if (_inst.poison + 1 <= 15) _inst.poison += 1;
 				else _inst.poison = 15;	
 			}
-		if (self.element == ELEMENTS.LIGHTNING){
+		if (_source.element == ELEMENTS.LIGHTNING){
 			if(_inst.shocked = false) and (chance(0.5)){
 				_inst.shocked = true;
 				_inst.alarm[7] = seconds(20);
@@ -90,19 +82,12 @@ function apply_ex(_inst, _ex, _chance){
 	}
 }
 
-function add_extra_dmg(_dmg, _inst){
+function add_extra_dmg(_dmg, _inst, _ship){
 	var f_dmg = _dmg;
-	var _ship = instance_nearest(x, y, parent_ship);
-	// Freeze dmg amp
+	// Life ripe dmg amp
 	var _amp = 1;
 	if (chance(_ship.ex)) _amp = 1.5;
-	f_dmg += (_dmg / 100) * _inst.freeze * _amp;
-	// Life ripe dmg amp
-	_amp = 1;
-	if (chance(_ship.ex)) _amp = 1.5;
 	f_dmg += (_ship.max_hp / 100) * _inst.life_ripe * _amp;
-	// Elemental dmg bonus amp
-	f_dmg += (f_dmg / 100) * (_ship.elemental_bonus);
 	// Shock
 	if(_inst.shocked) shock_nearby_enemys(_inst, f_dmg, _ship);
 	return f_dmg;
@@ -114,11 +99,12 @@ function shock_nearby_enemys(_inst, _dmg, _ship){
 	var _r = 64;
 	if (chance(_ship.ex)) _r *= 2;
 	var _num = collision_circle_list(_inst.x, _inst.y, _r, parent_enemy, false, true, _list, true);
-	_dmg /= 2;
 	for(var i = 0; i < _num; i++){
 		var _e = _list[|i];
-		create_dmg_indicator(_e.x, _e.y, string(_dmg) + "\n Shocked",,ELEMENTS.LIGHTNING);
-		_inst.on_hit(_dmg);
+		if (_e.id != _inst.id){
+			_dmg = execute_dmg(_ship, _e, noone, 0.1, false);
+			create_dmg_indicator(_e.x, _e.y, _dmg, "Shocked", ELEMENTS.LIGHTNING);
+		}
 	}
 	ds_list_destroy(_list);
 }
@@ -131,8 +117,7 @@ function exists_in_hitlist(_hit_list, _enemy){
 
 function create_aoe(_parent, _size, _x = x, _y = y){
 	with(instance_create_layer(_x, _y, "SpecialEffects", obj_aoe)){
-		dmg = _parent.dmg;
-		is_crit = _parent.is_crit;
+		scaling = _parent.scaling;
 		size = _size;
 		switch(_parent.element){
 			case ELEMENTS.FIRE: sprite_index = spr_fire_aoe; break;
@@ -155,7 +140,7 @@ function aoe_collision(_hit_list){
 
 function create_hit_indicator(_parent ,_x = x, _y = y){
 	with(instance_create_layer(_x, _y, "SpecialEffects", obj_aoe)){
-		dmg = 0;
+		scaling = 0;
 		is_crit = false;
 		size = 0.5;
 		switch(_parent.element){

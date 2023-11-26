@@ -1,12 +1,18 @@
 cd = seconds(1.5);
-dmg = calculate_dmg(parent_ship.atk, 0.25, 0.5, parent_ship.ult_scale);
+element = ELEMENTS.VENOM;
 v_amp = 0.75;
 d_amp = 0.25;
 slow = 0.5;
 index = 0;
 hits = 6;
+effect_chance = 0;
+scaling = 0.1;
 
 alarm[0] = cd;
+
+on_hit = function(){
+
+}
 
 // particles
 part_sys = part_system_create();

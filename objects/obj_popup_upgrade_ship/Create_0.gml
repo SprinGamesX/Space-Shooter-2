@@ -1,6 +1,7 @@
 event_inherited();
 if(!layer_exists("UI")) layer_create(-500, "UI");
 self.layer = layer_get_id("UI");
+slider = 0;
 
 update_price = function(){
 	price = ((obj_ship.lvl + 1) * (100 * (floor(obj_ship.lvl / 10) + 1)));

@@ -10,6 +10,12 @@ function allow_movement(_spd){
 	var _hsp = _hmove * _spd;
 	var _vsp = _vmove * _spd;
 	
+	if (immune){
+		_hsp *= immune_spd_multiplier;
+		_vsp *= immune_spd_multiplier;
+	}
+	
+	
 	if (place_meeting(x + _hsp, y, obj_movement_barrier)){
 		while(abs(_hsp) > 0.1){
 			_hsp *= 0.5;
@@ -31,7 +37,7 @@ function allow_movement(_spd){
 	
 }
 
-function preform_skills(_key_attack, _key_skill, _key_ult){
+function preform_skills(_key_attack, _key_skill, _key_ult, _key_dodge){
 	// Basic attack
 	if (atk_cd == 0) and (_key_attack){
 		atk_cd = max_atk_cd;
@@ -52,19 +58,40 @@ function preform_skills(_key_attack, _key_skill, _key_ult){
 		ultimate();
 	}
 	if(ult_cd > 0) {ult_cd --}
+	
+	if (_key_dodge) and (immune_cd == 0){
+		immune = true;
+		immune_cd = immune_cd_max;
+	}
+	if (immune){
+		immune_time--;
+		if (immune_time <= 0){
+			immune = false;
+			immune_time = immune_time_max;
+			immune_cd = immune_cd_max;
+		}
+	}
+	if (immune_cd > 0) immune_cd--;
+	
+	
+	if (immune_cd < 0) immune_cd = 0;
+	if (ult_cd < 0) ult_cd = 0;
+	if (skill_cd < 0) skill_cd = 0;
+	if (atk_cd < 0) atk_cd = 0;
 }
 
 function create_projectile(_obj, _scaling, _dir, _parent, _speed, _x = x, _y = y, _aoe = -1, _base_chance = 0.2, _pierce = 0){
 	 var _inst = instance_create_layer(_x, _y, "Projectiles", _obj);
 	 with(_inst){
-		dmg = calculate_dmg(_parent.atk, _parent.critrate, _parent.critdmg, _scaling);
-		if (dmg = _parent.atk * _scaling) is_crit = false;
-		else is_crit = true;
+		scaling = _scaling;
 		source = _parent;
 		direction = _dir;
 		speed = _speed;
 		aoe = _aoe;
 		pierce = _pierce;
+		if (pierce > 0){
+			hit_list = ds_list_create();
+		}
 		effect_chance = _base_chance;
 	 }
 	 return _inst;
@@ -72,9 +99,7 @@ function create_projectile(_obj, _scaling, _dir, _parent, _speed, _x = x, _y = y
 
 function create_charge_projectile(_obj, _scaling, _dir, _parent, _speed, _charge, _x = x, _y = y, _aoe = -1, _base_chance = 0.2){
 	 with(instance_create_layer(_x, _y, "Projectiles", _obj)){
-		dmg = calculate_dmg(_parent.atk, _parent.critrate, _parent.critdmg, _scaling);
-		if (dmg = _parent.atk * _scaling) is_crit = false;
-		else is_crit = true;
+		scaling = _scaling;
 		charge = _charge;
 		source = _parent;
 		direction = _dir;
@@ -93,7 +118,7 @@ function create_projectile_attach(_obj, _scaling, _parent, _hits, _cd,_lenx,_len
 		source = _parent;
 		aoe = _aoe;
 		effect_chance = _base_chance;
-		dmg_scale = _scaling / _hits;
+		scaling = _scaling / _hits;
 		alarm[0] = cd;
 	 }
 }

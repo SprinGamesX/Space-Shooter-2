@@ -1,0 +1,12 @@
+Buff:
+L1 - General buff
+F2 - General buff
+
+
+Nerf:
+Li2 - Basic attack nerf
+L2 - ult nerf
+
+
+Fine:
+Li1

@@ -1,0 +1,1 @@
+draw_bg_box(-100, -100, room_width + 200, room_height + 200, c_maroon, 0.3);

@@ -16,3 +16,4 @@ if (scale < 1){
 image_xscale = scale;
 image_yscale = scale;
 draw_echo(echo);
+kill_outside_bounds(-50);

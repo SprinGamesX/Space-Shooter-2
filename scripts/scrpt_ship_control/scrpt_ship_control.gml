@@ -5,13 +5,13 @@ function ini_ship_stats(_id){
 			with(obj_ship){
 				ship_name = "I1";
 				cds = [seconds(0.25), seconds(3), seconds(15)];
-				scales = [0.1, 0.55, 1.52];
+				scales = [0.2, 0.55, 1.5];
 				element = ELEMENTS.ICE;
 			}
 			break;
 		case 1:
 			with(obj_ship){
-				ship_name = "F1";
+				ship_name = "Spark";
 				cds = [seconds(0.5), seconds(15), seconds(60)];
 				scales = [0.1, 0.3, 0.4];
 				element = ELEMENTS.FIRE;
@@ -43,8 +43,8 @@ function ini_ship_stats(_id){
 			break;
 		case 5:
 			with(obj_ship){
-				ship_name = "F2";
-				cds = [seconds(0.75), seconds(20), seconds(30)];
+				ship_name = "Pheonix";
+				cds = [seconds(0.75), seconds(15), seconds(20)];
 				scales = [0.5, 0.8, 0];
 				element = ELEMENTS.FIRE;
 			}
@@ -67,9 +67,9 @@ function ini_ship_stats(_id){
 			break;
 		case 8:
 			with(obj_ship){
-				ship_name = "Li2";
-				cds = [seconds(0.4), seconds(1), seconds(40)];
-				scales = [0.4, 0, 10];
+				ship_name = "Volt";
+				cds = [seconds(0.5), seconds(1), seconds(40)];
+				scales = [0.3, 0, 10];
 				element = ELEMENTS.LIGHTNING;
 			}
 			break;
@@ -85,15 +85,15 @@ function ini_ship_stats(_id){
 			with(obj_ship){
 				ship_name = "F3";
 				cds = [seconds(0.3), seconds(15), seconds(20)];
-				scales = [0.2, 0.5, 1];
+				scales = [0.2, 0.5, 2];
 				element = ELEMENTS.FIRE;
 			}
 			break;
 		case 11:
 			with(obj_ship){
-				ship_name = "L3";
+				ship_name = "Mothership";
 				cds = [seconds(0.7), seconds(15), seconds(50)];
-				scales = [0.3, 0.3, 0.1];
+				scales = [0.3, 0.4, 0.1];
 				element = ELEMENTS.LIFE;
 			}
 			break;
@@ -101,13 +101,15 @@ function ini_ship_stats(_id){
 			with(obj_ship){
 				ship_name = "V2";
 				cds = [seconds(0.4), seconds(7), seconds(30)];
-				scales = [0.05, 0.3, 0.1];
+				scales = [0.1, 0.7, 0.1];
 				element = ELEMENTS.VENOM;
 			}
 			break;
 	}
-	with(obj_ship){
-		lvl = 1;
+	if (!file_exists("characters.ini")){
+		with(obj_ship){
+			lvl = 1;
+		}
 	}
 	
 }

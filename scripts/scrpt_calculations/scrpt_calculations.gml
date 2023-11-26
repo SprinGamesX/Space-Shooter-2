@@ -1,16 +1,58 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function calculate_dmg(_atk, _critrate, _critdmg, _dmgscale){
-	var _ship = instance_nearest(x, y, parent_ship);
-	// Is crit
-	var _crit = chance(_critrate);
-	// base damage
-	var _dmg = (_atk * _dmgscale)
-	// if crit add crit dmg
-	if (_crit) _dmg += _dmg * _critdmg;
-	// add elemental dmg bonus
-	_dmg += _dmg * _ship.elemental_bonus;
-	return _dmg;
+function execute_dmg(_ship, _enemy, _projectile, _alternative_scale = noone, _make_indicator = true){
+	if (_enemy.immune){
+		create_status_indicator(_enemy.x, _enemy.y, "Immune", 0, c_gray);
+		return 0;
+	}
+	else if (instance_exists(_ship)){
+		var alt = _alternative_scale != noone;
+		// Is crit
+		randomize();
+		var _crit = chance(_ship.critrate);
+	
+		// base damage
+		var _dmg = 0;
+		if (!alt){
+			_dmg = (_ship.atk * _projectile.scaling);
+		}
+		else{
+			_dmg = (_ship.atk * _alternative_scale);
+		}
+	
+		// if crit add crit dmg
+		if (_crit) _dmg += _dmg * _ship.critdmg;
+	
+		// add elemental dmg bonus
+		_dmg += _dmg * _ship.elemental_bonus;
+		if (!alt){
+			// apply elemental effects
+			apply_ex(_enemy, _projectile);
+	
+			// trigger projectile on_hit
+			_projectile.on_hit(_enemy);
+			
+			// add extra dmg based on elemental status
+			_dmg += add_extra_dmg(_dmg, _enemy, _ship);
+		}
+		
+	
+		// dmg bonuses/reductions
+		_dmg -= (_dmg) * _enemy.def;
+		_dmg *= 1 + _enemy.dmg_amp;
+	
+		// Apply dmg to enemy
+		_enemy.on_hit(_dmg);
+	
+		// Make indicator
+		if (!alt){
+			var _a = "";
+			if (_crit) _a = "CRIT";
+			create_dmg_indicator(_enemy.x, _enemy.y, _dmg, _a, _projectile.element);
+		}
+		// return the total dmg
+		return _dmg;
+	}
 }
 
 function chance(_var){
@@ -19,12 +61,12 @@ function chance(_var){
 
 }
 
-function seconds(_time){
-	return _time * game_get_speed(gamespeed_fps);
+function seconds(_seconds){
+	return _seconds * game_get_speed(gamespeed_fps);
 }
 
-function seconds_to_time(_seconds){
-	return _seconds / game_get_speed(gamespeed_fps);
+function time_to_seconds(_time){
+	return _time / game_get_speed(gamespeed_fps);
 }
 
 function kill_outside_bounds(_custom_bound = -30){
@@ -60,4 +102,23 @@ function color_for_element(_element){
 
 function num_in_range(_num, _min, _max){
 	return _max >= _num and _num >= _min; 
+}
+
+function bounce_on_edge(_dir, _bounces){
+	
+	
+	var _bounced = false;
+	var _b = _bounces;
+	if (place_meeting(x, y, obj_movement_barrier_horizontal)){
+		direction = 360 - _dir;
+		_bounced = true;
+		_dir = direction;
+	}
+	if (place_meeting(x, y, obj_movement_barrier_vertical)){
+		direction = 180 - _dir;
+		_bounced = true;
+	}
+	if (_bounced) _b--;
+	
+	return _b;
 }

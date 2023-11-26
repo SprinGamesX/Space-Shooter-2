@@ -7,8 +7,14 @@ entrance_animation_ongoing = true;
 is_dead = false;
 immune = false;
 
-hp_bar_height = 8 * 3;
-hp_bar_width = 64 * 6;
+// Health bar
+hp_bar_height = 16;
+hp_bar_width = 192;
+hp_bar_offset = 4;
+var bar_scale = 4;
+hp_bar_width *= bar_scale;
+hp_bar_height *= bar_scale;
+hp_bar_offset *= bar_scale;
 
 uni_freeze = shader_get_uniform(sh_frozen, "freeze");
 
@@ -34,10 +40,6 @@ entrance_animation = function(){
 
 death_animation = function(){
 	// write death script
-}
-
-on_hit = function(_dmg){
-	hp -= _dmg;
 }
 
 alarm[9] = seconds(1);
