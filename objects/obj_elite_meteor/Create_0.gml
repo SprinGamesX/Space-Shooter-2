@@ -43,7 +43,7 @@ reset_to_base = function(){
 	speed = 0;
 	entrance_animation_ongoing = true;
 	bounces = 4;
-	spd = 1;
+	spd = 2;
 	radius = 0;
 	charging = seconds(2);
 }

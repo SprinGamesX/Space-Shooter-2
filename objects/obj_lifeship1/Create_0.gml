@@ -9,7 +9,7 @@ basic_attack = function(){
 skill = function(){
 	if (hp < max_hp - 10) hp += 10;
 	else hp = max_hp;
-	create_dmg_indicator(x, y, "+10", false, ELEMENTS.HEALING);
+	create_dmg_indicator(x, y, "+10", "Healing", ELEMENTS.HEALING);
 	for(var _i = -15; _i <= 15; _i += 15){
 		create_projectile(obj_lifeball, skill_scale, _i, self, 3);
 	}
