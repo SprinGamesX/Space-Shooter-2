@@ -70,8 +70,47 @@
 - Added new elite enemy: Magnet
 - Added rewards for finishing domains
 
-27/10/23 -> 9/10/23 - Note 10
+27/10/23 -> 9/11/23 - Note 10
 - Added SS-Grade Life ship
 - Fixed bug: magnet boss followers return to boss after death
 - Fixed bug: Game crashes when fighting sword boss
+
+10/11/23 -> 26/11/23 - Note 11
+Ships:
+- Added SS-Grade Venom ship
+- Added debuffs: DMG-AMP, POISON-AMP, SLOWED
+- Added: Ships can now dash into an enemy to insta-kill it every 3s, doesnt work on bosses
+
+Enemys:
+- Added new elite enemy: Cannon
+- Added mew elite enemy: Meteor
+- Added new enemy: Meteor (Small)
+- Added new enemy: Swordbomb
+- Added new enemy projectile: fireball
+- Added new boss enemy: DECIMATION
+
+Menus:
+- Added new trial: DECIMATION
+- Added different bosses depending on selected trial
+- Added backgrounds to menus: Trial selection, Hangar, Domain selection
+- Added cursor
+- Added menu for controlling past runs (WIP)
+- Added new domain: Time
+
+Technical:
+- Added bouncing capabilities for enemys
+- Added file savings for latest run (WIP)
+- Changed the way dmg is calculated
+
+Visual:
+- Added new boss health bars
+- Moved players skill and ultimate CD bars and enhanced visuals
+- Changed buttons to be consistant
+
+Bugs:
+- Fixed bug: sword boss spawning outside the map
+- Fixed bug: meteor boss escaping the map
+- Fixed bug: game crashing after dying while an enemy has DOT
+- Fixed bug: new bosses not spawning
+
 
