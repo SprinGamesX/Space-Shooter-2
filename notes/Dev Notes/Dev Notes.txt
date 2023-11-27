@@ -113,4 +113,7 @@ Bugs:
 - Fixed bug: game crashing after dying while an enemy has DOT
 - Fixed bug: new bosses not spawning
 
-
+27/11/23 - Note 12
+- Added new domain generation
+- Domains are now saved when exiting game
+- progress not yet saved

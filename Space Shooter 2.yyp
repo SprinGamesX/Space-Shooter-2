@@ -440,6 +440,7 @@
     {"id":{"name":"sh_frozen","path":"shaders/sh_frozen/sh_frozen.yy",},},
     {"id":{"name":"spr_button_arrow","path":"sprites/spr_button_arrow/spr_button_arrow.yy",},},
     {"id":{"name":"obj_enemy_wall","path":"objects/obj_enemy_wall/obj_enemy_wall.yy",},},
+    {"id":{"name":"rm_domain_roadmap","path":"rooms/rm_domain_roadmap/rm_domain_roadmap.yy",},},
     {"id":{"name":"__scribble_get_state","path":"scripts/__scribble_get_state/__scribble_get_state.yy",},},
     {"id":{"name":"scribble_font_get_default","path":"scripts/scribble_font_get_default/scribble_font_get_default.yy",},},
     {"id":{"name":"spr_lightning_slash","path":"sprites/spr_lightning_slash/spr_lightning_slash.yy",},},
@@ -484,6 +485,7 @@
     {"roomId":{"name":"rm_test_battle","path":"rooms/rm_test_battle/rm_test_battle.yy",},},
     {"roomId":{"name":"rm_trial_selection","path":"rooms/rm_trial_selection/rm_trial_selection.yy",},},
     {"roomId":{"name":"rm_existing_run","path":"rooms/rm_existing_run/rm_existing_run.yy",},},
+    {"roomId":{"name":"rm_domain_roadmap","path":"rooms/rm_domain_roadmap/rm_domain_roadmap.yy",},},
   ],
   "templateType": "game",
   "TextureGroups": [

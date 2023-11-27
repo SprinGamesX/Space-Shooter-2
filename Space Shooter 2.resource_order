@@ -385,6 +385,7 @@
     {"name":"obj_boss_sword","order":7,"path":"objects/obj_boss_sword/obj_boss_sword.yy",},
     {"name":"spr_button_arrow","order":5,"path":"sprites/spr_button_arrow/spr_button_arrow.yy",},
     {"name":"obj_enemy_wall","order":1,"path":"objects/obj_enemy_wall/obj_enemy_wall.yy",},
+    {"name":"rm_domain_roadmap","order":8,"path":"rooms/rm_domain_roadmap/rm_domain_roadmap.yy",},
     {"name":"__scribble_get_state","order":14,"path":"scripts/__scribble_get_state/__scribble_get_state.yy",},
     {"name":"scribble_font_get_default","order":9,"path":"scripts/scribble_font_get_default/scribble_font_get_default.yy",},
     {"name":"spr_lightning_slash","order":8,"path":"sprites/spr_lightning_slash/spr_lightning_slash.yy",},

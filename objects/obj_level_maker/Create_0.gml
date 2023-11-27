@@ -1,12 +1,4 @@
 // Constants
-enum DOMAIN_TYPE{
-	COMBAT = 0,
-	ELITE = 1,
-	TIME = 2,
-	DEFENSE = 3,
-	BOSS = 4,
-	TEST = 5
-}
 
 #region Level generation
 // Level properties

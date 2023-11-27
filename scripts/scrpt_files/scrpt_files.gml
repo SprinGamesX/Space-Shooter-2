@@ -3,47 +3,55 @@
 global.screen_width = 1920;
 global.screen_height = 1080;
 
+global.domain_roadmap = [];
+
 function check_latest_run_file(){
-	return file_exists("runs.ini");
+	return file_exists("latest.ini");
 }
 
 function create_latest_run_file(){
 	if (!check_latest_run_file()){
-		ini_open("runs.ini");
-		var _save = ds_map_create();
-		ds_map_add(_save, "domains", global.domains);
-		ds_map_add(_save, "difficulty", global.difficulty);
-		ds_map_add(_save, "trial", global.trialtype);
-		ds_map_add(_save, "floor", global.currentfloor);
-		ds_map_add(_save, "pos", global.currentpos);
-		ds_map_add(_save, "ship", global.selected_ship);
-		ini_write_string("runs", "latest", ds_map_write(_save));
+		ini_open("latest.ini");
+		// Player data
+		ini_write_real("player", "ship", global.selected_ship);
+		ini_write_real("player", "floor", global.currentfloor);
+		ini_write_real("player", "pos", global.currentpos);
+		
+		// Domain data
+		ini_write_real("domain", "floors", global.floor_count + 1);
+		ini_write_real("domain", "count", global.domains_per_floor);
+		for (var i = 0; i < array_length(global.domain_roadmap); i++){
+			for (var j = 0; j < array_length(global.domain_roadmap[i]); j++){
+				ini_write_real("domain", string(i) + "-" + string(j), global.domain_roadmap[i,j]);
+			}
+		}
+		
 		ini_close();
-		ds_map_destroy(_save);
 	}
 }
 
 function override_latest_run_file(){
-		if (file_exists("runs.ini")) file_delete("runs.ini");
+		if (file_exists("latest.ini")) file_delete("latest.ini");
 		create_latest_run_file();
 }
 
 function delete_latest_run_file(){
-	if (file_exists("runs.ini")) file_delete("runs.ini");
+	if (file_exists("latest.ini")) file_delete("latest.ini");
 }
 
 function load_latest_run(){
 	if (check_latest_run_file()){
-		ini_open("runs.ini");
-		var _run = ds_map_create();
-		ds_map_read(_run, ini_read_string("runs", "latest", ""));
-		global.domains = ds_map_find_value(_run,"domains");
-		global.difficulty = ds_map_find_value(_run,"difficulty");
-		global.trialtype = ds_map_find_value(_run,"trial");
-		global.currentfloor = ds_map_find_value(_run,"floor");
-		global.currentpos = ds_map_find_value(_run,"pos");
-		global.selected_ship = ds_map_find_value(_run,"ship");
+		ini_open("latest.ini");
+		global.currentfloor = ini_read_real("player", "floor", 0);
+		global.selected_ship = ini_read_real("player", "ship", 0);
+		global.currentpos = ini_read_real("player", "pos", 0);
+		var _f = ini_read_real("domain", "floors", 0);
+		var _c = ini_read_real("domain", "count", 0);
+		for (var i = 1; i <= _f; i++){
+			for (var j = 0; j < _c; j++){
+				global.domain_roadmap[i,j] = ini_read_real("domain", string(i) + "-" + string(j), -1);
+			}
+		}
 		ini_close();
-		ds_map_destroy(_run);
 	}
 }

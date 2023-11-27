@@ -3,11 +3,39 @@ global.currentpos = -10;
 global.domains = ds_list_create();
 global.pending_reset = false;
 
+enum DOMAIN_TYPE{
+	BLANK = -1,
+	COMBAT = 0,
+	ELITE = 1,
+	TIME = 2,
+	DEFENSE = 3,
+	BOSS = 4,
+	TEST = 5
+}
+
 
 function create_domain(_x, _y, _floore, _pos, _domain_type = obj_domain_combat){
 	var _inst = instance_create_layer(_x, _y, "Domains", _domain_type)
 	_inst.floore = _floore;
 	_inst.pos = _pos;
+	return _inst;
+}
+
+function create_domain_type(_x, _y, _floore, _pos, _domain_type){
+	var d = obj_domain_combat;
+	switch(_domain_type){
+		case DOMAIN_TYPE.ELITE: d = obj_domain_elite; break;
+		case DOMAIN_TYPE.TIME: d = obj_domain_time; break;
+		case DOMAIN_TYPE.BOSS: d = obj_domain_boss; break;
+		case DOMAIN_TYPE.BLANK: d = noone; break;
+		default: d = obj_domain_combat;
+	}
+	var _inst = noone;
+	if (d != noone){
+		_inst = instance_create_layer(_x, _y, "Domains", d)
+		_inst.floore = _floore;
+		_inst.pos = _pos;
+	}
 	return _inst;
 }
 
