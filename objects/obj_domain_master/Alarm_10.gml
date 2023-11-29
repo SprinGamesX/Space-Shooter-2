@@ -9,7 +9,9 @@ if (global.current_domain_type == DOMAIN_TYPE.BOSS){
 	delete_latest_run_file();
 	transition_start(rm_trial_selection, seq_fade_out, seq_fade_in);
 }
-else
-	transition_start(rm_domain_selection, seq_fade_out, seq_fade_in);
+else{
+	global.game_won = true;
+	transition_start(rm_domain_roadmap, seq_fade_out, seq_fade_in);
+}
 
 

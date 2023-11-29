@@ -9,5 +9,5 @@ set_button = function(_parent){
 
 on_click = function(){
 	global.selected_ship = parent.index;
-	transition_start(rm_domain_selection, seq_slide_out, seq_slide_in);
+	transition_start(rm_domain_roadmap, seq_slide_out, seq_slide_in);
 }

@@ -13,12 +13,12 @@ y = 24;
 
 enum TRIAL{
 
-	BLADE, // red blade boss
-	ABUNDANCE, // red diamond
-	BALANCE, // yin & yang
-	DECIMATION, // Spears
-	SINGULARITY, // black hole
-	SERPENT
+	BLADE = 1, // red blade boss
+	ABUNDANCE = 2, // big tree
+	BALANCE = 3, // yin & yang
+	DECIMATION = 4, // Spears
+	SINGULARITY = 5, // black hole
+	SERPENT = 6
 	
 }
 trials = [TRIAL.BLADE, TRIAL.DECIMATION, TRIAL.BALANCE];

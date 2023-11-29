@@ -1,6 +1,11 @@
 event_inherited();
+
 on_click = function(){
-	show_debug_message("Clicked");
+	
+	if (accessable) {
+		obj_menu_player.move_to_domain(self);
+	}
+
 }
 
 access = function(){

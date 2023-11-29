@@ -1,6 +1,7 @@
 global.currentfloor = 0;
 global.currentpos = -10;
 global.domains = ds_list_create();
+global.game_won = false;
 global.pending_reset = false;
 
 enum DOMAIN_TYPE{
@@ -45,14 +46,18 @@ function create_random_domain(_x, _y, _floore, _pos){
 	return create_domain(_x, _y, _floore, _pos, _dom);
 }
 
-function set_available(_domains){
-	for (var _i = 0; _i < ds_list_size(_domains); _i++){
-		var _dom = _domains[|_i];
-		if (instance_exists(_dom)){
-			_dom.access();
-			if (_dom.floore != global.currentfloor + 1) _dom.lock();
-			if (_dom.pos > global.currentpos + 1) or (_dom.pos < global.currentpos - 1) _dom.lock();
-	}}
+function set_available(){
+	var doms = ds_list_create();
+	var c = collision_rectangle_list(0, 0, room_width, room_height, parent_domain, 0, 0, doms, 1);
+	for (var i = 0; i < c; i++){
+			var _dom = doms[|i];
+			if ((_dom != noone) and instance_exists(_dom)){
+				_dom.access();
+				if (_dom.floore != global.currentfloor + 1) _dom.lock();
+				if (_dom.pos > global.currentpos + 1) or (_dom.pos < global.currentpos - 1) _dom.lock();
+			
+		}
+	}
 }
 
 function get_elite_for_trial(){

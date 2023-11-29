@@ -1,3 +1,5 @@
+instance_destroy(parent_enemy);
+
 global.enemylist = ds_list_create();
 win_condition = self;
 win_condition2 = noone;
@@ -16,4 +18,4 @@ star = make_star();
 alarm[11] = seconds(0.05);
 
 global.trail_system = part_system_create();
-part_system_layer(global.trail_system, "Echos"); 
+part_system_layer(global.trail_system, layer_get_id("Echos")); 

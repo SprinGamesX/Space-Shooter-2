@@ -7,10 +7,16 @@ domains_per_floor = global.domains_per_floor;
 
 // Drawing
 d_border = 72;
+var d_length = (room_height - d_border*2) / (domains_per_floor - 1);
 
 
 if (check_latest_run_file()){
-	// Copy the domains into the array
+	// if won game override the run before reloading it
+	if (global.game_won){
+		override_latest_run_file();
+		global.game_won = false;
+	}
+	// Load roadmap
 	load_latest_run();
 }
 else {
@@ -28,16 +34,18 @@ else {
 			else global.domain_roadmap[floor_count+1,i] = DOMAIN_TYPE.BLANK;
 		}
 	}
-	create_latest_run_file();
+	
 	// Player
 	// Reset player pos and floor
+	global.currentfloor = 0;
+	global.currentpos = (domains_per_floor - 1) / 2;
 	
 	// Save file
+	create_latest_run_file();
 }
 
 // Draw domains
 for (var i = 0; i < array_length(global.domain_roadmap); i++){
-	var d_length = (room_height - d_border*2) / (domains_per_floor - 1);
 	for (var j = 0; j < array_length(global.domain_roadmap[i]); j++){
 		if (global.domain_roadmap[i,j] != noone){  
 			var xx = d_border * (i + 1);
@@ -46,6 +54,12 @@ for (var i = 0; i < array_length(global.domain_roadmap); i++){
 		}
 	}
 }
+
+// Summon player
+instance_create_layer((global.currentfloor + 1) * d_border, d_border + d_length * global.currentpos, "Player", obj_menu_player);
+
+// Change domain avialability
+set_available();
 
 
 

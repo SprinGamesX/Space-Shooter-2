@@ -117,3 +117,10 @@ Bugs:
 - Added new domain generation
 - Domains are now saved when exiting game
 - progress not yet saved
+
+29/11/23 - Note 13
+- Domain progress saves when exiting game
+- Fixed lag accumilation
+- Added detection when a run exists
+- Added use for the run manager
+
