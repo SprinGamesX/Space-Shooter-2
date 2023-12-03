@@ -1,6 +1,9 @@
 max_cd = 0;
 
 follow = function(){
+	if (instance_exists(obj_team_manager)){
+		target = obj_team_manager.get_active_ship();
+	}
 	var _x = target.x + dis_x;
 	var _y = target.y + dis_y;
 	var correction = 2;

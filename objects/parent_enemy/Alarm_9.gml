@@ -8,6 +8,8 @@ if (poison > 0) and (_ship != noone) and (instance_exists(_ship)){
 	
 	if (chance(_ship.ex)) _dmg *= 3;
 	hp -= _dmg;
+	global.overalldmg += _dmg;
+	check_for_highest_hit(_dmg);
 	create_dmg_indicator(x, y, _dmg, "POISON", ELEMENTS.VENOM);
 	poison--;
 }

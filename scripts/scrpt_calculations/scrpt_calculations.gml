@@ -50,6 +50,8 @@ function execute_dmg(_ship, _enemy, _projectile, _alternative_scale = noone, _ma
 			if (_crit) _a = "CRIT";
 			create_dmg_indicator(_enemy.x, _enemy.y, _dmg, _a, _projectile.element);
 		}
+		global.overalldmg += _dmg;
+		check_for_highest_hit(_dmg);
 		// return the total dmg
 		return _dmg;
 	}

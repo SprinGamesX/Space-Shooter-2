@@ -11,3 +11,7 @@ if (display_time){
 	else 
 		draw_text_scribble(1920 / 2, 200, "[shake]" + _text);
 }
+draw_set(fnt_boss, fa_left, fa_top, c_white);
+draw_text_scribble(24, 24, "[scale, 0.75]Total DMG: " + string(round(global.overalldmg)) + 
+							"\nHighest DPH: " + string(round(global.highest_hit)) +
+							"\nDPS: " + string(dps));

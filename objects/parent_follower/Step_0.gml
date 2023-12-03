@@ -1,3 +1,5 @@
+
+
 if (target != noone) and (instance_exists(target)){
 	follow();
 }

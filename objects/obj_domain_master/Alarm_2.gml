@@ -13,7 +13,6 @@ switch(global.trialtype){
 	break;
 
 }
-lose_condition = instance_nearest(x,y,parent_ship);
 
 
 

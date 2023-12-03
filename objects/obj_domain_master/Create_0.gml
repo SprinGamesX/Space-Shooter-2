@@ -6,7 +6,8 @@ win_condition2 = noone;
 time = 0;
 time_limit = 0;
 display_time = false;
-lose_condition = instance_create_layer(48, 176, "Player", ds_map_find_value(global.ships, global.selected_ship));
+lose_condition = instance_create_depth(-100, -100, 999, obj_team_manager);
+
 switch(global.current_domain_type){
 	case DOMAIN_TYPE.COMBAT: alarm[0] = seconds(2); break;
 	case DOMAIN_TYPE.ELITE: alarm[1] = seconds(2); break;
@@ -16,6 +17,13 @@ switch(global.current_domain_type){
 }
 star = make_star();
 alarm[11] = seconds(0.05);
+
+// stats
+global.highest_hit = 0;
+global.time = 0;
+global.overalldmg = 0;
+dps = 0;
+alarm[7] = seconds(1);
 
 global.trail_system = part_system_create();
 part_system_layer(global.trail_system, layer_get_id("Echos")); 
