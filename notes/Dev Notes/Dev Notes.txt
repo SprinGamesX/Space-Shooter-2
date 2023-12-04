@@ -124,3 +124,10 @@ Bugs:
 - Added detection when a run exists
 - Added use for the run manager
 
+02/12/23 -> 04/12/23 - Note 14
+- Teams are now deployable (no option to select teammates yet)
+- Fixed bug: switching ships makes followers go off screen
+- Fixed bug: bosses spawn at lvl 0 after exiting game and loading a save
+- projectiles now scale based on the ship that shot them and not the closest ship
+
+

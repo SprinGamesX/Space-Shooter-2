@@ -1,15 +1,33 @@
 global.team = [noone, noone, noone];
 active_index = 0;
 
+// Team Setup
 global.team[0] = instance_create_layer(48, 176, "Player", ds_map_find_value(global.ships, global.selected_ship));
-global.team[1] = instance_create_layer(x, y, "Player", ds_map_find_value(global.ships, 0));
-global.team[2] = instance_create_layer(x, y, "Player", ds_map_find_value(global.ships, 1));
+global.team[1] = instance_create_layer(x, y, "Player", ds_map_find_value(global.ships, 10));
+global.team[2] = instance_create_layer(x, y, "Player", ds_map_find_value(global.ships, 7));
 
-// Switch 
+// Switch
 switch_cd = seconds(2);
 switch_cd_max = switch_cd;
-
 global.team[0].active = true;
+
+#region Team Buffs
+
+enum BUFF{
+	ATK,
+	ICE_DMG,
+	FIRE_DMG,
+	LIFE_DMG,
+	VENOM_DMG,
+	LIGHTNING_DMG,
+}
+
+
+
+
+
+#endregion
+
 
 function switch_ship(_num){
 	

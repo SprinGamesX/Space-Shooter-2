@@ -7,7 +7,7 @@ animation = function(){
 	// animate
 }
 skill = function(){
-	create_projectile(obj_lifeball, scaling, 0, self, 6,,,1.5);
+	create_projectile(obj_lifeball, scaling, 0, source, 6,,,1.5);
 }
 
 enter_frenzy = function(){

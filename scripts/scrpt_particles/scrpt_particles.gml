@@ -6,7 +6,7 @@ enum TRAIL_LENGTH{
 
 
 
-function create_dmg_indicator(_x,_y,_dmg, _additional_text, _element = ELEMENTS.ICE){
+function create_dmg_indicator(_x,_y,_dmg, _additional_text = "", _element = ELEMENTS.ICE){
 	var _inst = instance_create_layer(_x, _y - 30,"SpecialEffects", obj_dmg_indicator);
 	color = c_white;
 	switch(_element){

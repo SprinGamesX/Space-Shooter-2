@@ -1,6 +1,6 @@
 // Setup
 global.floor_count = 5;
-global.domains_per_floor = 5;
+global.domains_per_floor = 3;
 include_boss_domain = true;
 floor_count = global.floor_count;
 domains_per_floor = global.domains_per_floor;

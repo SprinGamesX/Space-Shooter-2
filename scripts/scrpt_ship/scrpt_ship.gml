@@ -138,10 +138,11 @@ function create_deployable(_type, _hp, _parent = self){
 		parent = _parent;
 	}
 }
-function create_follower(_type,_dis_x,_dis_y, _scaling, _cd, _duration, _target = self){
+function create_follower(_type,_dis_x,_dis_y, _scaling, _cd, _duration, _target = self, _source = self){
 	var _inst = instance_create_layer(x, y, "Deployables", _type);
 	with(_inst){
-		setup(_target,_dis_x,_dis_y, _scaling, _cd, _duration)
+		setup(_target,_dis_x,_dis_y, _scaling, _cd, _duration);
+		_inst.source = _source;
 	}
 	return _inst;
 }

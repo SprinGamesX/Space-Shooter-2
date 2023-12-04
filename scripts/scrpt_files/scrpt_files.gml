@@ -21,6 +21,7 @@ function create_latest_run_file(){
 		ini_write_real("domain", "floors", global.floor_count + 1);
 		ini_write_real("domain", "count", global.domains_per_floor);
 		ini_write_real("domain", "trial", global.trialtype);
+		ini_write_real("domain", "lvl", global.lvl);
 		for (var i = 0; i < array_length(global.domain_roadmap); i++){
 			for (var j = 0; j < array_length(global.domain_roadmap[i]); j++){
 				ini_write_real("domain", string(i) + "-" + string(j), global.domain_roadmap[i,j]);
@@ -47,6 +48,7 @@ function load_latest_run(){
 		global.selected_ship = ini_read_real("player", "ship", 0);
 		global.currentpos = ini_read_real("player", "pos", 0);
 		global.trialtype = ini_read_real("domain", "trial", 1);
+		global.lvl = ini_read_real("domain", "lvl", 1);
 		var _f = ini_read_real("domain", "floors", 0);
 		var _c = ini_read_real("domain", "count", 0);
 		for (var i = 1; i <= _f; i++){

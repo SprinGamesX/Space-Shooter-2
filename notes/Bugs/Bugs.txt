@@ -1,2 +1,1 @@
-- ? Domains reset mid run
-- ? Lag when fighting orbiter
+- Fire ship 3: charges accumilation is accelerating

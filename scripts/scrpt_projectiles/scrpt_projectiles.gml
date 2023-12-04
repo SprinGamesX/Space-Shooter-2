@@ -4,7 +4,10 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 	var _inst = instance_place(x, y, parent_enemy);
 	if (_hitlist != -1) and (exists_in_hitlist(_hitlist, _inst)) exit;
 	if (_inst != noone) {
-		var _ship = instance_nearest(x, y, parent_ship);
+		var _ship = _object.source;
+		if (_ship == noone){
+			_ship = instance_nearest(x, y, parent_ship);
+		}
 		// AOE
 		if (_aoe_size != -1){
 			if (_hitlist != -1)
@@ -34,7 +37,10 @@ function projectile_collision(_object = self, _hitlist = -1, _aoe_size = -1){
 }
 function projectile_attach_collision(_hitlist, _lenx, _leny, _source, _centered = false, _aoe_size = -1){
 	var _y = y;
-	var _ship = instance_nearest(x, y, parent_ship);
+	var _ship = _source;
+	if (object_is_ancestor(_source.object_index, parent_follower)){
+		_ship = _source.source;
+	}
 	if (_centered) _y = y - _leny / 2;
 	draw_rectangle(x - _lenx / 2, _y, x + _lenx, y + _leny, false);
 	var _num = collision_rectangle_list(x - _lenx / 2, _y, x + _lenx, y + _leny, parent_enemy, false, true, _hitlist, false);
