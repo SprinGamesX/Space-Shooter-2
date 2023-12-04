@@ -22,9 +22,9 @@ enum BUFF{
 	LIGHTNING_DMG,
 }
 
-
-
-
+global.b_atk = 0;
+global.b_elem = [0,0,0,0,0];
+global.b_cds = [0,0,0,0,0,0];
 
 #endregion
 

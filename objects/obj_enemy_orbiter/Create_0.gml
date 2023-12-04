@@ -31,8 +31,12 @@ basic_atk = function(){
 }
 
 skill = function(){
-	if (num == 1) and (instance_exists(duo)) and (instance_exists(parent_ship))
-		summon_enemy(obj_enemy1, lv, orbited_x, orbited_y, point_direction(orbited_x, orbited_y, parent_ship.x, parent_ship.y));
+	if (instance_exists(obj_team_manager)){
+		var _ship = obj_team_manager.get_active_ship();
+	
+		if (num == 1) and (instance_exists(duo)) and (instance_exists(_ship))
+			summon_enemy(obj_enemy1, lv, orbited_x, orbited_y, point_direction(orbited_x, orbited_y, _ship.x, _ship.y));
+	}
 }
 
 ult = function(){

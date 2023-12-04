@@ -43,9 +43,11 @@ ult = function(){
 
 special_movement = function(){
 	if (!downed){
-		var _ship = instance_nearest(x, y, parent_ship);
-		if (_ship != noone) and (instance_exists(_ship))
-			direction = point_direction(x, y, _ship.x, _ship.y);
+		if (instance_exists(obj_team_manager)){
+			var _ship = obj_team_manager.get_active_ship();
+			if (_ship != noone) and (instance_exists(_ship))
+				direction = point_direction(x, y, _ship.x, _ship.y);
+		}
 	}
 	else {
 		direction = round(direction)

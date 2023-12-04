@@ -177,3 +177,14 @@ function count_poisoned_enemys(){
 	ds_list_destroy(_enemys);
 	return count;
 }
+
+function apply_team_buff(buff_type, _amp){
+	switch(buff_type){
+		case BUFF.ATK: global.b_atk = _amp; break;
+		case BUFF.ICE_DMG: global.b_elem[0] = _amp; break;
+		case BUFF.FIRE_DMG: global.b_elem[1] = _amp; break;
+		case BUFF.LIFE_DMG: global.b_elem[2] = _amp; break;
+		case BUFF.VENOM_DMG: global.b_elem[3] = _amp; break;
+		case BUFF.LIGHTNING_DMG: global.b_elem[4] = _amp; break;
+	}
+}

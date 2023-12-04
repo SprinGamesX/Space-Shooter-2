@@ -5,8 +5,11 @@ if (stopped){
 if (!ready){
 	alpha += 0.05;
 	image_alpha = alpha;
-	if (auto_aim) and (instance_exists(parent_ship)){
-		direction = point_direction(x, y, parent_ship.x, parent_ship.y);
+	if (instance_exists(obj_team_manager)){
+		var _ship = obj_team_manager.get_active_ship();
+		if (auto_aim) and (instance_exists(_ship)){
+			direction = point_direction(x, y, _ship.x, _ship.y);
+		}
 	}
 	if (alpha >= 1) ready = true;
 }

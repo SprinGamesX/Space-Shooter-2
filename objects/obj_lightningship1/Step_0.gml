@@ -1,10 +1,16 @@
-// Movement
-allow_movement(spd);
-// Keyboard inputs
-var _key_space = (vk_space);
-var _key_skill = keyboard_check(ord("E"));
-var _key_ult = keyboard_check(ord("Q"));
 
+var _key_space = 0;
+var _key_skill = 0;
+var _key_ult = 0;
+
+if (active){
+	// Movement
+	allow_movement(spd);
+	// Keyboard inputs
+	var _key_space = (vk_space);
+	var _key_skill = keyboard_check(ord("E"));
+	var _key_ult = keyboard_check(ord("Q"));
+}
 // Basic attack
 if (atk_cd == 0){
 	if ((keyboard_check(_key_space))){
