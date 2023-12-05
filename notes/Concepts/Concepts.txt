@@ -1,3 +1,5 @@
 concept of names for ships
 venom ships will be called after radioactive/poisonous elements
 life ships will be called after plants
+
+making buffs seperate objects in order to stack them
