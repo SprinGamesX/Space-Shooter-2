@@ -178,13 +178,13 @@ function count_poisoned_enemys(){
 	return count;
 }
 
-function apply_team_buff(buff_type, _amp){
+function apply_team_buff(buff_type, _amp, _duration){
 	switch(buff_type){
-		case BUFF.ATK: global.b_atk = _amp; break;
-		case BUFF.ICE_DMG: global.b_elem[0] = _amp; break;
-		case BUFF.FIRE_DMG: global.b_elem[1] = _amp; break;
-		case BUFF.LIFE_DMG: global.b_elem[2] = _amp; break;
-		case BUFF.VENOM_DMG: global.b_elem[3] = _amp; break;
-		case BUFF.LIGHTNING_DMG: global.b_elem[4] = _amp; break;
+		case BUFF.ATK: global.b_atk = _amp; global.b_cds[0] = _duration; break;
+		case BUFF.ICE_DMG: global.b_elem[0] = _amp; global.b_cds[1] = _duration; break;
+		case BUFF.FIRE_DMG: global.b_elem[1] = _amp; global.b_cds[2] = _duration; break;
+		case BUFF.LIFE_DMG: global.b_elem[2] = _amp; global.b_cds[3] = _duration; break;
+		case BUFF.VENOM_DMG: global.b_elem[3] = _amp; global.b_cds[4] = _duration; break;
+		case BUFF.LIGHTNING_DMG: global.b_elem[4] = _amp; global.b_cds[5] = _duration; break;
 	}
 }

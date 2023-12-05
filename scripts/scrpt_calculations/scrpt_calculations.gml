@@ -7,13 +7,19 @@ function execute_dmg(_ship, _enemy, _projectile, _alternative_scale = noone, _ma
 	}
 	else if (instance_exists(_ship)){
 		var alt = _alternative_scale != noone;
-		var _inst = instance_nearest(x, y, obj_team_manager)
+		var _inst = instance_nearest(x, y, obj_team_manager);
 		var _dmgboost = 0;
 		var _atk_boost = 0;
-		if (instance_exists(_inst)){
-			// set dmgboost
-			// set atkboost
+		if (!alt){
+			switch(_projectile.element){
+				case ELEMENTS.ICE: _dmgboost = global.b_elem[0]; break;
+				case ELEMENTS.FIRE: _dmgboost = global.b_elem[1]; break;
+				case ELEMENTS.LIFE: _dmgboost = global.b_elem[2]; break;
+				case ELEMENTS.VENOM: _dmgboost = global.b_elem[3]; break;
+				case ELEMENTS.LIGHTNING: _dmgboost = global.b_elem[4]; break;
+			}
 		}
+		
 		// Is crit
 		randomize();
 		var _crit = chance(_ship.critrate);
