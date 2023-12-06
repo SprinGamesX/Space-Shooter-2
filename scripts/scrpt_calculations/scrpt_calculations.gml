@@ -1,74 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function execute_dmg(_ship, _enemy, _projectile, _alternative_scale = noone, _make_indicator = true){
-	if (_enemy.immune){
-		create_status_indicator(_enemy.x, _enemy.y, "Immune", 0, c_gray);
-		return 0;
-	}
-	else if (instance_exists(_ship)){
-		var alt = _alternative_scale != noone;
-		var _inst = instance_nearest(x, y, obj_team_manager);
-		var _dmgboost = 0;
-		var _atk_boost = 0;
-		if (!alt){
-			switch(_projectile.element){
-				case ELEMENTS.ICE: _dmgboost = global.b_elem[0]; break;
-				case ELEMENTS.FIRE: _dmgboost = global.b_elem[1]; break;
-				case ELEMENTS.LIFE: _dmgboost = global.b_elem[2]; break;
-				case ELEMENTS.VENOM: _dmgboost = global.b_elem[3]; break;
-				case ELEMENTS.LIGHTNING: _dmgboost = global.b_elem[4]; break;
-			}
-		}
-		
-		// Is crit
-		randomize();
-		var _crit = chance(_ship.critrate);
-	
-		// base damage
-		var _dmg = 0;
-		if (!alt){
-			_dmg = (_ship.atk * _projectile.scaling);
-		}
-		else{
-			_dmg = (_ship.atk * _alternative_scale);
-		}
-	
-		// if crit add crit dmg
-		if (_crit) _dmg += _dmg * _ship.critdmg;
-	
-		// add elemental dmg bonus
-		_dmg += _dmg * _ship.elemental_bonus;
-		if (!alt){
-			// apply elemental effects
-			apply_ex(_enemy, _projectile);
-	
-			// trigger projectile on_hit
-			_projectile.on_hit(_enemy);
-			
-			// add extra dmg based on elemental status
-			_dmg += add_extra_dmg(_dmg, _enemy, _ship);
-		}
-		
-	
-		// dmg bonuses/reductions
-		_dmg -= (_dmg) * _enemy.def;
-		_dmg *= 1 + _enemy.dmg_amp;
-	
-		// Apply dmg to enemy
-		_enemy.on_hit(_dmg);
-	
-		// Make indicator
-		if (!alt){
-			var _a = "";
-			if (_crit) _a = "CRIT";
-			create_dmg_indicator(_enemy.x, _enemy.y, _dmg, _a, _projectile.element);
-		}
-		global.overalldmg += _dmg;
-		check_for_highest_hit(_dmg);
-		// return the total dmg
-		return _dmg;
-	}
-}
+
+
 
 function chance(_var){
 	randomize();

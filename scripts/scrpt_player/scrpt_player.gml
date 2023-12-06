@@ -1,4 +1,5 @@
 global.selected_ship = 12;
+global.selected_team = [0, 1, 2];
 global.dot_scale = 0.05;
 global.ships = ds_map_create();
 

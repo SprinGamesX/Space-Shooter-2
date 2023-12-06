@@ -88,17 +88,7 @@ function apply_ex(_inst, _source){
 	}
 }
 
-function add_extra_dmg(_dmg, _inst, _ship){
-	var f_dmg = _dmg;
-	// Life ripe dmg amp
-	var _amp = 1;
-	if (chance(_ship.ex)) _amp = 1.5;
-	f_dmg += (_ship.max_hp / 100) * _inst.life_ripe * _amp;
-	// Shock
-	if(_inst.shocked) shock_nearby_enemys(_inst, f_dmg, _ship);
-	return f_dmg;
-	
-}
+
 
 function shock_nearby_enemys(_inst, _dmg, _ship){
 	var _list = ds_list_create();

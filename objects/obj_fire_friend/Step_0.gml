@@ -12,7 +12,7 @@ if (!kill_spree){
 }
 
 else {
-	if (current_target == noone) current_target = instance_nearest(x, y, parent_enemy);
+	if (current_target == noone or !instance_exists(current_target)) current_target = instance_nearest(x, y, parent_enemy);
 	else {
 		target = current_target;
 		dis_x = 0;

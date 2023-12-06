@@ -14,16 +14,3 @@ if (switch_cd <= 0){
 	}
 }
 
-for (var i = 0; i < array_length(global.b_cds); i++){
-	if (global.b_cds[i] > 0) global.b_cds[i]--;
-	if (global.b_cds[i] < 0) global.b_cds[i] = 0;
-	
-	if (i == 0){
-		if (global.b_cds[0] == 0) global.b_atk = 0;
-	}
-	else {
-		if (global.b_cds[i] == 0) global.b_elem[i-1] = 0;
-	}
-}
-
-

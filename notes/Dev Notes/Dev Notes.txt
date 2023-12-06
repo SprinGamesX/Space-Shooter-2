@@ -130,4 +130,9 @@ Bugs:
 - Fixed bug: bosses spawn at lvl 0 after exiting game and loading a save
 - projectiles now scale based on the ship that shot them and not the closest ship
 
-
+05/12/23 -> 06/12/23 - Note 15
+- Added team buffs
+- Teams buff are integrated with dmg execution
+- Dmg execution calculates differently
+- Fixed bug: Fire ship charges exponently
+- Fixed bug: Game crashes when Friend's (Fire ship 3) target dies while its tracking it
