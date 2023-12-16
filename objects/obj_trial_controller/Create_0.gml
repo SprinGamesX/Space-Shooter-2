@@ -62,7 +62,7 @@ update_level = function(){
 boss_card = instance_create_layer(x, 64, "Instances", obj_card_boss);
 diff_buttons = generate_diff_buttons();
 buttons = generate_arrow_buttons(128);
-instance_create_layer(room_width / 2, room_height - 64, "Instances", obj_character_selection);
+instance_create_layer(room_width / 2, room_height - 64, "Instances", obj_team_selection);
 y = 16;
 update_level();
 

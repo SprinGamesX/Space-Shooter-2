@@ -5,6 +5,7 @@ var _selected_skill = "";
 var _stats = stringify_stats();
 
 var _lvl = obj_ship.lvl;
+var _rarity = obj_ship.rarity;
 var _color = c_white;
 var _element = obj_ship.element;
 var _icon;
@@ -33,25 +34,27 @@ switch (display_description){
 }
 switch(_element){
 	case ELEMENTS.ICE:
-		_color = c_teal;
 		_icon = spr_icon_ice;
 		break;
 	case ELEMENTS.FIRE:
-		_color = c_maroon;
 		_icon = spr_icon_fire;
 		break;
 	case ELEMENTS.LIFE:
-		_color = c_green;
 		_icon = spr_icon_life;
 		break;
 	case ELEMENTS.VENOM:
-		_color = c_purple;
 		_icon = spr_icon_venom;
 		break;
 	case ELEMENTS.LIGHTNING:
-		_color = c_yellow;
 		_icon = spr_icon_lightning;
 		break;
+}
+_color = color_for_element_background(_element);
+
+switch(_rarity){
+	case RARITY.R: _rarity = "Rank: R"; break;
+	case RARITY.SR: _rarity = "Rank: [c_yellow]SR"; break;
+	case RARITY.SSR: _rarity = "Rank: [rainbow]SSR"; break;
 }
 
 var _skill_desc = "";
@@ -62,7 +65,7 @@ else _skill_desc = string_desc_for_id(index, display_description, _current_skill
 draw_set(fnt_ship_desc, fa_left, fa_top,,alpha);
 draw_sprite_ext(_icon, 0, text_x + 50, 80, 10, 10, 0, c_white, alpha);
 draw_set(fnt_ship_desc2, fa_left, fa_top,,alpha);
-draw_text_scribble(text_x + 60, 50, "[rainbow]Level: " + string(_lvl) + "/100");
+draw_text_scribble(text_x + 60, 15, _rarity + "\n[rainbow]Level: " + string(_lvl) + "/100");
 draw_set(fnt_ship_desc, fa_left, fa_top,,alpha);
 draw_bg_box(10, 10, 500, 70, _color,alpha);
 draw_text_scribble(20, 20, obj_ship.ship_name);

@@ -136,3 +136,22 @@ Bugs:
 - Dmg execution calculates differently
 - Fixed bug: Fire ship charges exponently
 - Fixed bug: Game crashes when Friend's (Fire ship 3) target dies while its tracking it
+
+07/12/23 - Note 16
+- Teams can now be set up in the trial selection
+- Teams are integrated into the game
+- Character selection screen exists
+
+08/12/23 - Note 17
+- Magnet boss not available until bug is fixed
+
+09/12/23 -> 13/12/23 - Note 18
+New:
+- Ships can now be bought in the hangar
+- New ship: I4
+- New ship: Li3
+
+Fixes & changes:
+- Magnet boss bug is fixed
+- FPS drops in hangar and trial selection are fixed
+

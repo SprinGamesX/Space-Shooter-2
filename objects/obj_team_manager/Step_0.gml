@@ -14,3 +14,5 @@ if (switch_cd <= 0){
 	}
 }
 
+if (grace_time > 0) grace_time--;
+if (grace_time < 0) grace_time = 0;

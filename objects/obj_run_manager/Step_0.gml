@@ -1,6 +1,6 @@
 
-var key_up = keyboard_check_pressed(ord("W"));
-var key_down = keyboard_check_pressed(ord("S"));
+var key_up = keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_up);
+var key_down = keyboard_check_pressed(ord("S")) or keyboard_check_pressed(vk_down);
 var key_confirm = keyboard_check_pressed(vk_enter);
 
 

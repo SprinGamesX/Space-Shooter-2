@@ -1,3 +1,4 @@
+event_inherited();
 alpha = 0;
 ready = false;
 image_alpha = alpha;

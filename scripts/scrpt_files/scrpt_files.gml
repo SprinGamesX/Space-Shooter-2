@@ -13,7 +13,9 @@ function create_latest_run_file(){
 	if (!check_latest_run_file()){
 		ini_open("latest.ini");
 		// Player data
-		ini_write_real("player", "ship", global.selected_ship);
+		ini_write_real("player", "ship1", global.selected_team[0]);
+		ini_write_real("player", "ship2", global.selected_team[1]);
+		ini_write_real("player", "ship3", global.selected_team[2]);
 		ini_write_real("player", "floor", global.currentfloor);
 		ini_write_real("player", "pos", global.currentpos);
 		
@@ -45,7 +47,9 @@ function load_latest_run(){
 	if (check_latest_run_file()){
 		ini_open("latest.ini");
 		global.currentfloor = ini_read_real("player", "floor", 0);
-		global.selected_ship = ini_read_real("player", "ship", 0);
+		global.selected_team[0] = ini_read_real("player", "ship1", 0);
+		global.selected_team[1] = ini_read_real("player", "ship2", 1);
+		global.selected_team[2] = ini_read_real("player", "ship3", 2);
 		global.currentpos = ini_read_real("player", "pos", 0);
 		global.trialtype = ini_read_real("domain", "trial", 1);
 		global.lvl = ini_read_real("domain", "lvl", 1);

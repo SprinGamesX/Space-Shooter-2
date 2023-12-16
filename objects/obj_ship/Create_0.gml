@@ -1,8 +1,16 @@
 adjust_gui_alpha();
 
+enum RARITY{
+	R = 0,
+	SR = 1,
+	SSR = 2
+}
+
+
 // base stats
 ship_index = 0;
 ship_name = "";
+rarity = RARITY.R;
 lvl = 0;
 element = 0;
 atk = 0;
@@ -56,6 +64,7 @@ set_variables = function(_map){
 	scales[1] = ds_map_find_value(_map, "scale_skill");
 	scales[2] = ds_map_find_value(_map, "scale_ult");
 	ex_scale = ds_map_find_value(_map, "scale_ex");
+	rarity = ds_map_find_value(_map, "rarity");
 }
 
 set_bonus = function(_map){
@@ -82,23 +91,7 @@ set_adds = function(_map){
 	passives[2] = ds_map_find_value(_map, "p3");
 }
 
-setup = function(_id){
-	ini_open("characters.ini");
-	var _temp = ds_map_create();
-	var _data = ini_read_string(_id, "gen", "");
-	ds_map_read(_temp, _data);
-	set_variables(_temp);
-	ds_map_clear(_temp);
-	var _data2 = ini_read_string(_id, "bonus", "");
-	ds_map_read(_temp, _data2);
-	set_bonus(_temp);
-	ds_map_clear(_temp);
-	var _data3 = ini_read_string(_id, "adds", "");
-	ds_map_read(_temp, _data3);
-	set_adds(_temp);
-	ds_map_destroy(_temp);
-	ini_close();
-}
+
 	
 	
 
@@ -118,6 +111,7 @@ save_base = function(_id){
 	ds_map_set(_temp, "scale_skill", scales[1]);
 	ds_map_set(_temp, "scale_ult", scales[2]);
 	ds_map_set(_temp, "scale_ex", ex_scale);
+	ds_map_set(_temp, "rarity", rarity);
 	ini_write_string(_id, "gen", ds_map_write(_temp));
 	ds_map_destroy(_temp);
 	ini_close();
@@ -153,6 +147,39 @@ save_adds = function(_id){
 	ds_map_set(_temp, "p2", passives[1]);
 	ds_map_set(_temp, "p3", passives[2]);
 	ini_write_string(_id, "adds", ds_map_write(_temp));
+	ds_map_destroy(_temp);
+	ini_close();
+}
+
+setup = function(_id){
+	ini_open("characters.ini");
+	var _temp = ds_map_create();
+	// Base
+	var _data = ini_read_string(_id, "gen", "");
+	if (_data == ""){
+		ini_close();
+		ini_ship_stats(_id);
+		base_stats_on_element(element);
+		save_base(ship_index);
+		save_bonus(ship_index);
+		save_adds(ship_index);
+		ini_open("characters.ini");
+	}
+	ds_map_read(_temp, _data);
+	
+	set_variables(_temp);
+	ds_map_clear(_temp);
+	
+	// Bonus
+	var _data2 = ini_read_string(_id, "bonus", "");
+	ds_map_read(_temp, _data2);
+	set_bonus(_temp);
+	ds_map_clear(_temp);
+	
+	// Additions
+	var _data3 = ini_read_string(_id, "adds", "");
+	ds_map_read(_temp, _data3);
+	set_adds(_temp);
 	ds_map_destroy(_temp);
 	ini_close();
 }
@@ -192,9 +219,19 @@ get_bonus_list = function(){
 	return [bonus_atk,bonus_hp,bonus_spd,bonus_cr,bonus_crd,bonus_ex,bonus_elmt_dmg,bonus_aspd,bonus_cd,bonus_ehr];
 }
 
-is_bonus_updateable = function(_index){
+get_bonus_count = function(){
+	var _count = 0;
 	var _list = get_bonus_list();
-	return _list[_index] < 25;
+	for (var i = 0; i < array_length(_list); i++){
+		_count += _list[i];
+	}
+	return _count;
+}
+
+is_bonus_updateable = function(_index){
+	if (!global.obtained_ships[ship_index]) return false;
+	var _list = get_bonus_list();
+	return _list[_index] < 25 and get_bonus_count() < 100;
 }
 
 update_level = function(){
@@ -216,10 +253,10 @@ base = function(){
 }
 	
 // set base stats
-var _num = 13;
+var _num = 15;
 if (!file_exists("characters.ini")){
 	
-	for(var _i = 0; _i < _num; _i++){
+	for(var _i = 0; _i <= _num; _i++){
 		ship_index = _i;
 		ini_ship_stats(_i);
 		base_stats_on_element(element);
@@ -230,9 +267,14 @@ if (!file_exists("characters.ini")){
 }
 else { 
 	
-	setup(ship_index);
-	ini_ship_stats(ship_index);
-	save_base(ship_index);
-	setup(ship_index);
+	for(var _i = 0; _i <= _num; _i++){
+		ship_index = _i;
+		setup(ship_index);
+		ini_ship_stats(ship_index);
+		save_base(ship_index);
+		setup(ship_index);
+	}
 	
 }
+
+load_keybinds();

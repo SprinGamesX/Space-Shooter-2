@@ -2,9 +2,9 @@ event_inherited();
 base_x = 0;
 base_y = 0;
 correction = 2;
-base_hp = 750;
-base_dmg = 10;
 follow_parent = true;
+b_dmg = 10;
+b_hp = 750;
 scale = 1.5;
 can_dmg = true;
 echo = make_echo(,scale);
@@ -24,9 +24,6 @@ follow = function(){
 	var error_y = abs(y - base_y) / 10;
 	if (y > base_y) y -= correction * sqrt(error_y);
 	if (y < base_y) y += correction * sqrt(error_y);
-	
-	//x = base_x;
-	//y = base_y;
 }
 
 set_base = function(_x, _y){

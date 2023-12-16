@@ -14,6 +14,6 @@ skill = function(){
 }
 
 ultimate = function(){
-	create_dmg_indicator(x,y,"ATK +10%", false, ELEMENTS.FIRE);
+	create_dmg_indicator(x,y,"ATK +10%", "", ELEMENTS.FIRE);
 	atk = atk + (atk / 100) * 10;
 }

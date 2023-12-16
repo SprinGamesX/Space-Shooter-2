@@ -109,7 +109,7 @@ function create_charge_projectile(_obj, _scaling, _dir, _parent, _speed, _charge
 	 }
 }
 
-function create_projectile_attach(_obj, _scaling, _parent, _hits, _cd,_lenx,_leny, _x = x, _y = y, _aoe = -1, _base_chance = 0.2){
+function create_projectile_attach(_obj, _scaling, _parent, _hits, _cd,_lenx,_leny, _x = x, _y = y, _aoe = -1, _base_chance = 0.2, _dir = 0){
 	 with(instance_create_layer(_x, _y, "Projectiles", _obj)){
 		cd = _cd;
 		hits = _hits;
@@ -119,6 +119,24 @@ function create_projectile_attach(_obj, _scaling, _parent, _hits, _cd,_lenx,_len
 		aoe = _aoe;
 		effect_chance = _base_chance;
 		scaling = _scaling / _hits;
+		direction = _dir;
+		image_angle = _dir;
+		alarm[0] = cd;
+	 }
+}
+
+function create_projectile_laser(_obj,_scaling, _parent, _hits, _cd,_lenx,_leny, _x = x, _y = y, _aoe = -1, _base_chance = 0.2, _dir = 0){
+	 with(instance_create_layer(_x, _y, "Projectiles", _obj)){
+		cd = _cd;
+		hits = _hits;
+		length = _lenx;
+		height = _leny;
+		source = _parent;
+		aoe = _aoe;
+		effect_chance = _base_chance;
+		scaling = _scaling / _hits;
+		direction = _dir;
+		image_angle = _dir;
 		alarm[0] = cd;
 	 }
 }
@@ -154,7 +172,7 @@ function create_healing_orb(_x, _y, _heal, _spd){
 	}
 }
 
-function consume_hp(_amount){
+function consume_hp(_amount, _target = self){
 	if (hp == 1) return false;
 	if (hp - _amount > 0){
 		hp -= _amount;
@@ -164,6 +182,16 @@ function consume_hp(_amount){
 		hp = 1;
 		return true;	
 	}
+}
+
+function restore_hp(_amount, _target){
+	if (_target.hp + _amount > _target.max_hp){
+		_target.hp = _target.max_hp;
+	}
+	else {
+		_target.hp += _amount;
+	}
+	create_dmg_indicator(_target.x, _target.y, "+" + string(_amount), "Restored", ELEMENTS.HEALING);
 }
 
 function count_poisoned_enemys(){

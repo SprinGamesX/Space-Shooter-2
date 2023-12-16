@@ -10,7 +10,9 @@ if (!switchable) _a = 0.5;
 for (var i = 0; i < 3; i++){
 	var _s = 2;
 	if (i == active_index) _s = 3;
-	draw_sprite_ext(global.team[i].sprite_index, 0, _x + _o*i, _y, _s, _s, 90, c_white, _a);
-	draw_set(fnt_ship_desc2, fa_center, fa_middle);
-	draw_text_scribble(_x + _o*i, _y, i+1);
+	if (instance_exists(global.team[i])){
+		draw_sprite_ext(global.team[i].sprite_index, 0, _x + _o*i, _y, _s, _s, 90, c_white, _a);
+		draw_set(fnt_ship_desc2, fa_center, fa_middle);
+		draw_text_scribble(_x + _o*i, _y, i+1);
+	}
 }

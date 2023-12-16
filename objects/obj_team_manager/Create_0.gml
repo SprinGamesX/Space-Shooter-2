@@ -2,14 +2,15 @@ global.team = [noone, noone, noone];
 active_index = 0;
 
 // Team Setup
-global.team[0] = instance_create_layer(48, 176, "Player", ds_map_find_value(global.ships, global.selected_ship));
-global.team[1] = instance_create_layer(x, y, "Player", ds_map_find_value(global.ships, 10));
-global.team[2] = instance_create_layer(x, y, "Player", ds_map_find_value(global.ships, 7));
+global.team[0] = instance_create_layer(48, 176, "Player", ds_map_find_value(global.ships, global.selected_team[0]));
+global.team[1] = instance_create_layer(x, y, "Player", ds_map_find_value(global.ships, global.selected_team[1]));
+global.team[2] = instance_create_layer(x, y, "Player", ds_map_find_value(global.ships, global.selected_team[2]));
 
 // Switch
 switch_cd = seconds(1);
 switch_cd_max = switch_cd;
 global.team[0].active = true;
+grace_time = 0;
 
 #region Team Buffs
 
@@ -93,9 +94,10 @@ function switch_ship(_num){
 }
 
 on_ship_death = function(_x, _y){
+	grace_time = seconds(5);
 	var alive = false;
 	for (var i = 0; i < 3; i++){
-		if (instance_exists(global.team[i]) and (!alive)){
+		if (instance_exists(global.team[i]) and (!alive) and (i != active_index)){
 			global.team[i].x = _x;
 			global.team[i].y = _y;
 			active_index = i;

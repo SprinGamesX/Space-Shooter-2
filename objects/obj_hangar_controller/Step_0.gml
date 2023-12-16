@@ -13,7 +13,9 @@ if (instance_exists(parent_pop_up)){
 	buttons[1].deactivate();
 }
 
-obj_ship.update_index(index);
+if (index != last_index){
+	obj_ship.update_index(index);
+}
 
 for (var i = 0; i < 30; i++){
 	var _r = (room_width / 2) + 100;
@@ -28,6 +30,4 @@ for (var i = 0; i < 30; i++){
 	part_particles_create(part_sys, _x, _y, part, 1);
 }
 
-
-
-
+last_index = index;

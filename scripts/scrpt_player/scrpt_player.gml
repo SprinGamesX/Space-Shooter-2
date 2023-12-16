@@ -1,3 +1,4 @@
+global.selection_index = 0;
 global.selected_ship = 12;
 global.selected_team = [0, 1, 2];
 global.dot_scale = 0.05;
@@ -16,6 +17,9 @@ ds_map_add(global.ships, 9, obj_iceship3);
 ds_map_add(global.ships, 10, obj_fireship3);
 ds_map_add(global.ships, 11, obj_lifeship3);
 ds_map_add(global.ships, 12, obj_venomship2);
+ds_map_add(global.ships, 13, obj_iceship4);
+ds_map_add(global.ships, 14, obj_lightningship3);
+ds_map_add(global.ships, 15, obj_fireship4);
 
 
 function generate_arrow_buttons(_offset, _parent = self){

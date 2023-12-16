@@ -1,0 +1,41 @@
+{
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_iceship4",
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+  ],
+  "managed": true,
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"parent_ship","path":"objects/parent_ship/parent_ship.yy",},"propertyId":{"name":"ship_id","path":"objects/parent_ship/parent_ship.yy",},"value":"13",},
+  ],
+  "parent": {
+    "name": "Ships",
+    "path": "folders/Objects/Game/Ships.yy",
+  },
+  "parentObjectId": {
+    "name": "parent_ship",
+    "path": "objects/parent_ship/parent_ship.yy",
+  },
+  "persistent": false,
+  "physicsAngularDamping": 0.1,
+  "physicsDensity": 0.5,
+  "physicsFriction": 0.2,
+  "physicsGroup": 1,
+  "physicsKinematic": false,
+  "physicsLinearDamping": 0.1,
+  "physicsObject": false,
+  "physicsRestitution": 0.1,
+  "physicsSensor": false,
+  "physicsShape": 1,
+  "physicsShapePoints": [],
+  "physicsStartAwake": true,
+  "properties": [],
+  "solid": false,
+  "spriteId": {
+    "name": "spr_iceship4",
+    "path": "sprites/spr_iceship4/spr_iceship4.yy",
+  },
+  "spriteMaskId": null,
+  "visible": true,
+}

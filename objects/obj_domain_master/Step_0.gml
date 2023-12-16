@@ -12,7 +12,9 @@ if (!instance_exists(lose_condition)){
 if (global.current_domain_type == DOMAIN_TYPE.TIME){
 	time--;
 	if (time <= time_limit){
-		instance_destroy(instance_nearest(x, y, parent_ship));
+		instance_destroy(parent_follower)
+		instance_destroy(parent_ship);
+		instance_destroy(obj_team_manager);
 	}
 	
 }

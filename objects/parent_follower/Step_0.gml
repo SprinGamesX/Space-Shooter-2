@@ -1,8 +1,7 @@
-
-
 if (target != noone) and (instance_exists(target)){
 	follow();
 }
+else target = obj_team_manager.get_active_ship();
 animation();
 
 if (cd <= 0){

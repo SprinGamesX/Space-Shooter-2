@@ -27,9 +27,9 @@ function summon_enemy(_type, _lv, _x , _y, _dir = 180, _spd = 2){
 function set_enemy(_enemy ,_lv, _dir, _spd){
 	with(_enemy){
 		lv = _lv;
-		hp = hp * _lv;
+		hp = hp * (_lv);
 		maxhp = hp;
-		dmg += lv * 0.5 * dmg;
+		dmg += (_lv * 0.5) * dmg;
 		if (!object_is_ancestor(self.object_index, parent_elite_enemy))
 			spd = _spd;
 		direction = _dir;
@@ -116,9 +116,10 @@ function summon_enemy_magnet_follower(_lvl, _x, _y){
 		base_x = x;
 		base_y = y;
 		lv = _lvl;
-		hp = base_hp * lv;
-		dmg = base_dmg * lv;
+		hp = b_hp * (_lvl - 1);
+		dmg += b_dmg *  (_lvl - 1);
 		max_hp = hp;
+		show_debug_message(string(hp) + " / " + string(dmg))
 	}
 	return _inst;
 }

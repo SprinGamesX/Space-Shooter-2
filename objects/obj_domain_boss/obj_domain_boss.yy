@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Menus",
-    "path": "folders/Objects/Menus.yy",
+    "name": "Domains",
+    "path": "folders/Objects/Menus/Domains.yy",
   },
   "parentObjectId": {
     "name": "parent_domain",

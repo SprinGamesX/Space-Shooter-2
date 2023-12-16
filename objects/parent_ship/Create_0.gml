@@ -67,10 +67,10 @@ function set_base_stats(){
 	skill_scale = obj_ship.scales[1];
 	ult_scale = obj_ship.scales[2];
 	element = obj_ship.element;
-	aspd = (obj_ship.bonus_aspd * 0.02); //every stack of ASPD will give 2% cooldown reduction to basic attack
+	aspd = (obj_ship.bonus_aspd * 0.01); //every stack of ASPD will give 1% cooldown reduction to basic attack
 	cd_reduction = (obj_ship.bonus_cd * 0.01); // every stack of CD will give 1% cooldown reduction to skill and ultimate
 	ex = (obj_ship.bonus_ex * 0.02); // every stack of EX will give 2% chance of causing an enhanced effect
-	elemental_bonus = (obj_ship.bonus_elmt_dmg * 0.04); // every stack of E-DMG will give 4% DMG increase
+	elemental_bonus = (obj_ship.bonus_elmt_dmg * 0.02); // every stack of E-DMG will give 2% DMG increase
 	effect_hit_rate = (obj_ship.bonus_ehr * 0.04); // every stack of EHR will give 4% effect hit rate
 	max_hp = hp;
 	set_max_cds(aspd, cd_reduction);
@@ -108,5 +108,9 @@ death = function(){
 on_hit = function(_dmg){
 	if (!immune)
 		hp -= _dmg;
+}
+
+passive = function(){
+	
 }
 

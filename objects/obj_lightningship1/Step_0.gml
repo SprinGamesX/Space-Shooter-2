@@ -7,20 +7,20 @@ if (active){
 	// Movement
 	allow_movement(spd);
 	// Keyboard inputs
-	var _key_space = (vk_space);
-	var _key_skill = keyboard_check(ord("E"));
-	var _key_ult = keyboard_check(ord("Q"));
+	_key_space = vk_space;
+	_key_skill = attack_by_key(ATTACK_TYPES.SKILL);
+	_key_ult = attack_by_key(ATTACK_TYPES.ULT);
 }
 // Basic attack
 if (atk_cd == 0){
-	if ((keyboard_check(_key_space))){
+	if ((keyboard_check(_key_space)) or (mouse_check_button(mb_left)) or (ord("J"))){
 		if (skill_dur > 0){
 			if (charge < 300){ charge += 10 }
 		}
 		if (charge < 300){ charge++ }
 	}
 	else if (charge > 0){
-		if (charge >= 300) create_projectile_attach(obj_lightning_laser, atk_scale * 20, self, 5, seconds(0.2),700,6,x + 12);
+		if (charge >= 300) create_projectile_laser(obj_lightning_laser1, atk_scale * 20, self, 5, seconds(0.2),700,6,x + 12);
 		else if (charge >= 200) create_charge_projectile(obj_lightning_rod, atk_scale * 3, 0, self, 5, 2,x + 12);
 		else if (charge >= 100) create_charge_projectile(obj_lightning_rod, atk_scale * 2, 0, self, 5, 1,x + 12);
 		else create_charge_projectile(obj_lightning_rod, atk_scale, 0, self, 5, 0,x + 12);

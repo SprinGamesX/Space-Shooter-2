@@ -11,10 +11,10 @@ echo = make_echo(ECHO.MID, scale);
 // Summon 4 followers
 f_dis = 20;
 followers = [0,0,0,0];
-followers[0] = summon_enemy_magnet_follower(lv, room_width/2, room_height/2);
-followers[1] = summon_enemy_magnet_follower(lv, room_width/2, room_height/2);
-followers[2] = summon_enemy_magnet_follower(lv, room_width/2, room_height/2);
-followers[3] = summon_enemy_magnet_follower(lv, room_width/2, room_height/2);
+followers[0] = summon_enemy_magnet_follower(global.lvl, room_width/2, room_height/2);
+followers[1] = summon_enemy_magnet_follower(global.lvl, room_width/2, room_height/2);
+followers[2] = summon_enemy_magnet_follower(global.lvl, room_width/2, room_height/2);
+followers[3] = summon_enemy_magnet_follower(global.lvl, room_width/2, room_height/2);
 
 basic_atk = function(){
 	var _c = choose(followers[0], followers[1],followers[2],followers[3]);

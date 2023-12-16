@@ -12,7 +12,10 @@
     "name": "Enemys",
     "path": "folders/Objects/Game/Enemys.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "parent_enemy_projectile",
+    "path": "objects/parent_enemy_projectile/parent_enemy_projectile.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

@@ -9,6 +9,6 @@ animation = function(){
 	image_index = index;
 }
 skill = function(){
-	create_projectile_attach(obj_lightning_laser, scaling, self, 10, seconds(0.05), 700, 6,,,,0);
+	create_projectile_laser(obj_lightning_laser1, scaling, self, 10, seconds(0.05), 700, 6,,,,0);
 	index = 0;
 }

@@ -62,3 +62,15 @@ function control_arrow_buttons(_buttons, _index, _options){
 	}
 	else _buttons[0].active = true;
 }
+
+function color_for_element_background(_element){
+	var _color = c_white;
+	switch(_element){
+		case ELEMENTS.ICE: _color = make_color_rgb(75, 213, 235); break;
+		case ELEMENTS.FIRE: _color = make_color_rgb(250, 163, 57); break;
+		case ELEMENTS.LIFE: _color = make_color_rgb(69, 209, 97); break;
+		case ELEMENTS.VENOM: _color = make_color_rgb(142, 49, 247); break;
+		case ELEMENTS.LIGHTNING: _color = make_color_rgb(245, 210, 69); break;
+	}
+	return _color;
+}

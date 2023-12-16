@@ -54,6 +54,23 @@ function projectile_attach_collision(_hitlist, _lenx, _leny, _source, _centered 
 	ds_list_clear(_hitlist);
 }
 
+function projectile_laser_collision(_hitlist, _source, _aoe_size = -1){
+	var _y = y;
+	var _ship = _source;
+	if (object_is_ancestor(_source.object_index, parent_follower)){
+		_ship = _source.source;
+	}
+	var _num = instance_place_list(x, y, parent_enemy, _hitlist, false);
+	for(var _i = 0; _i < _num; _i++){
+		var _inst = ds_list_find_value(_hitlist, _i);
+		if (!_inst.immune){
+			create_hit_indicator(self, _inst.x, _inst.y);
+			execute_dmg(_ship, _inst, self);
+		}
+	}
+	ds_list_clear(_hitlist);
+}
+
 function apply_ex(_inst, _source){
 	if (chance(_source.effect_chance - _inst.resist)){
 		if (_source.element == ELEMENTS.ICE){
@@ -128,6 +145,23 @@ function create_aoe(_parent, _size, _x = x, _y = y){
 	}
 }
 
+function create_aoe_direct(_scale, _size, _element, _x = x, _y = y, _venom_amp = 0, _source = self){
+	with(instance_create_layer(_x, _y, "SpecialEffects", obj_aoe)){
+		scaling = _scale;
+		size = _size;
+		switch(_element){
+			case ELEMENTS.FIRE: sprite_index = spr_fire_aoe; break;
+			case ELEMENTS.ICE: sprite_index = spr_ice_aoe; break;
+			case ELEMENTS.VENOM: sprite_index = spr_venom_aoe; break;
+			case ELEMENTS.LIFE: sprite_index = spr_life_aoe; break;
+			case ELEMENTS.LIGHTNING: sprite_index = spr_lightning_aoe; break;
+		}
+		element = _element;
+		venom_amp = _venom_amp;
+		source = _source;
+	}
+}
+
 
 
 function aoe_collision(_hit_list){
@@ -174,8 +208,8 @@ function seek_closest_elite(_s = 30){
 }
 
 function seek_closest_player(_s = 30){
-	if (instance_exists(parent_ship)){
-		var _enemy = instance_nearest(x,y, parent_ship);
+	if (instance_exists(obj_team_manager)){
+		var _enemy = obj_team_manager.get_active_ship;
 		var _dir = point_direction(x,y, _enemy.x, _enemy.y);
 		var _d = direction;
 		var _r = _dir;

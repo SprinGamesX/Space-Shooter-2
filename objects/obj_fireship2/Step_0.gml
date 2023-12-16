@@ -1,23 +1,21 @@
 var _key_space = 0;
 var _key_skill = 0;
 var _key_ult = 0;
-var _key_dodge = 0;
 
 if (active){
 	// Movement
 	allow_movement(spd);
 	// Keyboard inputs
-	_key_space = keyboard_check(vk_space);
-	_key_skill = keyboard_check(ord("E"));
-	_key_ult = keyboard_check(ord("Q"));
-	_key_dodge = keyboard_check(vk_shift);
+	_key_space = attack_by_key(ATTACK_TYPES.NORMAL);
+	_key_skill = attack_by_key(ATTACK_TYPES.SKILL);
+	_key_ult = attack_by_key(ATTACK_TYPES.ULT);
 
-	preform_skills(_key_space,_key_skill, true, _key_dodge);
 }
+preform_skills(_key_space,_key_skill, active, false);
 
 if (kills >= 30){
 	kills = 0;
-	create_dmg_indicator(x,y,"SKILL CD -100%", false, ELEMENTS.FIRE);
+	create_dmg_indicator(x,y,"-100%", "SKILL CD", ELEMENTS.FIRE);
 	skill_cd = 0;
 }
 

@@ -23,6 +23,7 @@ function transition_start(_room_target, _typeout, _typein){
 }
 
 function transition_change_room(){
+	part_system_clear(global.menu_part_system);
 	room_goto(global.room_target);
 }
 

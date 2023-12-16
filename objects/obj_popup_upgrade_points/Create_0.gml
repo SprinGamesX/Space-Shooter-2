@@ -4,7 +4,7 @@ self.layer = layer_get_id("UI");
 slider = 0;
 cost = 5000;
 text = "Would you like to buy " + string(slider) + " [rainbow] upgrade point [/rainbow] with [c_yellow] " + string(cost) + " GOLD[c_white]? \n [c_green]Y[c_white]/[c_red]N";
-generate_slider(0, 50, floor(global.coins / cost), true);
+generate_slider(0, 50, floor(global.coins / cost) - 1, true);
 
 update = function(){
 	cost = 5000 * slider;

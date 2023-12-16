@@ -1,7 +1,12 @@
+
+var _offset = 100 - (50 * ult_num);
 if (instance_exists(target)){
-	make_ice_sword(target, 1.5, dir);
+	var xx = x;
+	var yy = y + _offset;
+	
+	var _dir = point_direction(xx, yy, target.x, target.y);
+	create_projectile(obj_ice_greatsword, ult_scale/5, _dir, self, 10, xx, yy,,,5);
 }
-dir += 360 / 10;
 ult_num--;
 if (ult_num > 0)
 	alarm[0] = seconds(0.05);

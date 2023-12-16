@@ -191,13 +191,43 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "Ship shoots 3 void balls that deal dmg equal to [c_orange]3x" + (string(obj_ship.scales[0] * 100 / 3)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.SKILL:
-					_str = "Ships fires 3 void balls that apply 25% POISON AMP and deals dmg equal to [c_orange]3x" + (string(obj_ship.scales[0] * 100 / 3)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					_str = "Ships fires 3 void balls that apply 25% POISON AMP and deals dmg equal to [c_orange]3x" + (string(obj_ship.scales[1] * 100 / 3)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.ULT:
 					_str = "Creates a black hole that applies 4 debuffs to all enemys on field:[c_orange] 75% POISON AMP, 50% SLOWED, 25% DMG AMP, 5 stacks of POISON[c_white].\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.PASSIVE:
 					_str = "For every stack of POISON any enemy has: ATK is increased by 2% (up to 100%).";
+			}
+			break;
+		case 13:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Shoots 3 ice shards that deal dmg equal to [c_orange]3x" + (string(obj_ship.scales[0] * 100 / 3)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Summons an ICE ENGINE that will fire a laser every 5s dealing dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "Applys 'Supporting Lasers' to all party members, when an ally has 'Supporting Lasers' and uses a basic attack, a laser will be fired dealing dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK. Lasts for 20s.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "While ICE ENGINE is on the field all ships will gain 25% ICE dmg bonus. In addition when an enemy is hit by a laser cast by (Ship) it will gain DMG AMP +10% for 5s.";
+			}
+			break;
+		case 14:
+			switch(_skill){
+				case DESC_DISPLAY.BASIC_ATTACK:
+					_str = "Shoots a LIGHTNING ball that deals dmg equal to [c_orange]" + (string(obj_ship.scales[0] * 100)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.SKILL:
+					_str = "Charges a laser that fires upon release, the laser fired will accumilate dmg and last longer depending on the charge time with base dmg of [c_orange]" + _str_scale + "%[c_white] of ATK.\nCD: 0s";
+					break;
+				case DESC_DISPLAY.ULT:
+					_str = "Summons a giant laser that will deal dmg equal to [c_orange]10x" + (string(obj_ship.scales[2] * 10)) + "%[c_white] of ATK.\nCD: " + _skill_cd;
+					break;
+				case DESC_DISPLAY.PASSIVE:
+					_str = "This ship does not have a passive ability.";
 			}
 			break;
 		

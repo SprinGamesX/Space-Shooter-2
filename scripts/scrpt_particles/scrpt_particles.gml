@@ -144,3 +144,8 @@ function draw_trail_meteor(_part, _echo_system = global.echo_system){
 	part_type_orientation(_part, self.image_angle, self.image_angle, 0, 0, false);
 	part_particles_create(_echo_system, x, y, _part, 1)
 }
+
+function make_charge_particle(_xx, _yy,_element, _dis){
+	var _inst = instance_create_layer(0, 0, "ECHOS", obj_charge_particle);
+	_inst.on_create(_xx, _yy,_element, _dis);
+}

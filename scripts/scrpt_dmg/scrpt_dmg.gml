@@ -78,7 +78,7 @@ function augment_dmg(_dmg, _ship, _enemy, _element){
 }
 
 function add_extra_dmg(_dmg, _inst, _ship){
-	var f_dmg = _dmg;
+	var f_dmg = 0;
 	// Life ripe dmg amp
 	var _amp = 1;
 	if (chance(_ship.ex)) _amp = 1.5;
