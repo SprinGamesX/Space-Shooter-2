@@ -13,7 +13,7 @@ if (active){
 }
 // Basic attack
 if (atk_cd == 0){
-	if ((keyboard_check(_key_space)) or (mouse_check_button(mb_left)) or (ord("J"))){
+	if ((keyboard_check(_key_space)) or (mouse_check_button(mb_left)) or (keyboard_check(ord("J")))){
 		if (skill_dur > 0){
 			if (charge < 300){ charge += 10 }
 		}

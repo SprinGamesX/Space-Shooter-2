@@ -149,7 +149,7 @@ function string_desc_for_id(_id, _skill, _skill_scale, _skill_cd, _hpscale = 0){
 					_str = "Changes the ships basic attack type.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.ULT:
-					_str = "Summons a ring of ICE swords around the ELITE enemy and deals dmg equal to [c_orange]" + string(1.5 * 30 * 100) + "%[c_white] of ATK to the target.\nCD: " + _skill_cd;
+					_str = "Summons a ring of ICE swords around the ELITE enemy and deals dmg equal to [c_orange]" + _str_scale + "%[c_white] of ATK to the target.\nCD: " + _skill_cd;
 					break;
 				case DESC_DISPLAY.PASSIVE:
 					_str = "When attack TYPE-2 hits an enemy it will unleash 3 shards dealing ICE dmg equal to [c_orange]" + string(obj_ship.scales[0] * 100 / 5) + "%[c_white] of ATK. And when attack TYPE-3 hits an enemy, it will cause the it to be hit 2 additional times by the ICE SWORD.";
