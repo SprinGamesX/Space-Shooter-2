@@ -1,9 +1,5 @@
 if (hp <= 0) {
 	instance_destroy();
-	if (instance_exists(obj_team_manager)){
-		var _ship = obj_team_manager.get_active_ship();
-		_ship.kills++;
-	}
 }
 if (stopped) {
 	speed = 0;

@@ -1,6 +1,5 @@
 if (hp <= 0) {
 	instance_destroy();
-	parent_ship.kills++;	
 }
 event_inherited();
 if (stopped){

@@ -141,7 +141,7 @@ function ini_ship_stats(_id){
 				ship_name = "F4";
 				rarity = RARITY.SSR;
 				cds = [seconds(0.3), seconds(5), seconds(30)];
-				scales = [0.3, 0.75, 0.5];
+				scales = [0.5, 0.75, 2];
 				element = ELEMENTS.FIRE;
 			}
 			break;

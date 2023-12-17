@@ -2,6 +2,8 @@ event_inherited();
 passive_cd = seconds(0.1);
 passive_max_cd = passive_cd;
 
+explosions = 10;
+
 basic_attack = function(){
 	for (var i = -10; i <= 10; i += 5){
 		create_projectile(obj_fireball1, atk_scale/5, i, self, 5,,,,1,2);
@@ -15,7 +17,9 @@ skill = function(){
 }
 
 ultimate = function(){
-	// do ultimate
+	alarm[0] = 1;
+	explosions = kills;
+	pause_all_enemys();
 }
 
 passive = function(){

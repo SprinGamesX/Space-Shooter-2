@@ -1,7 +1,8 @@
-
 if (instance_exists(obj_team_manager)){
 var _ship = obj_team_manager.get_active_ship();
 if (explosive) and (_ship != noone) and (instance_exists(_ship)){
+	if (hp <= 0)
+		_ship.kills++;
 	
 	if (chance(_ship.ex)){
 		for (var _i = 0; _i < 360; _i += 45)
