@@ -95,18 +95,39 @@ function c_rainbow(divider){
 
 function make_trail(_spd, _element){
 	var _part = part_type_create();
-	part_type_sprite(_part, spr_pixel, 0, 0, 0);
-	part_type_alpha2(_part, 1, 0.1);
-	part_type_life(_part, seconds(1), seconds(1));
-	part_type_speed(_part, 0.5, 1, 0, 0);
-	part_type_size(_part, 1, 1.2, -0.02, 0);
-	part_type_color1(_part, color_for_element(_element));
+	switch(_element){
+		case ELEMENTS.FIRE:
+			part_type_sprite(_part, spr_pixel, 0, 0, 0);
+			part_type_alpha2(_part, 1, 0.1);
+			part_type_life(_part, seconds(1), seconds(1));
+			part_type_speed(_part, 0.5, 1, 0, 0);
+			part_type_size(_part, 1, 1.2, -0.02, 0);
+			part_type_color1(_part, color_for_element(_element));
+		break;
+		case ELEMENTS.LIFE:
+			part_type_sprite(_part, spr_pixel, 0, 0, 0);
+			part_type_alpha2(_part, 1, 0.1);
+			part_type_life(_part, seconds(0.2), seconds(0.2));
+			part_type_speed(_part, 0.2, 0.3, 0, 0);
+			part_type_size(_part, 0.5, 0.7, -0.01, 0);
+			part_type_color1(_part, color_for_element(_element));
+			
+		break;
+	}
 	return _part;
 }
 
-function draw_trail(_trail){
-	part_type_direction(_trail, direction + 160, direction + 200, 0, 0);
-	part_particles_create(global.trail_system, x, y, _trail, 1);
+
+function draw_trail(_trail, _element = ELEMENTS.FIRE){
+	if (_element == ELEMENTS.FIRE){
+		part_type_direction(_trail, direction + 160, direction + 200, 0, 0);
+		part_particles_create(global.trail_system, x + random_range(-2, 2), y + random_range(-2, 2), _trail, 1);
+	}
+	if (_element == ELEMENTS.LIFE){
+		part_type_direction(_trail, direction + 175, direction + 185, 0, 0);
+		part_particles_create(global.trail_system, x + random_range(-2, 2), y + random_range(-2, 2), _trail, 1);
+	}
+	
 }
 function draw_trail_random(_trail){
 	part_type_direction(_trail, 0, 359, 0, 0);

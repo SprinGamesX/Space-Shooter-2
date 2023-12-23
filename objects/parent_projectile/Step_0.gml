@@ -8,7 +8,7 @@ kill_outside_bounds();
 switch(element){
 	case ELEMENTS.ICE: draw_echo(echo); break;
 	case ELEMENTS.FIRE: draw_trail(trail); break;
-	case ELEMENTS.LIFE: draw_trail(trail); break;
+	case ELEMENTS.LIFE: draw_trail(trail, ELEMENTS.LIFE); break;
 	case ELEMENTS.VENOM: draw_trail(trail); break;
 	case ELEMENTS.LIGHTNING: draw_echo(echo); break;
 }
