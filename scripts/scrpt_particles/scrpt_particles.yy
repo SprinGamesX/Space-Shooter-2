@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scrpt_particles",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Game Related",
-    "path": "folders/Scripts/Game Related.yy",
+  "$GMScript":"",
+  "%Name":"scrpt_particles",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrpt_particles",
+  "parent":{
+    "name":"Game Related",
+    "path":"folders/Scripts/Game Related.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
